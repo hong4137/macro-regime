@@ -2,42 +2,72 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>Daily Macro Regime Dashboard</title>
+<title>Macro Regime Dashboard v3</title>
 <meta http-equiv="refresh" content="300">
 <style>
-:root{--bg:#0b0f17;--panel:#121826;--panel2:#1a2233;--border:#253047;--text:#e6edf7;--muted:#8fa3c0;--green:#22c55e;--yellow:#eab308;--orange:#f97316;--red:#ef4444;--accent:#60a5fa}
+:root{
+  --bg:#0b0f17;--panel:#121826;--panel2:#1a2233;--border:#253047;
+  --text:#e6edf7;--muted:#8fa3c0;--tertiary:#5e6a82;
+  --green:#22c55e;--yellow:#eab308;--orange:#f97316;--red:#ef4444;--accent:#60a5fa;
+}
 *{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif;font-size:14px}
-.wrap{max-width:1200px;margin:0 auto;padding:30px 26px}
-h1{font-size:24px;margin:0 0 8px}
-.meta{color:var(--muted);font-size:12px;margin-bottom:24px;border-bottom:1px solid var(--border);padding-bottom:14px}
-h2{font-size:17px;margin:28px 0 12px;color:var(--accent)}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif;font-size:14px;line-height:1.55}
+.wrap{max-width:1280px;margin:0 auto;padding:30px 26px}
+h1{font-size:24px;margin:0 0 6px;font-weight:600}
+h2{font-size:16px;margin:24px 0 10px;color:var(--accent);font-weight:500}
+.meta{color:var(--muted);font-size:12px;margin-bottom:22px;border-bottom:1px solid var(--border);padding-bottom:12px}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+
+.kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}
 .kpi{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
-.kpi .l{font-size:11px;color:var(--muted);text-transform:uppercase}
-.kpi .v{font-size:22px;font-weight:800;margin-top:4px}
+.kpi .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.kpi .v{font-size:20px;font-weight:700;margin-top:4px}
+.kpi .vsm{font-size:14px;font-weight:600;margin-top:4px}
 
-.latest{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:24px;text-align:center;margin-bottom:18px}
-.big-emoji{font-size:48px}
-.big-text{font-size:32px;font-weight:800;margin:6px 0}
-.big-date{color:var(--muted);font-size:12px;margin-bottom:14px}
-.regime-bar{display:flex;height:24px;border-radius:6px;overflow:hidden;margin:14px auto;max-width:480px;border:1px solid var(--border)}
-.regime-bar span{display:block;height:100%}
-.regime-labels{display:flex;justify-content:space-around;font-size:11px;color:var(--muted);max-width:480px;margin:0 auto 10px}
-.stress{font-size:14px;margin-top:8px}
+/* 3-column horizon */
+.hgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}
+.hcard{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px}
+.h-label{font-size:11px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.h-alert{font-size:24px;font-weight:700;margin-bottom:2px}
+.h-stress{font-size:12px;color:var(--muted);margin-bottom:10px}
+.raw-note{font-size:10.5px;color:var(--muted);margin-bottom:8px;font-style:italic}
+.rbar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-bottom:14px;background:var(--panel2)}
+.rbar span{display:block;height:100%}
+.h-section{font-size:10px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.6px;margin:0 0 6px}
+table.sigs{width:100%;font-size:12px;border-collapse:collapse}
+table.sigs td{padding:4px 0;border-bottom:1px dashed var(--border)}
+table.sigs tr:last-child td{border-bottom:none}
+.sig-lbl{color:var(--muted);width:55%}
+.sig-val{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
+.sig-val .delta{color:var(--muted);font-size:10.5px;font-weight:400;margin-left:4px}
 
-.ladder{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin:8px 0}
-.rung{padding:8px 4px;border-radius:6px;text-align:center;font-size:10px;font-weight:700}
-.rung .dt{display:block;font-size:9px;font-weight:500;opacity:0.85;margin-bottom:2px}
-.rung.g{background:rgba(34,197,94,0.15);color:var(--green);border:1px solid rgba(34,197,94,0.35)}
-.rung.y{background:rgba(234,179,8,0.15);color:var(--yellow);border:1px solid rgba(234,179,8,0.35)}
-.rung.e{background:rgba(249,115,22,0.18);color:var(--orange);border:1px solid rgba(249,115,22,0.4)}
-.rung.r{background:rgba(239,68,68,0.22);color:var(--red);border:1px solid rgba(239,68,68,0.45)}
+/* Cascade card */
+.cascade-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:18px}
+.cas-label{font-size:11px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
+.cas-name{font-size:18px;font-weight:700;margin-bottom:8px}
+.rec-tag{display:inline-block;margin-left:8px;font-size:11px;font-weight:500;color:var(--accent);background:rgba(96,165,250,0.12);padding:2px 7px;border-radius:10px;vertical-align:middle}
+.cas-pills{display:flex;gap:6px;margin-bottom:8px}
+.cpill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border:1px solid;border-radius:10px;background:rgba(255,255,255,0.02)}
+.cas-interp{font-size:13px;color:var(--text);margin-bottom:4px}
+.cas-action{font-size:12.5px;color:var(--muted)}
 
-.card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:16px;margin-bottom:14px}
-table{width:100%;border-collapse:collapse;font-size:12.5px}
-table th{background:var(--panel2);padding:8px;color:var(--muted);text-transform:uppercase;font-size:10.5px;text-align:left}
-table td{padding:7px 8px;border-bottom:1px solid var(--border)}
+/* Ladder */
+.ladder-block{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px}
+.ladder-block .l-label{font-size:11px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.ladder{display:grid;grid-template-columns:repeat(15,1fr);gap:4px}
+@media(max-width:1100px){.ladder{grid-template-columns:repeat(10,1fr)}}
+.rung{padding:6px 3px;border-radius:5px;text-align:center;font-size:9.5px;font-weight:700}
+.rung .dt{display:block;font-size:9px;font-weight:500;opacity:0.85;margin-bottom:1px}
+.rung.g{background:rgba(34,197,94,0.13);color:var(--green);border:1px solid rgba(34,197,94,0.3)}
+.rung.y{background:rgba(234,179,8,0.13);color:var(--yellow);border:1px solid rgba(234,179,8,0.3)}
+.rung.e{background:rgba(249,115,22,0.16);color:var(--orange);border:1px solid rgba(249,115,22,0.35)}
+.rung.r{background:rgba(239,68,68,0.20);color:var(--red);border:1px solid rgba(239,68,68,0.4)}
+
+/* Predictions table */
+table.ptbl{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--panel);border-radius:10px;overflow:hidden}
+table.ptbl th{background:var(--panel2);padding:8px;color:var(--muted);text-transform:uppercase;font-size:10.5px;text-align:left;letter-spacing:0.4px}
+table.ptbl td{padding:7px 8px;border-bottom:1px solid var(--border)}
 .alert-pill{display:inline-block;padding:2px 8px;border-radius:12px;font-size:10px;font-weight:700}
 .alert-pill.g{background:rgba(34,197,94,0.15);color:var(--green)}
 .alert-pill.y{background:rgba(234,179,8,0.15);color:var(--yellow)}
@@ -47,55 +77,81 @@ td.hit{color:var(--green);font-weight:700}
 td.partial{color:var(--yellow)}
 td.miss{color:var(--red);font-weight:700}
 td.pending{color:var(--muted)}
+
 .alerts-log{font-family:'SF Mono',monospace;font-size:11px;color:var(--muted);background:var(--panel2);padding:12px;border-radius:8px;line-height:1.7}
+
+footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;border-top:1px solid var(--border);padding-top:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<h1>📊 Daily Macro Regime Dashboard</h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · 마지막 업데이트: 2026-04-29 01:07:06</div>
+<h1>Macro Regime Dashboard <span style="color:var(--accent);font-size:14px;font-weight:400">v3 · multi-horizon</span></h1>
+<div class="meta">자동 생성 · 5분마다 갱신 · As of 2026-04-28 · 마지막 업데이트: 2026-04-29 08:42:20</div>
 
 <div class="kpis">
-  <div class="kpi"><div class="l">총 분석 sessions</div><div class="v">27</div></div>
-  <div class="kpi"><div class="l">현재 alert</div><div class="v">YELLOW</div></div>
-  <div class="kpi"><div class="l">예측 hit rate</div><div class="v">100%</div></div>
-  <div class="kpi"><div class="l">분포</div><div class="v" style="font-size:14px;font-weight:600">G 6 · Y 4 · E 12 · R 5</div></div>
+  <div class="kpi"><div class="l">총 sessions (24h)</div><div class="v">2</div></div>
+  <div class="kpi"><div class="l">24h alert</div><div class="v" style="color:#eab308">YELLOW</div></div>
+  <div class="kpi"><div class="l">5d alert</div><div class="v" style="color:#eab308">YELLOW</div></div>
+  <div class="kpi"><div class="l">7d alert</div><div class="v" style="color:#22c55e">GREEN</div></div>
+  <div class="kpi"><div class="l">예측 hit rate (legacy)</div><div class="v">100%</div></div>
 </div>
 
-<h2>현재 상태</h2>
+<h2>Multi-horizon view</h2>
+<div class="hgrid">
 
-        <div class="latest">
-          <div class="big-emoji">🟡</div>
-          <div class="big-text">YELLOW</div>
-          <div class="big-date">2026-04-28</div>
-          <div class="regime-bar">
-            <span style="background:#22c55e;width:15%"></span>
-            <span style="background:#6b7280;width:45%"></span>
-            <span style="background:#f97316;width:29%"></span>
-            <span style="background:#ef4444;width:11%"></span>
-          </div>
-          <div class="regime-labels">
-            <span>bull 0.15</span>
-            <span>side 0.45</span>
-            <span>bear 0.29</span>
-            <span>crisis 0.11</span>
-          </div>
-          <div class="stress">bear+crisis = <b>0.395</b></div>
-        </div>
-
-<h2>최근 30일 Alert Ladder</h2>
-<div class="card">
-  <div class="ladder"><div class="rung e"><span class="dt">04-27</span>ELEV</div>
-<div class="rung y"><span class="dt">04-28</span>YELL</div>
+    <div class="hcard">
+      <div class="h-label">24h horizon · prior YELLOW</div>
+      <div class="h-alert" style="color:#eab308">YELLOW</div>
+      <div class="h-stress">stress 0.396</div>
+      <div class="raw-note">raw: GREEN → YELLOW (M7 적용)</div>
+      <div class="rbar"><span style="background:#22c55e;width:15%"></span><span style="background:#6b7280;width:45%"></span><span style="background:#f97316;width:29%"></span><span style="background:#ef4444;width:11%"></span></div>
+      <div class="h-section">Key signals</div>
+      <table class="sigs"><tr><td class="sig-lbl">VIX</td><td class="sig-val">18.02 <span class="delta">(-0.85 5d)</span></td></tr><tr><td class="sig-lbl">USEPU spot</td><td class="sig-val">255</td></tr><tr><td class="sig-lbl">Catalyst density</td><td class="sig-val">0.65</td></tr><tr><td class="sig-lbl">Imminent high</td><td class="sig-val">Yes</td></tr></table>
+    </div>
+    
+    <div class="hcard">
+      <div class="h-label">5d horizon · prior YELLOW</div>
+      <div class="h-alert" style="color:#eab308">YELLOW</div>
+      <div class="h-stress">stress 0.365</div>
+      <div class="raw-note">raw: GREEN → YELLOW (M7 적용)</div>
+      <div class="rbar"><span style="background:#22c55e;width:17%"></span><span style="background:#6b7280;width:47%"></span><span style="background:#f97316;width:27%"></span><span style="background:#ef4444;width:10%"></span></div>
+      <div class="h-section">Key signals</div>
+      <table class="sigs"><tr><td class="sig-lbl">KRE/SPY ratio</td><td class="sig-val">0.09909 <span class="delta">(+0.19 5d %)</span></td></tr><tr><td class="sig-lbl">HYG/IEF ratio</td><td class="sig-val">0.8443 <span class="delta">(+0.23 5d %)</span></td></tr><tr><td class="sig-lbl">USDJPY</td><td class="sig-val">159.35 <span class="delta">(+1.25 5d)</span></td></tr><tr><td class="sig-lbl">USEPU 5d MA</td><td class="sig-val">349</td></tr></table>
+    </div>
+    
+    <div class="hcard">
+      <div class="h-label">7d horizon · prior GREEN</div>
+      <div class="h-alert" style="color:#22c55e">GREEN</div>
+      <div class="h-stress">stress 0.329</div>
+      
+      <div class="rbar"><span style="background:#22c55e;width:18%"></span><span style="background:#6b7280;width:49%"></span><span style="background:#f97316;width:24%"></span><span style="background:#ef4444;width:9%"></span></div>
+      <div class="h-section">Key signals</div>
+      <table class="sigs"><tr><td class="sig-lbl">SAHM Rule</td><td class="sig-val">0.20</td></tr><tr><td class="sig-lbl">SLOOS Lending</td><td class="sig-val">5.3</td></tr><tr><td class="sig-lbl">YC 10Y-2Y</td><td class="sig-val">0.57 <span class="delta">(+0.03 5d)</span></td></tr><tr><td class="sig-lbl">Baa-Aaa spread</td><td class="sig-val">0.60</td></tr></table>
+    </div>
+    
 </div>
-</div>
 
-<h2>최근 예측 채점</h2>
-<div class="card">
-<table>
-  <thead><tr><th>날짜</th><th>예측 alert</th><th>stress</th><th>T+1</th><th>T+3</th><th>T+5</th></tr></thead>
-  <tbody>
+
+    <div class="cascade-card" style="border-left:3px solid #60a5fa">
+      <div class="cas-label">Cascade signal</div>
+      <div class="cas-name" style="color:#60a5fa">broad_recovery<span class="rec-tag">in_recovery</span></div>
+      <div class="cas-pills"><span class="cpill" style="color:#22c55e;border-color:#22c55e66">24h G</span><span class="cpill" style="color:#22c55e;border-color:#22c55e66">5d G</span><span class="cpill" style="color:#22c55e;border-color:#22c55e66">7d G</span></div>
+      <div class="cas-interp">회복기 — 모델 view 는 평시, hysteresis stepdown 진행 중</div>
+      <div class="cas-action">→ 헷지 점진 해제, risk-on 점진 복귀</div>
+    </div>
+    
+
+<h2>30일 alert ladder (horizon 별)</h2>
+<div class="ladder-block"><div class="l-label">24h</div><div class="ladder"><div class="rung y" title="2026-04-27: YELLOW"><span class="dt">04-27</span>YELL</div><div class="rung y" title="2026-04-28: YELLOW"><span class="dt">04-28</span>YELL</div></div></div>
+<div class="ladder-block"><div class="l-label">5d</div><div class="ladder"><div class="rung y" title="2026-04-27: YELLOW"><span class="dt">04-27</span>YELL</div><div class="rung y" title="2026-04-28: YELLOW"><span class="dt">04-28</span>YELL</div></div></div>
+<div class="ladder-block"><div class="l-label">7d</div><div class="ladder"><div class="rung g" title="2026-04-27: GREEN"><span class="dt">04-27</span>GREE</div><div class="rung g" title="2026-04-28: GREEN"><span class="dt">04-28</span>GREE</div></div></div>
+
+<h2>최근 예측 채점 (legacy 24h)</h2>
+
+    <table class="ptbl">
+      <thead><tr><th>날짜</th><th>예측 alert</th><th>stress</th><th>T+1</th><th>T+3</th><th>T+5</th></tr></thead>
+      <tbody>
         <tr>
           <td>2026-04-27</td>
           <td><span class="alert-pill e">ELEVATED</span></td>
@@ -112,17 +168,13 @@ td.pending{color:var(--muted)}
           <td class="pending">—</td>
           <td class="pending">—</td>
         </tr></tbody>
-</table>
-</div>
+    </table>
+    
 
 <h2>알림 로그 (최근 10)</h2>
-<div class="card">
 <div class="alerts-log">[2026-04-28T23:32:14.910629] ↓ 해제 ELEVATED → YELLOW (2026-04-27 → 2026-04-28) stress 0.395</div>
-</div>
 
-<div style="margin-top:30px;color:var(--muted);font-size:11px;text-align:center;border-top:1px solid var(--border);padding-top:14px">
-v2 architecture · Phase 8 라이브 운영 · 자동 갱신
-</div>
+<footer>v3 · multi-horizon (Phase 9.1) · 24h/5d/7d × Cascade signal</footer>
 
 </div>
 </body>
