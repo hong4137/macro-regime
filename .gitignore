@@ -1,0 +1,32 @@
+# OS / Editor
+.DS_Store
+Thumbs.db
+*.swp
+*~
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Logs / temp
+*.log
+*.tmp
+
+# Sensitive (혹시 모를 키 파일)
+*.key
+*.pem
+.env
+.env.local
+secrets.json
+api_keys.json
+
+# 큰 파일 / 백업
+*.zip
+*.tar.gz
+*.bak
+
+# 백테스트 raw 데이터 (선택적 — 너무 크면 push 안 함)
+# data/fusion_*.json  ← 필요시 활성화
