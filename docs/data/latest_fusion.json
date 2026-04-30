@@ -122,7 +122,7 @@
       },
       "hysteresis": {
         "raw_alert": "ELEVATED",
-        "prior_alert": "YELLOW",
+        "prior_alert": "GREEN",
         "final_alert": "ELEVATED",
         "applied": false
       }
@@ -181,13 +181,13 @@
         },
         "hysteresis": {
           "raw_alert": "ELEVATED",
-          "prior_alert": "YELLOW",
+          "prior_alert": "GREEN",
           "final_alert": "ELEVATED",
           "applied": false,
           "relax_pp": 0.05
         }
       },
-      "prior_alert": "YELLOW",
+      "prior_alert": "GREEN",
       "key_signals": [
         {
           "label": "VIX",
@@ -271,13 +271,13 @@
         },
         "hysteresis": {
           "raw_alert": "ELEVATED",
-          "prior_alert": "YELLOW",
+          "prior_alert": "GREEN",
           "final_alert": "ELEVATED",
           "applied": false,
           "relax_pp": 0.03
         }
       },
-      "prior_alert": "YELLOW",
+      "prior_alert": "GREEN",
       "key_signals": [
         {
           "label": "KRE/SPY ratio",
@@ -401,9 +401,9 @@
     }
   },
   "cascade": {
-    "scenario": "mixed",
-    "interpretation": "혼재 패턴 raw (24h=ELEVATED, 5d=ELEVATED, 7d=YELLOW)",
-    "action": "horizon 별 개별 판단",
+    "scenario": "escalating_stress",
+    "interpretation": "단·중기 ELEVATED+ + 7d caution 시작 ★ — 본격 stress 격상 진행 중",
+    "action": "헷지 강화, cash 비중 30%+ 권장, 방어적 sector rotation 가속",
     "alerts": {
       "24h": "ELEVATED",
       "5d": "ELEVATED",
