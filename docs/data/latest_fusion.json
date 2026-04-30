@@ -1,131 +1,130 @@
 {
-  "as_of_date": "2026-04-28",
+  "as_of_date": "2026-04-29",
   "system_version": "v2.1-multi-horizon",
   "liq_input": {
     "agent_id": "liquidity_v2",
-    "as_of_date": "2026-04-28",
+    "as_of_date": "2026-04-29",
     "leading_layer": {
-      "verdict": "FX stress 가속 (USDJPY 159.35 강달러 +1.25, USDKRW 1476.47 +14.81 EM 역사적 고점) 그러나 매크로·신용·펀딩 모두 정상 유지. 은행 sector 약간 회복 (KRE +2.5%).",
-      "strength": 0.3,
+      "verdict": "Mild leading stress 누적 — KRE/SPY 5d -2% (sector underperform leading), USDKRW 1476 sustained EM FX stress, BREAKEVEN 2.46 (5d +0.09) 인플레 기대 가속. SAHM 0.20 / SLOOS 5.3 침체 신호 0.",
+      "strength": 0.35,
       "key_signals": [
-        "USDKRW 1476.47 (+14.81 1d) — EM FX stress 가속, 사상 고점 영역 진행",
-        "USDJPY 159.35 (+1.25 1d) — 강달러 가속, 엔캐리 unwind 위험 잠재",
-        "SAHM 0.2 / SLOOS 5.3 / SOFR-IORB +1bp — 매크로·신용·펀딩 신호 모두 정상",
-        "KRE 70.58 (+2.5% 1d) / KRE/SPY 0.099 — 은행 sector 약간 회복",
-        "HYG/IEF 0.844 — credit ratio 정상"
+        "KRE/SPY 0.0970 (5d -2.0%) ★ — 지방은행 sector underperform 시작, 4/28 0.099 → 4/29 0.097",
+        "USDKRW 1476.47 sustained (5d +14.81) — EM FX stress 사상 고점 영역 지속",
+        "BREAKEVEN 2.46 (5d +0.09) — 인플레 기대 가속, BoJ 임박 + 관세 압력",
+        "USDJPY 159.35 (5d +1.25) — 엔약세 지속, BoJ 4/30 D-1 부담"
       ]
     },
     "coincident_layer": {
-      "verdict": "VIX 18.02 (-1.29 1d) 변동성 하락 + YC un-invert +0.57 가속 + Baa-10Y 1.70 정상 — 시장 risk-on 환경 강화.",
-      "strength": 0.1,
+      "verdict": "VIX 17.83 / Baa-Aaa 0.59 평시. YC 10Y-2Y 0.50 (5d -0.07) — narrowing 시작 시그널 ★.",
+      "strength": 0.2,
       "key_signals": [
-        "VIX 18.02 (-1.29 1d, -1.29 5d) — 변동성 하락, 평시 진행",
-        "YC_10Y_2Y +0.57 (+0.04 1d) / YC_10Y_3M +0.67 — un-invert 가속, 정상 spread 강화",
-        "UST_2Y 3.78% (-5bp 1d) 약한 플라이트, Baa-10Y 1.70pp 정상"
+        "VIX 17.83 (5d -0.85) — 변동성 calm 유지, 임계 25 한참 미달",
+        "YC 10Y-2Y 0.50pp (5d -0.07) ★ — 정상 spread 그러나 5d narrowing 시작",
+        "Baa-Aaa 0.59pp / NFCI -0.518 loose — credit 평시"
       ]
     },
     "catalyst_layer": {
-      "verdict": "Density 0.652 + imminent_high True — BoJ 4/30 T+2 더 임박, FOMC/CPI/NFP recent. monetary cluster 유지.",
+      "verdict": "Density 0.871 + imminent_high True — BoJ 4/30 D-1, NFP 5/1 D-2 monetary cluster 정점.",
       "key_catalysts": [
-        "2026-04-30 BoJ 4월 회의 (T+2, importance 4) imminent",
-        "2026-05-01 NFP 5월 (T+3, importance 3) imminent",
-        "2026-04-10 CPI 4월 (T-18, importance 4)"
+        "2026-04-30 BoJ 4월 회의 (D-1, importance 4) imminent ★",
+        "2026-05-01 NFP 5월 (D-2, importance 3) imminent",
+        "Trump tariff escalation 누적 정책 압력"
       ]
     },
     "regime_view": {
-      "bull_continuation": 0.22,
-      "sideways": 0.55,
-      "bear_transition": 0.18,
-      "crisis": 0.05
+      "bull_continuation": 0.15,
+      "sideways": 0.4,
+      "bear_transition": 0.3,
+      "crisis": 0.15
     },
     "horizon_hours": 24,
-    "confidence": 0.7,
-    "rationale_synthesis": "FX 부분 stress 진행 (USDJPY 159, USDKRW 1476) 그러나 시장 가격(VIX, YC, credit) 모두 calm. 4/27 대비 약간 risk-on.",
-    "next_trigger": "USDKRW 1500 돌파, USDJPY 160 돌파, 4/30 BoJ 결과",
+    "confidence": 0.65,
+    "rationale_synthesis": "VIX/Baa coincident 평시이나 leading (KRE underperform 시작, USDKRW sustained, YC narrowing, BREAKEVEN 가속) 누적 + BoJ 4/30 D-1 imminent — 24h stress probability ↑.",
+    "next_trigger": "BoJ 4/30 hawkish surprise, USDJPY 160 돌파, KRE/SPY 0.095 break, YC inversion 재진입",
     "uncertainty_flags": [
-      "USDKRW 1476 EM FX stress 누적 — 5/4까지 추가 가속 위험",
-      "BoJ 4/30 imminent — surprise 가능성"
+      "BoJ 4/30 surprise risk (rate hike vs hawkish hold)",
+      "USEPU spot 578 sustained — 정책 불확실성 elevated가 가격에 미반영"
     ]
   },
   "geo_input": {
     "agent_id": "geopolitics_v2",
-    "as_of_date": "2026-04-28",
+    "as_of_date": "2026-04-29",
     "catalyst_layer": {
-      "verdict": "Density 0.652 + imminent_high True — BoJ 4/30 T+2 + NFP 5/1 T+3 imminent. monetary cluster 유지.",
+      "verdict": "Density 0.871 + imminent_high True ★ — BoJ 4/30 D-1, NFP 5/1 D-2, monetary cluster 정점.",
       "key_catalysts": [
-        "2026-04-30 BoJ 4월 회의 (T+2, importance 4)",
-        "2026-05-01 NFP 5월 (T+3, importance 3)",
-        "2026-04-10 CPI 4월 (T-18, importance 4)"
+        "2026-04-30 BoJ 4월 회의 (D-1, importance 4) ★ imminent_high",
+        "2026-05-01 NFP 5월 (D-2, importance 3) imminent",
+        "Trump tariff escalation 정책 불확실성 누적"
       ]
     },
     "coincident_layer": {
-      "verdict": "★ USEPU spot 254.71 — 4/27 spike 481 큰 폭 해소 (-226), single-day noise 입증. 5d MA 영역으로 회귀. GEPU 371.10 (12mo avg 397.63 대비 -7%).",
+      "verdict": "USEPU spot 578.24 ★★ — 4/27 481 → 4/28 578 sustained spike (single-day noise 아님 확정). 5d MA 매우 elevated, 30d 평균 대비 +200%+. GEPU 371 stress 임계 300 돌파.",
       "key_signals": [
-        "USEPU spot 254.71 (4/27 481.08 → -226) — single-day spike noise 해소 확정",
-        "USEPU vs 5d MA — spot 이 5d MA 와 가까운 영역으로 정상화",
-        "GEPU 371.10 — 절대 300 임계 돌파 유지, 그러나 12mo 평균 397.63 대비 다소 완화"
+        "USEPU 578.24 ★★ — 4/27 spike 481 sustained 확정 (4/28 단일일 노이즈 아닌 trend)",
+        "USEPU 5d MA 매우 elevated — 단일 spike 노이즈 차단 후에도 sustained, 4/27/28 두 일 동반 spike",
+        "GEPU 371 — 임계 300 돌파, 12mo 평균 397 직하 stress"
       ]
     },
     "regime_view": {
       "bull_continuation": 0.05,
-      "sideways": 0.3,
+      "sideways": 0.2,
       "bear_transition": 0.45,
-      "crisis": 0.2
+      "crisis": 0.3
     },
     "horizon_hours": 24,
-    "confidence": 0.5,
-    "rationale_synthesis": "USEPU spike 해소 확정 → crisis 0.30 → 0.20 보수적 재조정. GEPU 371 sustained elevated 라 bear 0.45 잔존, M4 격상 임계 미달 (crisis 0.20<0.30).",
-    "next_trigger": "USEPU 다음 주 변화, BoJ 4/30 결과 후 USEPU 반응",
+    "confidence": 0.65,
+    "rationale_synthesis": "USEPU sustained 578 ★★ (single-day noise 차단 후에도 elevated) + GEPU 371 stress + BoJ 4/30 D-1 imminent — 다층 policy uncertainty stress 점등, M4 escalation 조건 명확.",
+    "next_trigger": "BoJ 4/30 hawkish surprise, USEPU 600 돌파, Trump tariff escalation 발표",
     "uncertainty_flags": [
-      "GDELT 부재로 USEPU 변동의 underlying cause 분리 불가",
-      "USEPU 254 sustained vs 추가 변동 판별 어려움",
-      "GEPU 12mo 평균 자체가 397 (높은 baseline) — 정상화 어려움"
+      "GDELT 다수 endpoint 429 — 지정학 quantification 부분 누락",
+      "BoJ 4/30 결과 미정 (rate 동결 vs 인상 surprise 분기점)",
+      "USEPU 578 sustained 가 가격 (VIX 17.83) 에 미반영 — 디커플링 위험"
     ]
   },
-  "catalyst_density": 0.652,
+  "catalyst_density": 0.871,
   "imminent_high": true,
   "fusion": {
     "regime_view": {
-      "bull_continuation": 0.1531,
-      "sideways": 0.4516,
-      "bear_transition": 0.2863,
-      "crisis": 0.1091
+      "bull_continuation": 0.1035,
+      "sideways": 0.307,
+      "bear_transition": 0.3698,
+      "crisis": 0.2198
     },
-    "alert_level": "YELLOW",
-    "raw_alert": "GREEN",
-    "bear_plus_crisis": 0.3954,
+    "alert_level": "ELEVATED",
+    "raw_alert": "ELEVATED",
+    "bear_plus_crisis": 0.5896,
     "audit": {
-      "density": 0.652,
+      "density": 0.871,
       "imminent_high": true,
       "base_weights": {
-        "w_liq": 0.7,
-        "w_geo": 0.5
+        "w_liq": 0.65,
+        "w_geo": 0.65
       },
       "catalyst_modifier": {
-        "factor": 1.1,
-        "w_liq_after": 0.77,
+        "factor": 1.15,
+        "w_liq_after": 0.7475,
         "applied": true
       },
       "fusion_post_M1M2": {
-        "bull_continuation": 0.1531,
-        "sideways": 0.4516,
-        "bear_transition": 0.2863,
-        "crisis": 0.1091
+        "bull_continuation": 0.1035,
+        "sideways": 0.307,
+        "bear_transition": 0.3698,
+        "crisis": 0.2198
       },
       "resonance_boost": [],
       "single_agent_escalation": false,
       "crisis_override": [],
       "fusion_final": {
-        "bull_continuation": 0.1531,
-        "sideways": 0.4516,
-        "bear_transition": 0.2863,
-        "crisis": 0.1091
+        "bull_continuation": 0.1035,
+        "sideways": 0.307,
+        "bear_transition": 0.3698,
+        "crisis": 0.2198
       },
       "hysteresis": {
-        "raw_alert": "GREEN",
+        "raw_alert": "ELEVATED",
         "prior_alert": "YELLOW",
-        "final_alert": "YELLOW",
-        "applied": true
+        "final_alert": "ELEVATED",
+        "applied": false
       }
     }
   },
@@ -133,14 +132,14 @@
     "24h": {
       "horizon": "24h",
       "regime_view": {
-        "bull_continuation": 0.153,
-        "sideways": 0.4515,
-        "bear_transition": 0.2864,
-        "crisis": 0.1091
+        "bull_continuation": 0.1035,
+        "sideways": 0.307,
+        "bear_transition": 0.3698,
+        "crisis": 0.2198
       },
-      "alert_level": "YELLOW",
-      "raw_alert": "GREEN",
-      "bear_plus_crisis": 0.3955,
+      "alert_level": "ELEVATED",
+      "raw_alert": "ELEVATED",
+      "bear_plus_crisis": 0.5896,
       "audit": {
         "horizon": "24h",
         "config": {
@@ -152,21 +151,21 @@
           "m4_active": true,
           "m7_relax_pp": 0.05
         },
-        "density": 0.652,
+        "density": 0.871,
         "imminent_high": true,
         "base_weights": {
-          "w_liq": 0.3846,
-          "w_geo": 0.25
+          "w_liq": 0.3737,
+          "w_geo": 0.325
         },
         "catalyst_modifier": {
-          "factor": 1.099,
+          "factor": 1.15,
           "applied": true
         },
         "fusion_post_M1M2": {
-          "bull_continuation": 0.153,
-          "sideways": 0.4515,
-          "bear_transition": 0.2864,
-          "crisis": 0.1091
+          "bull_continuation": 0.1035,
+          "sideways": 0.307,
+          "bear_transition": 0.3698,
+          "crisis": 0.2198
         },
         "resonance_boost": [],
         "single_agent_escalation": {
@@ -175,16 +174,16 @@
         },
         "crisis_override": [],
         "fusion_final": {
-          "bull_continuation": 0.153,
-          "sideways": 0.4515,
-          "bear_transition": 0.2864,
-          "crisis": 0.1091
+          "bull_continuation": 0.1035,
+          "sideways": 0.307,
+          "bear_transition": 0.3698,
+          "crisis": 0.2198
         },
         "hysteresis": {
-          "raw_alert": "GREEN",
+          "raw_alert": "ELEVATED",
           "prior_alert": "YELLOW",
-          "final_alert": "YELLOW",
-          "applied": true,
+          "final_alert": "ELEVATED",
+          "applied": false,
           "relax_pp": 0.05
         }
       },
@@ -192,21 +191,21 @@
       "key_signals": [
         {
           "label": "VIX",
-          "value": "18.02",
-          "delta": "-0.85",
+          "value": "17.83",
+          "delta": "-1.67",
           "delta_period": "5d",
           "note": "≥25 spike 기준"
         },
         {
           "label": "USEPU spot",
-          "value": "255",
+          "value": "578",
           "delta": null,
           "delta_period": "",
           "note": "single-day spike 가능성, 5d MA 와 대조 권장"
         },
         {
           "label": "Catalyst density",
-          "value": "0.65",
+          "value": "0.87",
           "delta": null,
           "delta_period": "",
           "note": "≥0.6 elevated, ≥0.8 imminent"
@@ -223,14 +222,14 @@
     "5d": {
       "horizon": "5d",
       "regime_view": {
-        "bull_continuation": 0.1652,
-        "sideways": 0.4694,
-        "bear_transition": 0.2671,
-        "crisis": 0.0984
+        "bull_continuation": 0.1123,
+        "sideways": 0.3245,
+        "bear_transition": 0.3566,
+        "crisis": 0.2066
       },
-      "alert_level": "YELLOW",
-      "raw_alert": "GREEN",
-      "bear_plus_crisis": 0.3655,
+      "alert_level": "ELEVATED",
+      "raw_alert": "ELEVATED",
+      "bear_plus_crisis": 0.5632,
       "audit": {
         "horizon": "5d",
         "config": {
@@ -242,21 +241,21 @@
           "m4_active": true,
           "m7_relax_pp": 0.03
         },
-        "density": 0.652,
+        "density": 0.871,
         "imminent_high": true,
         "base_weights": {
-          "w_liq": 0.42,
-          "w_geo": 0.2
+          "w_liq": 0.429,
+          "w_geo": 0.26
         },
         "catalyst_modifier": {
-          "factor": 1.0,
-          "applied": false
+          "factor": 1.1,
+          "applied": true
         },
         "fusion_post_M1M2": {
-          "bull_continuation": 0.1652,
-          "sideways": 0.4694,
-          "bear_transition": 0.2671,
-          "crisis": 0.0984
+          "bull_continuation": 0.1123,
+          "sideways": 0.3245,
+          "bear_transition": 0.3566,
+          "crisis": 0.2066
         },
         "resonance_boost": [],
         "single_agent_escalation": {
@@ -265,16 +264,16 @@
         },
         "crisis_override": [],
         "fusion_final": {
-          "bull_continuation": 0.1652,
-          "sideways": 0.4694,
-          "bear_transition": 0.2671,
-          "crisis": 0.0984
+          "bull_continuation": 0.1123,
+          "sideways": 0.3245,
+          "bear_transition": 0.3566,
+          "crisis": 0.2066
         },
         "hysteresis": {
-          "raw_alert": "GREEN",
+          "raw_alert": "ELEVATED",
           "prior_alert": "YELLOW",
-          "final_alert": "YELLOW",
-          "applied": true,
+          "final_alert": "ELEVATED",
+          "applied": false,
           "relax_pp": 0.03
         }
       },
@@ -282,15 +281,15 @@
       "key_signals": [
         {
           "label": "KRE/SPY ratio",
-          "value": "0.09909",
-          "delta": "+0.19",
+          "value": "0.09701",
+          "delta": "-0.37",
           "delta_period": "5d %",
           "note": "↓ = 지방은행 underperform leading"
         },
         {
           "label": "HYG/IEF ratio",
-          "value": "0.8443",
-          "delta": "+0.23",
+          "value": "0.8453",
+          "delta": "+0.30",
           "delta_period": "5d %",
           "note": "↓ = HY credit risk-off"
         },
@@ -303,7 +302,7 @@
         },
         {
           "label": "USEPU 5d MA",
-          "value": "349",
+          "value": "383",
           "delta": null,
           "delta_period": "",
           "note": "단일 spike 노이즈 차단된 trend"
@@ -313,14 +312,14 @@
     "7d": {
       "horizon": "7d",
       "regime_view": {
-        "bull_continuation": 0.1802,
-        "sideways": 0.4914,
-        "bear_transition": 0.2433,
-        "crisis": 0.0852
+        "bull_continuation": 0.12,
+        "sideways": 0.34,
+        "bear_transition": 0.345,
+        "crisis": 0.195
       },
-      "alert_level": "GREEN",
-      "raw_alert": "GREEN",
-      "bear_plus_crisis": 0.3285,
+      "alert_level": "YELLOW",
+      "raw_alert": "YELLOW",
+      "bear_plus_crisis": 0.54,
       "audit": {
         "horizon": "7d",
         "config": {
@@ -332,21 +331,21 @@
           "m4_active": false,
           "m7_relax_pp": 0.01
         },
-        "density": 0.652,
+        "density": 0.871,
         "imminent_high": true,
         "base_weights": {
-          "w_liq": 0.49,
-          "w_geo": 0.15
+          "w_liq": 0.455,
+          "w_geo": 0.195
         },
         "catalyst_modifier": {
           "factor": 1.0,
           "applied": false
         },
         "fusion_post_M1M2": {
-          "bull_continuation": 0.1802,
-          "sideways": 0.4914,
-          "bear_transition": 0.2433,
-          "crisis": 0.0852
+          "bull_continuation": 0.12,
+          "sideways": 0.34,
+          "bear_transition": 0.345,
+          "crisis": 0.195
         },
         "resonance_boost": [],
         "single_agent_escalation": {
@@ -355,15 +354,15 @@
         },
         "crisis_override": [],
         "fusion_final": {
-          "bull_continuation": 0.1802,
-          "sideways": 0.4914,
-          "bear_transition": 0.2433,
-          "crisis": 0.0852
+          "bull_continuation": 0.12,
+          "sideways": 0.34,
+          "bear_transition": 0.345,
+          "crisis": 0.195
         },
         "hysteresis": {
-          "raw_alert": "GREEN",
+          "raw_alert": "YELLOW",
           "prior_alert": "GREEN",
-          "final_alert": "GREEN",
+          "final_alert": "YELLOW",
           "applied": false,
           "relax_pp": 0.01
         }
@@ -386,14 +385,14 @@
         },
         {
           "label": "YC 10Y-2Y",
-          "value": "0.57",
-          "delta": "+0.03",
+          "value": "0.50",
+          "delta": "-0.01",
           "delta_period": "5d",
           "note": "<0 inverted, 정상 +0.3~+1.0pp"
         },
         {
           "label": "Baa-Aaa spread",
-          "value": "0.60",
+          "value": "0.59",
           "delta": null,
           "delta_period": "",
           "note": "≥1.20pp flight-to-quality"
@@ -402,24 +401,24 @@
     }
   },
   "cascade": {
-    "scenario": "broad_recovery",
-    "interpretation": "회복기 — 모델 view 는 평시, hysteresis stepdown 진행 중",
-    "action": "헷지 점진 해제, risk-on 점진 복귀",
+    "scenario": "mixed",
+    "interpretation": "혼재 패턴 raw (24h=ELEVATED, 5d=ELEVATED, 7d=YELLOW)",
+    "action": "horizon 별 개별 판단",
     "alerts": {
-      "24h": "YELLOW",
-      "5d": "YELLOW",
-      "7d": "GREEN"
+      "24h": "ELEVATED",
+      "5d": "ELEVATED",
+      "7d": "YELLOW"
     },
     "raws": {
-      "24h": "GREEN",
-      "5d": "GREEN",
-      "7d": "GREEN"
+      "24h": "ELEVATED",
+      "5d": "ELEVATED",
+      "7d": "YELLOW"
     },
-    "in_recovery": true,
+    "in_recovery": false,
     "stress": {
-      "24h": 0.3955,
-      "5d": 0.3655,
-      "7d": 0.3285
+      "24h": 0.5896,
+      "5d": 0.5632,
+      "7d": 0.54
     }
   }
 }
