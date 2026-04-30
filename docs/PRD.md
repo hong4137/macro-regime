@@ -85,8 +85,226 @@
 - ✅ 9.2.2: `multi_horizon_backtest.py` (28 sessions / 10 episodes)
 - ⚠️ **결과**: 5d 는 24h 의 100% alias, 7d 는 89.3% 동일
 
-### ⏳ Phase 9.3 (결정 대기) — 방향 선택 필요
-- 사용자 결정에 따라 다음 4 option 중 하나 진행
+### ⏸️ Phase 9.3 (보류) — 5d/7d 단순 reweighting 한계 인정
+- Phase 10 에서 **새 방법론 도입** 으로 우회 (단순 LLM prompt 분리보다 더 근본적)
+
+### 🔬 Phase 10 (계획) — 7d 위기/기회 사전 감지 새 방법론
+
+**Phase 9 한계 인정 후 처음부터 광범위 리서치**. 8 카테고리 / 30+ 방법론 / 17,000 단어 종합 보고서:
+- `D:\코워크\research\7d_methodology_comparison.md` (종합 비교)
+- `D:\코워크\research\group1_statistical_macro_industry.md`
+- `D:\코워크\research\group2_crossasset_sentiment_geopolitical.md`
+- `D:\코워크\research\group3_ai_ml_alternative.md`
+
+#### 핵심 발견
+1. **OECD CLI / ISM / Sahm Rule 등 conventional leading indicator** 는 4-12개월 horizon 설계 → 7d 에 부적합
+2. **5-7d 강한 신호 영역 3가지**:
+   - 변화점 detection (BOCPD on NFCI)
+   - 시장 microstructure (VIX TS, Credit spread momentum)
+   - Foundation Model (TimesFM, Chronos-2)
+3. **현재 LLM 시스템의 자연 진화** = TradingAgents framework
+4. **무료 alternative data** (BDI + ADP + EIA) > 비싼 satellite/credit card
+5. **Sentiment & Industry quant** 7d 에 약함 — 우선순위 ↓
+
+#### Top 10 방법론 (우선순위)
+| Rank | Method | Cost | Phase |
+|---|---|---|---|
+| 1 | BOCPD + Chicago Fed NFCI | $0 | 10.1 |
+| 2 | VIX Term Structure (M1-M2) | $0 | 10.1 |
+| 3 | Credit spread 3-day momentum | $0 | 10.1 |
+| 4 | TimesFM + Chronos-2 ensemble | $0 (HF) | 10.2 |
+| 5 | GPR Index (Caldara-Iacoviello) | $0 | 10.1 |
+| 6 | Carry trade risk (USDJPY + CB div) | $0 | 10.1 |
+| 7 | TradingAgents framework | LLM cost | 10.3 |
+| 8 | BDI + 주간 labor (ADP/UI) | $0 | 10.5 |
+| 9 | Granger causality discovery | $0 | 10.4 |
+| 10 | Long-context LLM + RAG | LLM cost | 10.3 |
+
+#### Roadmap
+- **Phase 10.1** (1주) — BOCPD + VIX TS + Credit momentum 통합 (M8 new mechanism)
+- **Phase 10.2** (2-4주) — TimesFM/Chronos foundation model PoC
+- **Phase 10.3** (5-8주, 선택) — TradingAgents framework
+- **Phase 10.4** (9-12주, 선택) — Granger causality discovery
+- **Phase 10.5** (13주+, 선택) — Alternative data 통합
+
+### 🔬 Phase 10 — 2차 리서치 (완료) ★ 충격적 결과
+
+**1차 보완 리서치 3개 group**:
+- `round2_empirical_case_studies.md` — 7 historical episodes 실증
+- `round2_failure_modes_best_practices.md` — 함정 + 검증 방법
+- `round2_practitioner_landscape.md` — 2024-2025 실무자 동향
+- `final_recommendations.md` — 종합 결론 ★
+
+#### 🚨 핵심 발견 — Round 1 추천 대부분 invalidated
+
+| Round 1 Top 5 | Empirical | Practitioner | 평가 |
+|---|---|---|---|
+| BOCPD + NFCI | 0/7 detection | confirmation only | ❌ Reject |
+| VIX Term Structure | 1/7 | confirmation only | ❌ Reject (단독) |
+| Credit spread momentum | 1/7 | confirmation only | ❌ Reject (단독) |
+| TimesFM/Chronos | 시뮬 어려움 | R² = -2.80% | ❌ Reject |
+| GPR Index | 0/7 | 효과 없음 | ❌ Reject |
+
+#### 💡 가장 중요한 Practitioner Insight
+
+> **Top quant funds (Bridgewater, AQR, Citadel) 는 7d regime prediction 자체를 포기**.
+> 대신 HMM/VAR baseline + **regime-aware alpha extraction** 에 집중.
+> Foundation Model (TimesFM) 은 금융 데이터에서 R² 음수.
+> Regime persistence 가 5-20 trading days 로 짧아짐.
+
+#### ✓ Round 2 가 검증한 진짜 Top 5 (validated)
+
+| # | Method | 검증 episodes | 데이터 |
+|---|---|---|---|
+| 1 | **Granger Causality (Policy → Prices)** | 4/7 | 무료 (FRED) |
+| 2 | **Carry Trade Metrics** | 2/2 FX crises | 무료 (FRED + CFTC) |
+| 3 | **Leverage/Margin Surveillance** (CFTC futures) | 2/3 leverage | 무료 (CFTC) |
+| 4 | **Currency Basis Divergence** (CNH-CNY) | 2/2 FX | 일부 paid |
+| 5 | **Polling + Betting Aggregation** | 1/1 정치 | 무료 |
+
+#### 핵심 통찰
+
+1. **Crisis-type-specific signals > Universal regime detector** — 보편적 단일 지표는 없음
+2. **Flow-based > Price-based** — CFTC positioning, 예금 데이터, insider trades 가 진짜 leading
+3. **Microstructure (basis, vol skew)** 가 5-7d 에 가장 유효
+4. **Practitioner > Academic** 추천이 더 actionable
+5. **현재 LLM-based 시스템 = HMM/VAR baseline 과 비슷** (검증됨)
+
+### 🟢 Phase 10 v3-2layer (확정) — 2-Layer Hybrid Architecture ★
+
+**Stress test (Round 3b) 결과 Layer 2 폐기**, 2-layer 단순화로 결정.
+
+#### Layer 2 폐기 이유
+- 5-7d directional accuracy **50% 가 empirical maximum** (동전던지기)
+- Round 3a 의 55-65% claim 은 overstated (Round 3b 검증)
+- Foundation model (Chronos-2) 도 calm regime 에서 directional 50% 미만
+- Value 불분명한 layer 추가는 complexity ↑ + 사용자 confusion
+- **정직한 architecture > 복잡한 architecture**
+
+#### Architecture (확정)
+```
+[Layer 1: 24h System] (검증됨, 유지 + 고도화)
+   Liq + Geo Agent → M1-M7 fusion → 24h alert
+   현재 시스템 그대로 (T+1 directional 100% 검증)
+
+[Layer 3: Crisis-type Siren] (신규)
+   MVP (Week 1-3):
+     ① USDJPY Carry Trade Risk
+     ② CFTC Margin Spike Cascade
+   Full ensemble (v3-2layer.1, Week 9+):
+     ③ Currency Basis (CNH-CNY)
+     ④ Policy Granger (Policy → Prices)
+     ⑤ Euphoria/Squeeze (mechanical crash)
+   Logic: MVP 2-of-2 consensus, Full 3-of-5 consensus
+
+[Soft Invalidation Integration]
+   Siren ON → 24h alert 옆에 "Crisis Watch" badge + crisis type
+   Siren OFF → 정상 24h 표시
+   Auto-hedge trigger: VIX call scale (사용자 manual override 가능)
+   Hysteresis: 4h dwell-in / 8h recovery-out
+```
+
+#### Mandatory Fixes (Round 3b 의 6개 → 5개 적용, H1 은 Layer 2 폐기로 해결)
+1. ~~H1: Calm mode target 재조정~~ → Layer 2 폐기로 해결 ✓
+2. **H2: False positive target** → "2-3/month expected" 인정 (1/month 비현실적)
+3. **Detector mapping 문서화** — 어떤 crisis type cover/miss 명시
+4. **Automated hedging trigger** — warning + 자동 VIX call scale (manual override)
+5. **Holdout test validation** — 2000-2019 train → 2020 COVID + 2024 Yen 검증
+6. **Data quality 정량화** — CFTC 3-day lag, FRED revision schedule, graceful degradation
+
+#### Roadmap (3주 MVP + 2주 hardening)
+
+**Week 1: Detector ① USDJPY Carry Trade Risk**
+- Data: USDJPY (FRED daily), 미일 rate spread (FRED), CFTC speculator positioning (CFTC weekly)
+- Logic: rate diff threshold + leverage proxy + USDJPY 5d delta + CFTC speculator imbalance
+- Output: Carry crisis probability (0-1) + lead time estimate
+
+**Week 2: Detector ② CFTC Margin Spike Cascade**
+- Data: CFTC futures margin (CME), VIX 1d Δ, dealer gamma exposure proxy (free CBOE)
+- Logic: margin spike + vol skew + leverage 누적
+- Output: Margin cascade probability (0-1)
+
+**Week 3: Integration + Soft Invalidation + Auto-hedge**
+- 2-of-2 consensus 트리거 (MVP)
+- 24h dashboard 에 "Crisis Watch" badge 통합 (dashboard v4)
+- Auto-hedge trigger (VIX call scale, 사용자 manual override)
+- Hysteresis 구현 (4h/8h)
+
+**Week 4-5 (Hardening)**:
+- Holdout test (2020 COVID + 2024 Yen 시뮬)
+- Data quality 정량화 + graceful degradation logic
+- Detector mapping 문서 (어떤 crisis type 안 잡히는지)
+- False alarm rate 모니터링 인프라
+
+**Week 9+ (v3-2layer.1 Full Ensemble)**:
+- Currency Basis 추가 (paid feed 결정 후)
+- Policy Granger discovery system
+- Euphoria/Squeeze detector
+- 3-of-5 consensus 전환
+
+#### Confidence Target
+- MVP (Week 3): **65%**
+- Hardening (Week 5): **70%**
+- Production (Week 8+): **72%**
+
+#### 새 Cascade Scenario (단순화)
+기존 10개 cascade scenario 폐기 → 4개 단순화:
+- `regime_calm` — Siren OFF + 24h GREEN/YELLOW
+- `regime_elevated` — Siren OFF + 24h ELEVATED+
+- `crisis_watch` — Siren ON, crisis type 표시 (carry/margin)
+- `regime_crisis` — Siren ON + 24h ELEVATED+ (consensus)
+
+#### 기각된 옵션들
+- ❌ Phase 9.1 multi-horizon (5d/7d cosmetic copy)
+- ❌ Phase 10 v2 직접 도입 (architecture depth 부족)
+- ❌ Phase 10 v3 3-layer with Layer 2 (calm mode 가치 입증 안 됨)
+- ❌ TimesFM/Chronos 단독 사용 (R² 음수)
+- ❌ Foundation model in calm regime (Round 3b 검증 실패)
+
+---
+
+### ⏸️ Phase 10 v2 (보류) — 새 detector 직접 도입 (v3 에 통합)
+
+#### Option A: 새 Top 5 점진 도입 (1-8주)
+- Phase 10.1: Carry trade risk + Currency basis + CFTC margin (1-2주)
+- Phase 10.2: Granger discovery + HMM persistence (4-8주)
+
+#### Option B: Carry trade risk 만 minimal (1주, 추천)
+- Yen 2024 case detect 가능, 무료 데이터
+- 효과 검증 후 다른 signal 추가 결정
+
+#### Option C: 방향 전환 — Regime-aware Alpha Extraction
+- 7d prediction 포기, 24h 유지
+- regime별 portfolio 자동화 강화
+- Practitioner consensus 일치
+
+#### Option D: 24h 시스템 최적화만
+- 현 시스템 fine-tune
+- 새 방법론 도입 보류
+- 안정적이나 7d 약점 그대로
+
+#### 새 Architecture 컨셉 (Phase 10 v2)
+
+```
+[Existing 24h system] ✓ 검증됨, 유지
+   Liq + Geo Agent → M1-M7 fusion → 24h alert
+
+[New Crisis-type-specific detectors] (Phase 10 v2)
+   ├── Carry Trade Risk (USDJPY/USDKRW + rate diff + CFTC)
+   ├── Currency Basis Divergence (CNH-CNY)
+   ├── Margin Cascade (CFTC + CME margin spike)
+   ├── Granger Discovery (rolling causality)
+   └── HMM Persistence (regime base rate)
+   ↓
+   Crisis-type-aware 7d Alert
+
+[Cascade integration]
+   24h alert + Crisis-type 7d Alert → Action
+```
+
+새 cascade scenarios (crisis-type-aware):
+- `carry_unwind_imminent`, `fx_crisis_imminent`, `leverage_cascade_imminent`
+- `policy_pivot_imminent`, `regime_persist`, `regime_transition_unknown`
 
 ---
 
@@ -235,7 +453,16 @@ python analyze_v2.py --date YYYY-MM-DD --mode prompt
 | 2026-04-30 | Phase 9.2.1 → 9.2.2 순서 진행 | 데이터 기반 검증 우선 |
 | 2026-04-30 | escalating_stress cascade scenario 추가 (10번째) | 4/29 첫 multi-horizon ELEVATED 케이스 분류 부정확 |
 | 2026-04-30 | **Phase 9.2.2 결과: 5d/7d 단순 smoothing 입증** | 평균 92.9% correlation |
-| 2026-04-30 | (대기) Option A/B/C/D 중 결정 | 사용자 선택 |
+| 2026-04-30 | Phase 9.3 보류 → Phase 10 새 방법론 리서치 결정 | 단순 LLM 분리보다 fundamental 한 접근 필요 |
+| 2026-04-30 | Phase 10 1차 리서치 완료 (8 카테고리, 30+ 방법론) | Top 10 우선순위 + Roadmap 도출 |
+| 2026-04-30 | Phase 10 2차 리서치 진행 — 실제 사례 / failure modes / 실무자 | 1차 보완 |
+| 2026-04-30 | Round 2 결과: Round 1 학술 Top 5 invalidated | Empirical 0~1/7 detection |
+| 2026-04-30 | **Phase 10 v3 사용자 제안: 3-layer hybrid architecture** | 24h + Calm + Siren + Soft invalidation |
+| 2026-04-30 | Round 3a tech feasibility = VIABLE 80% confidence | MVP 4-6주, soft invalidation 권장 |
+| 2026-04-30 | Round 3b stress test 진행 — 가설 5개 검증 + coverage gap + alternative | H1-H5 empirical evidence |
+| 2026-04-30 | Round 3b 결과: confidence 80% → 58% 하향. Layer 2 (calm mode) 폐기 권고 | H1/H2/H4 invalidated, H3/Layer 1 confirmed |
+| 2026-04-30 | **Phase 10 v3-2layer 확정 (Option C)** — 24h + Siren MVP, Layer 2 폐기 | Stress test 와 일치, 정직한 architecture |
+| 2026-04-30 | Phase 10 v3-2layer Week 1-5 roadmap 확정 | USDJPY → CFTC margin → Integration → Hardening |
 
 ---
 
