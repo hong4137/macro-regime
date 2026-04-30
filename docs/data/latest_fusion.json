@@ -181,13 +181,13 @@
         },
         "hysteresis": {
           "raw_alert": "ELEVATED",
-          "prior_alert": "GREEN",
+          "prior_alert": "YELLOW",
           "final_alert": "ELEVATED",
           "applied": false,
           "relax_pp": 0.05
         }
       },
-      "prior_alert": "GREEN",
+      "prior_alert": "YELLOW",
       "key_signals": [
         {
           "label": "VIX",
@@ -271,13 +271,13 @@
         },
         "hysteresis": {
           "raw_alert": "ELEVATED",
-          "prior_alert": "GREEN",
+          "prior_alert": "YELLOW",
           "final_alert": "ELEVATED",
           "applied": false,
           "relax_pp": 0.03
         }
       },
-      "prior_alert": "GREEN",
+      "prior_alert": "YELLOW",
       "key_signals": [
         {
           "label": "KRE/SPY ratio",
