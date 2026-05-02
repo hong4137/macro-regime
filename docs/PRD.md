@@ -289,10 +289,13 @@
 
 **Phase 11.0 (현재)** — Plan 정리 + GitHub 동기화
 
-**Phase 11.1** — 무료 vs 유료 ROI 비교 리서치 (Round 4)
-- 보고서 2 의 30+ 옵션 중 무료 vs 유료 직접 비교
-- 효과 차이 정량화 (검증 가능한 부분만)
-- 결정: 어떤 paid data 가 free 대비 의미 있는지
+**Phase 11.1** — 무료 vs 유료 ROI 비교 리서치 (Round 4) ✅ 완료
+- `D:\코워크\research\round4_free_vs_paid_roi.md` (7,500 단어)
+- **결론**: 8 domain 중 7개 paid 가치 없음. SpotGamma ($1.2k) 만 MAYBE
+- **권장 Tier**: Tier 1 → Tier 2 phased ($0 → $4k/year)
+- **정확도 expected**: Tier 1 70-75%, Tier 2 80-85%, Bloomberg $32k 85-90% (정당화 불가)
+- **Hidden cost**: 무료도 engineering 40-50h/year (~$8-10k 가치)
+- **Practitioner 검증**: Bridgewater/AQR 모두 70-80% free 사용
 
 **Phase 11.2** — Architecture 재설계 결정
 - Dual-system (quant + LLM) vs Probabilistic continuous vs Crisis-type detection
