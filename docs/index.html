@@ -119,6 +119,14 @@ h2{font-size:16px;margin:24px 0 10px;color:var(--accent);font-weight:500}
 .frag-decision{padding:12px 14px;background:rgba(96,165,250,0.06);border-left:3px solid var(--accent);border-radius:6px;font-size:13px;color:var(--text);line-height:1.5;margin-top:6px}
 .hedge-pill{display:inline-block;font-size:11px;background:var(--panel2);color:var(--accent);padding:3px 10px;border-radius:10px;margin-left:8px;font-weight:600}
 
+/* ★ Situation summary card (한국어 narrative) */
+.situation-card{background:linear-gradient(135deg,var(--panel) 0%,var(--panel2) 100%);border:1.5px solid var(--accent);border-radius:14px;padding:22px 26px;margin-bottom:20px;box-shadow:0 4px 16px rgba(96,165,250,0.08)}
+.situation-label{font-size:11px;color:var(--accent);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;font-weight:700;display:flex;align-items:center;gap:6px}
+.situation-label::before{content:"";display:inline-block;width:4px;height:14px;background:var(--accent);border-radius:2px}
+.situation-text{font-size:14px;line-height:1.85;color:var(--text);margin:0;letter-spacing:-0.1px}
+.situation-text b{color:var(--accent);font-weight:700}
+.situation-text i{color:var(--muted);font-size:12.5px;font-style:italic}
+
 footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;border-top:1px solid var(--border);padding-top:14px}
 </style>
 </head>
@@ -126,7 +134,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <div class="wrap">
 
 <h1>거시경제 국면 대시보드 <span style="color:var(--accent);font-size:14px;font-weight:400">v5 · Phase 12 (잠재 취약성 측정)</span></h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-02 · 마지막 업데이트: 2026-05-03 02:15:54</div>
+<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-02 · 마지막 업데이트: 2026-05-03 02:18:12</div>
 
 <div class="kpis">
   <div class="kpi"><div class="l">전체 세션</div><div class="v">46</div></div>
@@ -350,6 +358,14 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 
 <h2>알림 로그 (최근 10)</h2>
 <div class="alerts-log">[2026-04-28T23:32:14.910629] ↓ 해제 ELEVATED → YELLOW (2026-04-27 → 2026-04-28) stress 0.395<br>[2026-04-30T13:19:33.227262] ↑ 격상 YELLOW → ELEVATED (2026-04-28 → 2026-04-29) stress 0.590</div>
+
+<h2>📋 현재 상황 해석</h2>
+
+    <div class="situation-card">
+      <div class="situation-label">현재 상황 해석</div>
+      <p class="situation-text">🔶 표면 강세, 잠재 위험 누적 — 취약성 <b>74</b> (critical). 시장 표면은 강세 (강도 50, 지속 가능성 88) 를 유지하지만, 잠재 위험이 63 까지 누적. 디커플링 32 은 시장이 위험을 무시하거나 인지하지 못한 채 상승 중임을 시사.<br>주요 잠재 위험 요인: 캐리 트레이드 레버리지 (USDJPY) 24% · 지정학 꼬리위험 (이란/Russia/관세) 20% · 신흥국 통화 압력 (USDKRW) 19%.<br>⚡ 가장 임박한 임계 지점: <b>USDJPY 162 돌파 (carry trigger)</b> (현재 거리 <b>+1.6%</b>).<br><br>⚖️ 강세 트렌드 활용하되 잠재 트리거 모니터링. 전술 헷지 10-15% 유지 권장.<br><i>※ 표면 시스템 (Phase 11) 도 ELEVATED 로 동조 — 두 시스템 모두 위험 인지 단계.</i></p>
+    </div>
+    
 
 <footer>v5 · Phase 12 (Latent Fragility Detection) · 자동 갱신 · narrative_scare 2 cases</footer>
 
