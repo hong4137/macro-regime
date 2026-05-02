@@ -1,6 +1,6 @@
 # Phase 12 Fragility Index — Batch History 시계열
 
-**생성**: 2026-05-03 01:48  
+**생성**: 2026-05-03 02:15  
 **Sessions**: 46  
 **Date range**: 2000-04-14 ~ 2026-05-02
 
