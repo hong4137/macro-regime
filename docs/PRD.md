@@ -265,6 +265,87 @@
 
 ### ⏸️ Phase 10 v2 (보류) — 새 detector 직접 도입 (v3 에 통합)
 
+---
+
+### 🚀 Phase 11 (시작) — 완전 재설계
+
+**사용자 질문이 발견한 두 fundamental flaw**:
+1. "필연적 stress 인가?" — Indicator 50% 가 검증 안 됨 (USEPU 등)
+2. "수급 capture 하나?" — 8가지 진짜 flow 영역 중 0개 cover
+
+→ **System Audit 결론**: 현 시스템은 "macro stress signal 누적 monitor" 이지 "regime predictor 가 아님". Patch 로 해결 불가능, **완전 재설계** 필요.
+
+#### 두 보고서 (재설계 기반)
+- `D:\코워크\research\system_audit.md` — 현 시스템 진단 + 10 flaws
+- `D:\코워크\research\market_prediction_alternatives.md` — 7 카테고리, 30+ 옵션
+
+#### 사용자 결정 사항 (2026-05-02)
+- **Architecture**: 완전 재설계 (Full redesign tier)
+- **유료 데이터**: 배제 안 함, 단 **무료 vs 유료 ROI 검증 후 결정**
+- **Korean market**: 배제 (글로벌 시장만)
+- **Phase 10 v3-2layer 작업**: 기존 carry detector 만 Phase 11 에 통합 ✓, Week 2-5 보류
+
+#### Phase 11 Roadmap (예정)
+
+**Phase 11.0 (현재)** — Plan 정리 + GitHub 동기화
+
+**Phase 11.1** — 무료 vs 유료 ROI 비교 리서치 (Round 4)
+- 보고서 2 의 30+ 옵션 중 무료 vs 유료 직접 비교
+- 효과 차이 정량화 (검증 가능한 부분만)
+- 결정: 어떤 paid data 가 free 대비 의미 있는지
+
+**Phase 11.2** — Architecture 재설계 결정
+- Dual-system (quant + LLM) vs Probabilistic continuous vs Crisis-type detection
+- Round 2 의 "Top funds 가 regime-aware alpha 로 pivot" 인사이트 반영
+- 새 architecture spec 문서화
+
+**Phase 11.3** — SPY return-based scoring 구축
+- 현재 fusion-vs-fusion 채점 폐기
+- 진짜 시장 결과 (SPY return T+N) 기반 검증
+- 28 historical sessions × SPY return 매핑 → 진짜 정확도 측정
+
+**Phase 11.4** — Flow capture layer 구축
+- CFTC speculator positioning (full 24h 시스템에)
+- ETF flows (SPY/QQQ/sector)
+- Options GEX
+- AAII/NAAIM sentiment
+- (선택) Insider trading, Margin debt
+
+**Phase 11.5** — Validated indicator 만 사용
+- USEPU, GEPU, USDKRW 등 폐기 또는 weight ↓
+- 검증된 7가지 leading 만 (SAHM, SLOOS, Baa-Aaa, KRE/SPY, HYG/IEF, USDJPY, NFCI)
+- + Flow indicators 추가
+
+**Phase 11.6** — 새 Fusion + Cascade 설계
+- Stress signal + Flow signal 결합
+- "stress HIGH + flow BULLISH = false positive 가능" detection
+- "stress LOW + flow BEARISH = 다가오는 위험 (사용자 질문 2 의 통찰)" 우선
+
+**Phase 11.7** — 새 Dashboard + Validation
+- 새 architecture 에 맞는 UI
+- Holdout test (2000-2019 train, 2020+/2024 검증)
+
+**Phase 11.8** — 점진 Migration
+- 기존 시스템과 병렬 운영 (1-2개월)
+- 새 시스템 검증 후 cutover
+
+#### 보존 항목 (재설계에서도 유지)
+- LLM Liq + Geo agent (validated stress signal 부분만)
+- 7 fusion mechanism (M1-M7, 새 indicator 에 적용)
+- Carry trade detector (Phase 10 v3-2layer Week 1, validated)
+- Multi-horizon framework (24h/5d/7d 구조 유지, 단 진짜 차별화)
+- Position sizing 3 mode + Hybrid
+- GitHub Pages 자동 동기화
+- Daily complete pipeline 자동화
+
+#### 기각 항목
+- USEPU/GEPU 의존 (Round 2 0/7 episodes)
+- Catalyst-driven 일률 stress 가정 (BoJ dovish 무시)
+- Fusion-vs-fusion scoring (circular validation)
+- 5d/7d cosmetic copy (단순 reweighting)
+- TimesFM/Chronos 단독 (R² 음수)
+- Korean market 특화 (KRX, 신용잔고, USDKRW)
+
 #### Option A: 새 Top 5 점진 도입 (1-8주)
 - Phase 10.1: Carry trade risk + Currency basis + CFTC margin (1-2주)
 - Phase 10.2: Granger discovery + HMM persistence (4-8주)
@@ -463,6 +544,11 @@ python analyze_v2.py --date YYYY-MM-DD --mode prompt
 | 2026-04-30 | Round 3b 결과: confidence 80% → 58% 하향. Layer 2 (calm mode) 폐기 권고 | H1/H2/H4 invalidated, H3/Layer 1 confirmed |
 | 2026-04-30 | **Phase 10 v3-2layer 확정 (Option C)** — 24h + Siren MVP, Layer 2 폐기 | Stress test 와 일치, 정직한 architecture |
 | 2026-04-30 | Phase 10 v3-2layer Week 1-5 roadmap 확정 | USDJPY → CFTC margin → Integration → Hardening |
+| 2026-05-02 | Phase 10 v3-2layer Week 1 완료 (Carry detector 4/4 validated) | 2024-08-05 CRITICAL, 평시 CALM 정확 |
+| 2026-05-02 | 5/1 daily cycle: 첫 stress→recovery 전환 검증 (4/29 ELEVATED → 5/1 broad_recovery) | T+3 multi-horizon HIT |
+| 2026-05-02 | **사용자 fundamental 질문**: stress signal 필연적 반영? + 수급 capture? | 시스템 진짜 정체 노출 |
+| 2026-05-02 | System Audit + Alternatives 보고서 작성 | 5,000 + 9,847 단어 |
+| 2026-05-02 | **Phase 11 시작 — 완전 재설계 결정** | 사용자 결정: Full redesign, 유료 ROI 검증, Korean 배제 |
 
 ---
 
