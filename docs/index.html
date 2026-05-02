@@ -2,14 +2,10 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>Macro Regime Dashboard v3</title>
+<title>Macro Regime Dashboard v4 — Phase 11</title>
 <meta http-equiv="refresh" content="300">
 <style>
-:root{
-  --bg:#0b0f17;--panel:#121826;--panel2:#1a2233;--border:#253047;
-  --text:#e6edf7;--muted:#8fa3c0;--tertiary:#5e6a82;
-  --green:#22c55e;--yellow:#eab308;--orange:#f97316;--red:#ef4444;--accent:#60a5fa;
-}
+:root{--bg:#0b0f17;--panel:#121826;--panel2:#1a2233;--border:#253047;--text:#e6edf7;--muted:#8fa3c0;--tertiary:#5e6a82;--accent:#60a5fa}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Malgun Gothic",sans-serif;font-size:14px;line-height:1.55}
 .wrap{max-width:1280px;margin:0 auto;padding:30px 26px}
@@ -17,66 +13,67 @@ h1{font-size:24px;margin:0 0 6px;font-weight:600}
 h2{font-size:16px;margin:24px 0 10px;color:var(--accent);font-weight:500}
 .meta{color:var(--muted);font-size:12px;margin-bottom:22px;border-bottom:1px solid var(--border);padding-bottom:12px}
 .muted{color:var(--muted)}
-.small{font-size:12px}
 
 .kpis{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-bottom:18px}
 .kpi{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
 .kpi .l{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
-.kpi .v{font-size:20px;font-weight:700;margin-top:4px}
-.kpi .vsm{font-size:14px;font-weight:600;margin-top:4px}
+.kpi .v{font-size:18px;font-weight:700;margin-top:4px}
 
-/* 3-column horizon */
-.hgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:14px}
-.hcard{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px}
-.h-label{font-size:11px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
-.h-alert{font-size:24px;font-weight:700;margin-bottom:2px}
-.h-stress{font-size:12px;color:var(--muted);margin-bottom:10px}
-.raw-note{font-size:10.5px;color:var(--muted);margin-bottom:8px;font-style:italic}
-.rbar{display:flex;height:6px;border-radius:3px;overflow:hidden;margin-bottom:14px;background:var(--panel2)}
-.rbar span{display:block;height:100%}
-.h-section{font-size:10px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.6px;margin:0 0 6px}
-table.sigs{width:100%;font-size:12px;border-collapse:collapse}
-table.sigs td{padding:4px 0;border-bottom:1px dashed var(--border)}
-table.sigs tr:last-child td{border-bottom:none}
-.sig-lbl{color:var(--muted);width:55%}
-.sig-val{text-align:right;font-weight:600;font-variant-numeric:tabular-nums}
-.sig-val .delta{color:var(--muted);font-size:10.5px;font-weight:400;margin-left:4px}
+/* Cascade main card */
+.cascade-main{background:var(--panel);border:2px solid;border-radius:14px;padding:20px 22px;margin-bottom:18px}
+.cas-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.cas-icon{font-size:32px}
+.cas-name{font-size:24px;font-weight:700;flex:1}
+.conf-badge{font-size:11px;color:var(--muted);background:var(--panel2);padding:3px 10px;border-radius:10px;text-transform:uppercase}
+.cas-pills{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.cpill{display:inline-block;font-size:11.5px;padding:3px 10px;border:1px solid;border-radius:10px;background:rgba(255,255,255,0.02)}
+.cas-interp{font-size:13.5px;color:var(--text);margin-bottom:6px;line-height:1.55}
+.cas-action{font-size:13px;color:var(--muted);margin-top:8px;padding-top:8px;border-top:1px solid var(--border)}
 
-/* Cascade card */
-.cascade-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:18px}
-.cas-label{font-size:11px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px}
-.cas-name{font-size:18px;font-weight:700;margin-bottom:8px}
-.rec-tag{display:inline-block;margin-left:8px;font-size:11px;font-weight:500;color:var(--accent);background:rgba(96,165,250,0.12);padding:2px 7px;border-radius:10px;vertical-align:middle}
-.cas-pills{display:flex;gap:6px;margin-bottom:8px}
-.cpill{display:inline-block;font-size:11px;font-weight:600;padding:2px 8px;border:1px solid;border-radius:10px;background:rgba(255,255,255,0.02)}
-.cas-interp{font-size:13px;color:var(--text);margin-bottom:4px}
-.cas-action{font-size:12.5px;color:var(--muted)}
+/* 4 Layer cards */
+.layer-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;margin-bottom:14px}
+.layer-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:14px}
+.layer-card.placeholder{opacity:0.5}
+.layer-label{font-size:10px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.layer-value{font-size:18px;font-weight:700;margin-bottom:2px}
+.layer-stress{font-size:11.5px;color:var(--muted);margin-bottom:8px}
+.raw-note{font-size:10.5px;color:var(--muted);font-style:italic;margin-bottom:6px}
+.rbar{display:flex;height:5px;border-radius:3px;overflow:hidden;margin-bottom:8px;background:var(--panel2)}
+.layer-mini{display:flex;justify-content:space-between;font-size:9.5px;color:var(--muted)}
+.placeholder-note{font-size:11px;color:var(--accent);margin-top:8px}
 
-/* Ladder */
-.ladder-block{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:8px}
-.ladder-block .l-label{font-size:11px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
-.ladder{display:grid;grid-template-columns:repeat(15,1fr);gap:4px}
-@media(max-width:1100px){.ladder{grid-template-columns:repeat(10,1fr)}}
-.rung{padding:6px 3px;border-radius:5px;text-align:center;font-size:9.5px;font-weight:700}
-.rung .dt{display:block;font-size:9px;font-weight:500;opacity:0.85;margin-bottom:1px}
-.rung.g{background:rgba(34,197,94,0.13);color:var(--green);border:1px solid rgba(34,197,94,0.3)}
-.rung.y{background:rgba(234,179,8,0.13);color:var(--yellow);border:1px solid rgba(234,179,8,0.3)}
-.rung.e{background:rgba(249,115,22,0.16);color:var(--orange);border:1px solid rgba(249,115,22,0.35)}
-.rung.r{background:rgba(239,68,68,0.20);color:var(--red);border:1px solid rgba(239,68,68,0.4)}
+/* Flow bars */
+.flow-bars{display:flex;flex-direction:column;gap:5px;margin-bottom:8px}
+.flow-bar{display:grid;grid-template-columns:60px 35px 1fr;gap:6px;align-items:center;font-size:10.5px}
+.flow-bar .lbl{color:var(--muted)}
+.flow-bar .val{text-align:right;font-weight:600}
+.flow-bar .bar{height:5px;background:var(--panel2);border-radius:3px;overflow:hidden}
+.flow-bar .bar div{height:100%}
 
-/* Predictions table */
-table.ptbl{width:100%;border-collapse:collapse;font-size:12.5px;background:var(--panel);border-radius:10px;overflow:hidden}
-table.ptbl th{background:var(--panel2);padding:8px;color:var(--muted);text-transform:uppercase;font-size:10.5px;text-align:left;letter-spacing:0.4px}
-table.ptbl td{padding:7px 8px;border-bottom:1px solid var(--border)}
-.alert-pill{display:inline-block;padding:2px 8px;border-radius:12px;font-size:10px;font-weight:700}
-.alert-pill.g{background:rgba(34,197,94,0.15);color:var(--green)}
-.alert-pill.y{background:rgba(234,179,8,0.15);color:var(--yellow)}
-.alert-pill.e{background:rgba(249,115,22,0.18);color:var(--orange)}
-.alert-pill.r{background:rgba(239,68,68,0.22);color:var(--red)}
-td.hit{color:var(--green);font-weight:700}
-td.partial{color:var(--yellow)}
-td.miss{color:var(--red);font-weight:700}
-td.pending{color:var(--muted)}
+.comp-details{font-size:10.5px;color:var(--muted);margin-top:4px}
+.comp-details summary{cursor:pointer}
+.comp-tbl{width:100%;font-size:10.5px;margin-top:5px;border-collapse:collapse}
+.comp-tbl td{padding:2px 4px;border-bottom:1px dashed var(--border)}
+.comp-tbl .lbl{color:var(--muted)}
+
+/* Sentiment */
+.sent-detail{font-size:11px;color:var(--muted);line-height:1.6;margin-top:4px}
+.cluster-alert{display:inline-block;font-size:11px;color:#ef4444;background:rgba(239,68,68,0.1);padding:3px 8px;border-radius:8px;margin:4px 0;border:1px solid rgba(239,68,68,0.3)}
+.cluster-calm{font-size:10.5px;color:var(--muted);margin:4px 0}
+
+/* Audit */
+.audit-card{background:var(--panel);border:1px solid var(--border);border-radius:10px;padding:12px 14px;margin-bottom:14px}
+.audit-label{font-size:10px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
+.audit-line{font-size:12px;color:var(--muted);margin:3px 0}
+.audit-line b{color:var(--text)}
+
+/* History table */
+.hist-tbl{width:100%;border-collapse:collapse;font-size:11.5px;background:var(--panel);border-radius:10px;overflow:hidden}
+.hist-tbl th{background:var(--panel2);padding:7px 8px;color:var(--muted);text-transform:uppercase;font-size:10px;text-align:left}
+.hist-tbl td{padding:6px 8px;border-bottom:1px solid var(--border)}
+.alert-pill{display:inline-block;padding:1px 7px;border-radius:8px;font-size:10px;font-weight:700}
+.cas-pill{font-size:10.5px;font-weight:600}
+.flow-mini, .sent-mini{font-size:10.5px}
 
 .alerts-log{font-family:'SF Mono',monospace;font-size:11px;color:var(--muted);background:var(--panel2);padding:12px;border-radius:8px;line-height:1.7}
 
@@ -86,127 +83,138 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <body>
 <div class="wrap">
 
-<h1>Macro Regime Dashboard <span style="color:var(--accent);font-size:14px;font-weight:400">v3 · multi-horizon</span></h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · As of 2026-05-01 · 마지막 업데이트: 2026-05-02 13:02:10</div>
+<h1>Macro Regime Dashboard <span style="color:var(--accent);font-size:14px;font-weight:400">v4 · Phase 11 (4 Layer + Cascade)</span></h1>
+<div class="meta">자동 생성 · 5분마다 갱신 · As of 2026-05-01 · 마지막 업데이트: 2026-05-02 20:22:39</div>
 
 <div class="kpis">
-  <div class="kpi"><div class="l">총 sessions (24h)</div><div class="v">4</div></div>
-  <div class="kpi"><div class="l">24h alert</div><div class="v" style="color:#eab308">YELLOW</div></div>
-  <div class="kpi"><div class="l">5d alert</div><div class="v" style="color:#eab308">YELLOW</div></div>
-  <div class="kpi"><div class="l">7d alert</div><div class="v" style="color:#22c55e">GREEN</div></div>
-  <div class="kpi"><div class="l">예측 hit rate (legacy)</div><div class="v">83%</div></div>
+  <div class="kpi"><div class="l">총 sessions</div><div class="v">29</div></div>
+  <div class="kpi"><div class="l">현재 alert</div><div class="v" style="color:#22c55e">GREEN</div></div>
+  <div class="kpi"><div class="l">현재 cascade</div><div class="v" style="font-size:14px">genuine_calm</div></div>
+  <div class="kpi"><div class="l">genuine_calm</div><div class="v">11 (38%)</div></div>
+  <div class="kpi"><div class="l">confirmed_crisis</div><div class="v">4</div></div>
 </div>
 
-<h2>Multi-horizon view</h2>
-<div class="hgrid">
+<h2>Cascade Signal — 4 Layer 종합</h2>
 
-    <div class="hcard">
-      <div class="h-label">24h horizon · prior ELEVATED</div>
-      <div class="h-alert" style="color:#eab308">YELLOW</div>
-      <div class="h-stress">stress 0.313</div>
-      <div class="raw-note">raw: GREEN → YELLOW (M7 적용)</div>
-      <div class="rbar"><span style="background:#22c55e;width:16%"></span><span style="background:#6b7280;width:53%"></span><span style="background:#f97316;width:22%"></span><span style="background:#ef4444;width:9%"></span></div>
-      <div class="h-section">Key signals</div>
-      <table class="sigs"><tr><td class="sig-lbl">VIX</td><td class="sig-val">16.89 <span class="delta">(-2.42 5d)</span></td></tr><tr><td class="sig-lbl">USEPU spot</td><td class="sig-val">353</td></tr><tr><td class="sig-lbl">Catalyst density</td><td class="sig-val">0.86</td></tr><tr><td class="sig-lbl">Imminent high</td><td class="sig-val">Yes</td></tr></table>
+    <div class="cascade-main" style="border-color:#22c55e">
+      <div class="cas-header">
+        <span class="cas-icon">🟢</span>
+        <div class="cas-name" style="color:#22c55e">genuine_calm</div>
+        <span class="conf-badge">high</span>
+      </div>
+      <div class="cas-pills">
+        <span class="cpill" style="border-color:#22c55e">Stress: <b style="color:#22c55e">GREEN</b></span>
+        <span class="cpill" style="border-color:#86efac">Flow: <b style="color:#86efac">leaning bullish</b></span>
+        <span class="cpill" style="border-color:#8fa3c0">Sent: <b style="color:#8fa3c0">neutral</b></span>
+        <span class="cpill" style="border-color:#444">Cluster: <b style="color:#888">NO</b></span>
+      </div>
+      <div class="cas-interp">Stress 평시 + Flow 우호 — 진짜 risk-on</div>
+      <div class="cas-action">→ <strong>정상 포지션, 추가 위험 감수 가능</strong></div>
     </div>
     
-    <div class="hcard">
-      <div class="h-label">5d horizon · prior ELEVATED</div>
-      <div class="h-alert" style="color:#eab308">YELLOW</div>
-      <div class="h-stress">stress 0.305</div>
-      <div class="raw-note">raw: GREEN → YELLOW (M7 적용)</div>
-      <div class="rbar"><span style="background:#22c55e;width:17%"></span><span style="background:#6b7280;width:53%"></span><span style="background:#f97316;width:21%"></span><span style="background:#ef4444;width:9%"></span></div>
-      <div class="h-section">Key signals</div>
-      <table class="sigs"><tr><td class="sig-lbl">KRE/SPY ratio</td><td class="sig-val">0.09688 <span class="delta">(+0.41 5d %)</span></td></tr><tr><td class="sig-lbl">HYG/IEF ratio</td><td class="sig-val">0.8450 <span class="delta">(+0.34 5d %)</span></td></tr><tr><td class="sig-lbl">USDJPY</td><td class="sig-val">159.35 <span class="delta">(+1.25 5d)</span></td></tr><tr><td class="sig-lbl">USEPU 5d MA</td><td class="sig-val">308</td></tr></table>
-    </div>
-    
-    <div class="hcard">
-      <div class="h-label">7d horizon · prior YELLOW</div>
-      <div class="h-alert" style="color:#22c55e">GREEN</div>
-      <div class="h-stress">stress 0.298</div>
+
+<h2>4 Layer Architecture</h2>
+<div class="layer-grid">
+  
+    <div class="layer-card">
+      <div class="layer-label">Layer 1 · Stress (Liq Agent)</div>
+      <div class="layer-value" style="color:#22c55e">GREEN</div>
+      <div class="layer-stress">bear+crisis = 0.281</div>
       
-      <div class="rbar"><span style="background:#22c55e;width:17%"></span><span style="background:#6b7280;width:53%"></span><span style="background:#f97316;width:21%"></span><span style="background:#ef4444;width:9%"></span></div>
-      <div class="h-section">Key signals</div>
-      <table class="sigs"><tr><td class="sig-lbl">SAHM Rule</td><td class="sig-val">0.20</td></tr><tr><td class="sig-lbl">SLOOS Lending</td><td class="sig-val">5.3</td></tr><tr><td class="sig-lbl">YC 10Y-2Y</td><td class="sig-val">0.51 <span class="delta">(-0.02 5d)</span></td></tr><tr><td class="sig-lbl">Baa-Aaa spread</td><td class="sig-val">0.58</td></tr></table>
+      <div class="rbar"><span style="background:#22c55e;width:21%" title="bull 0.21"></span><span style="background:#6b7280;width:51%" title="side 0.51"></span><span style="background:#f97316;width:19%" title="bear 0.19"></span><span style="background:#ef4444;width:9%" title="crisis 0.09"></span></div>
+      <div class="layer-mini">
+        <span>bull 0.21</span>
+        <span>side 0.51</span>
+        <span>bear 0.19</span>
+        <span>crisis 0.09</span>
+      </div>
+    </div>
+    
+  
+    <div class="layer-card">
+      <div class="layer-label">Layer 2 · Flow</div>
+      <div class="layer-value" style="color:#86efac">LEANING BULLISH</div>
+      <div class="layer-stress">net bias: +0.158</div>
+      <div class="flow-bars">
+        <div class="flow-bar"><span class="lbl">Bullish</span><span class="val">0.258</span><div class="bar"><div style="width:26%;background:#22c55e"></div></div></div>
+        <div class="flow-bar"><span class="lbl">Bearish</span><span class="val">0.100</span><div class="bar"><div style="width:10%;background:#ef4444"></div></div></div>
+      </div>
+      <details class="comp-details">
+        <summary>Sub-components</summary>
+        <table class="comp-tbl"><tr><td class="lbl">spy bullish flow</td><td>0.00</td></tr><tr><td class="lbl">spy bearish flow</td><td>0.00</td></tr><tr><td class="lbl">aaii contrarian bearish</td><td>0.20</td></tr><tr><td class="lbl">naaim euphoria</td><td>0.32</td></tr><tr><td class="lbl">pcr contrarian bullish</td><td>0.08</td></tr></table>
+      </details>
+    </div>
+    
+  
+    <div class="layer-card">
+      <div class="layer-label">Layer 3 · Sentiment</div>
+      <div class="layer-value" style="color:#8fa3c0">NEUTRAL</div>
+      <div class="layer-stress">net: +0.175</div>
+      <div class="cluster-calm">cluster 0.10</div>
+      <div class="sent-detail">
+        <div>FinBERT: pos 0.45 / neg 0.15</div>
+        <div>Macro tone: <strong>dovish</strong></div>
+      </div>
+    </div>
+    
+  
+    <div class="layer-card placeholder">
+      <div class="layer-label">Layer 4 · Numerical Forecast</div>
+      <div class="layer-value muted">미구현</div>
+      <div class="layer-stress">Chronos-2 / TimesFM</div>
+      <div class="placeholder-note">Phase 11.7 예정</div>
     </div>
     
 </div>
 
 
-    <div class="cascade-card" style="border-left:3px solid #60a5fa">
-      <div class="cas-label">Cascade signal</div>
-      <div class="cas-name" style="color:#60a5fa">broad_recovery<span class="rec-tag">in_recovery</span></div>
-      <div class="cas-pills"><span class="cpill" style="color:#22c55e;border-color:#22c55e66">24h G</span><span class="cpill" style="color:#22c55e;border-color:#22c55e66">5d G</span><span class="cpill" style="color:#22c55e;border-color:#22c55e66">7d G</span></div>
-      <div class="cas-interp">회복기 — 모델 view 는 평시, hysteresis stepdown 진행 중</div>
-      <div class="cas-action">→ 헷지 점진 해제, risk-on 점진 복귀</div>
+    <div class="audit-card">
+      <div class="audit-label">Mechanism Audit</div>
+      <div class="audit-line">M8 Flow: <b>stress_dampened</b> (scale 0.921)</div>
+      <div class="audit-line">M9 Sentiment: not applied (neutral)</div>
     </div>
     
 
-<h2>30일 alert ladder (horizon 별)</h2>
-<div class="ladder-block"><div class="l-label">24h</div><div class="ladder"><div class="rung y" title="2026-04-27: YELLOW"><span class="dt">04-27</span>YELL</div><div class="rung y" title="2026-04-28: YELLOW"><span class="dt">04-28</span>YELL</div><div class="rung e" title="2026-04-29: ELEVATED"><span class="dt">04-29</span>ELEV</div><div class="rung y" title="2026-05-01: YELLOW"><span class="dt">05-01</span>YELL</div></div></div>
-<div class="ladder-block"><div class="l-label">5d</div><div class="ladder"><div class="rung y" title="2026-04-27: YELLOW"><span class="dt">04-27</span>YELL</div><div class="rung y" title="2026-04-28: YELLOW"><span class="dt">04-28</span>YELL</div><div class="rung e" title="2026-04-29: ELEVATED"><span class="dt">04-29</span>ELEV</div><div class="rung y" title="2026-05-01: YELLOW"><span class="dt">05-01</span>YELL</div></div></div>
-<div class="ladder-block"><div class="l-label">7d</div><div class="ladder"><div class="rung g" title="2026-04-27: GREEN"><span class="dt">04-27</span>GREE</div><div class="rung g" title="2026-04-28: GREEN"><span class="dt">04-28</span>GREE</div><div class="rung y" title="2026-04-29: YELLOW"><span class="dt">04-29</span>YELL</div><div class="rung g" title="2026-05-01: GREEN"><span class="dt">05-01</span>GREE</div></div></div>
+<h2>최근 30일 Phase 11 운영 기록</h2>
 
-<h2>최근 예측 채점 (legacy 24h)</h2>
-
-    <table class="ptbl">
-      <thead><tr><th>날짜</th><th>예측 alert</th><th>stress</th><th>T+1</th><th>T+3</th><th>T+5</th></tr></thead>
+    <table class="hist-tbl">
+      <thead><tr><th>날짜</th><th>Alert</th><th>Cascade</th><th>Stress</th><th>Flow</th><th>Sentiment</th><th>★</th></tr></thead>
       <tbody>
         <tr>
           <td>2026-04-27</td>
-          <td><span class="alert-pill e">ELEVATED</span></td>
-          <td>0.524</td>
-          <td class="partial">PARTIAL</td>
-          <td class="pending">—</td>
-          <td class="pending">—</td>
+          <td><span class="alert-pill" style="background:#22c55e33;color:#22c55e">GREEN</span></td>
+          <td><span class="cas-pill" style="color:#22c55e">genuine_calm</span></td>
+          <td>0.226</td>
+          <td><span class="flow-mini" style="color:#86efac">leaning bullish</span></td>
+          <td><span class="sent-mini" style="color:#8fa3c0">neutral</span></td>
+          <td></td>
         </tr>
         <tr>
           <td>2026-04-28</td>
-          <td><span class="alert-pill y">YELLOW</span></td>
-          <td>0.395</td>
-          <td class="partial">PARTIAL</td>
-          <td class="hit">HIT</td>
-          <td class="pending">—</td>
+          <td><span class="alert-pill" style="background:#22c55e33;color:#22c55e">GREEN</span></td>
+          <td><span class="cas-pill" style="color:#22c55e">genuine_calm</span></td>
+          <td>0.208</td>
+          <td><span class="flow-mini" style="color:#86efac">leaning bullish</span></td>
+          <td><span class="sent-mini" style="color:#8fa3c0">neutral</span></td>
+          <td></td>
         </tr>
         <tr>
           <td>2026-04-29</td>
-          <td><span class="alert-pill e">ELEVATED</span></td>
-          <td>0.590</td>
-          <td class="pending">—</td>
-          <td class="pending">—</td>
-          <td class="pending">—</td>
-        </tr>
-        <tr>
-          <td>2026-04-27</td>
-          <td><span class="alert-pill y">YELLOW</span></td>
-          <td>0.480</td>
-          <td class="hit">HIT</td>
-          <td class="pending">—</td>
-          <td class="pending">—</td>
-        </tr>
-        <tr>
-          <td>2026-04-28</td>
-          <td><span class="alert-pill g">GREEN</span></td>
-          <td>0.395</td>
-          <td class="miss">MISS</td>
-          <td class="partial">PARTIAL</td>
-          <td class="pending">—</td>
-        </tr>
-        <tr>
-          <td>2026-04-29</td>
-          <td><span class="alert-pill e">ELEVATED</span></td>
-          <td>0.590</td>
-          <td class="pending">—</td>
-          <td class="pending">—</td>
-          <td class="pending">—</td>
+          <td><span class="alert-pill" style="background:#eab30833;color:#eab308">YELLOW</span></td>
+          <td><span class="cas-pill" style="color:#fbbf24">narrative_scare</span></td>
+          <td>0.411</td>
+          <td><span class="flow-mini" style="color:#86efac">leaning bullish</span></td>
+          <td><span class="sent-mini" style="color:#8fa3c0">neutral</span></td>
+          <td></td>
         </tr>
         <tr>
           <td>2026-05-01</td>
-          <td><span class="alert-pill g">GREEN</span></td>
-          <td>0.313</td>
-          <td class="pending">—</td>
-          <td class="pending">—</td>
-          <td class="pending">—</td>
+          <td><span class="alert-pill" style="background:#22c55e33;color:#22c55e">GREEN</span></td>
+          <td><span class="cas-pill" style="color:#22c55e">genuine_calm</span></td>
+          <td>0.281</td>
+          <td><span class="flow-mini" style="color:#86efac">leaning bullish</span></td>
+          <td><span class="sent-mini" style="color:#8fa3c0">neutral</span></td>
+          <td></td>
         </tr></tbody>
     </table>
     
@@ -214,7 +222,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <h2>알림 로그 (최근 10)</h2>
 <div class="alerts-log">[2026-04-28T23:32:14.910629] ↓ 해제 ELEVATED → YELLOW (2026-04-27 → 2026-04-28) stress 0.395<br>[2026-04-30T13:19:33.227262] ↑ 격상 YELLOW → ELEVATED (2026-04-28 → 2026-04-29) stress 0.590</div>
 
-<footer>v3 · multi-horizon (Phase 9.1) · 24h/5d/7d × Cascade signal</footer>
+<footer>v4 · Phase 11.6 (4 Layer Architecture) · 자동 갱신 · narrative_scare 1 cases</footer>
 
 </div>
 </body>
