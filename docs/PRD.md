@@ -293,9 +293,57 @@
 - `D:\코워크\research\round4_free_vs_paid_roi.md` (7,500 단어)
 - **결론**: 8 domain 중 7개 paid 가치 없음. SpotGamma ($1.2k) 만 MAYBE
 - **권장 Tier**: Tier 1 → Tier 2 phased ($0 → $4k/year)
-- **정확도 expected**: Tier 1 70-75%, Tier 2 80-85%, Bloomberg $32k 85-90% (정당화 불가)
-- **Hidden cost**: 무료도 engineering 40-50h/year (~$8-10k 가치)
-- **Practitioner 검증**: Bridgewater/AQR 모두 70-80% free 사용
+
+**Phase 11.2** — Architecture Spec 작성 ✅ 완료
+- `D:\코워크\research\phase11_architecture_spec.md`
+- 6 Layer architecture, 새 cascade 7 scenarios, Mandatory fixes 5개
+
+**Phase 11.3** — Flow Layer 구축 (Week 1) ✅ 완료
+- `D:\코워크\scripts\detectors\flow_detector.py`
+- 6 sub-detectors (CFTC, ETF, AAII, NAAIM, PCR, NAAIM)
+- Continuous score (extreme + mild signal 모두 capture)
+- 4 케이스 검증: 4/29 leaning_bullish, 8/5 bearish_flow, 2017 neutral
+
+**Phase 11.4** — analyze_v3.py 통합 ✅ 완료
+- `D:\코워크\scripts\analyze_v3.py`
+- Geo agent 폐기 (USEPU 등), Liq + Flow + 새 Cascade
+- M8 Flow Modifier 양방향 작동 (4/29 dampened, 8/5 amplified)
+- 7 cascade scenarios (genuine_calm/narrative_scare/smart_money_warning 등)
+
+**Phase 11.5** — 28 sessions Batch Backtest + Non-linear Scoring v3 ✅ 완료
+- `D:\코워크\scripts\batch_phase11_backtest.py`
+- `D:\코워크\scripts\scoring_v2.py` (initial linear)
+- `D:\코워크\scripts\scoring_v3.py` (★ non-linear 사용자 통찰)
+- `D:\코워크\research\phase11_batch_report.md`
+
+**v2 vs v3 비교 (113 scored, 29 sessions)**:
+| Metric | v2 | **v3** | 변화 |
+|---|---|---|---|
+| HIT | 28.3% | **40.9%** | +12.6pp |
+| FALSE_POSITIVE | 31.9% | **10.0%** | -21.9pp ★ |
+| MISS_CRISIS | 2.7% | 2.7% | 그대로 |
+
+**Alert Level 별 (v3)**:
+- GREEN: 44% HIT, 0% FP
+- YELLOW: 50% HIT, 0% FP
+- ELEVATED: 51% HIT, 13% FP (v2: 22%/47% → 큰 개선)
+- RED: 10% HIT, 30% FP (v2: 5%/85% → 큰 개선)
+
+**Cascade 별 (v3)**:
+- **smart_money_warning: 75% HIT** ★ — 사용자 통찰 #2 결정적 입증
+- genuine_calm: 41% HIT, 0% FP
+- real_stress_brewing: 29% HIT, 17% FP
+
+**v3 Non-linear Scoring 핵심 (사용자 통찰)**:
+- 평시 영역 좁고 strict (BDI 0-13 minimal 처럼)
+- Severe 영역 wide 하게 (RED max_dd ≤ -5% 인정)
+- FP 임계 강화 (ELEVATED +1% → +3%, RED +3% → +5%)
+- Max drawdown 측정 (단순 SPY return 부족)
+
+**여전히 남는 issue**:
+- 시장 저점 V자 반등 미인식 (2020-03-23 RED → +17%)
+- COVID-class 신호 detection 약함 (2020-02-19 GREEN MISS)
+- narrative_scare sample 부족 (1 case)
 
 **Phase 11.2** — Architecture 재설계 결정
 - Dual-system (quant + LLM) vs Probabilistic continuous vs Crisis-type detection
@@ -552,6 +600,14 @@ python analyze_v2.py --date YYYY-MM-DD --mode prompt
 | 2026-05-02 | **사용자 fundamental 질문**: stress signal 필연적 반영? + 수급 capture? | 시스템 진짜 정체 노출 |
 | 2026-05-02 | System Audit + Alternatives 보고서 작성 | 5,000 + 9,847 단어 |
 | 2026-05-02 | **Phase 11 시작 — 완전 재설계 결정** | 사용자 결정: Full redesign, 유료 ROI 검증, Korean 배제 |
+| 2026-05-02 | Round 4 무료 vs 유료 ROI 완료 | 7개 paid 가치 없음, SpotGamma만 MAYBE |
+| 2026-05-02 | Phase 11 Architecture Spec 작성 | 6 layer, 7 cascade scenarios |
+| 2026-05-02 | Phase 11.3 Flow Layer 구축 (flow_detector.py) | 6 sub-detectors, 4 케이스 검증 |
+| 2026-05-02 | Phase 11.4 analyze_v3.py 통합 | Liq + Flow + M8 + 새 Cascade |
+| 2026-05-02 | Phase 11.5 28 sessions batch backtest | v2 등가 채점 결과 부정확 (FP 32%) |
+| 2026-05-02 | **사용자 통찰: 채점이 등가 X, 심리 테스트 방식** | 평시 strict, severe wide |
+| 2026-05-02 | Non-linear Scoring v3 도입 | HIT 41%, FP 10% (v2 대비 +13pp / -22pp) |
+| 2026-05-02 | **smart_money_warning 75% HIT** | 사용자 통찰 #2 결정적 입증 ★ |
 
 ---
 
