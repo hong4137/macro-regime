@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
 <meta charset="utf-8">
-<title>Macro Regime Dashboard v4 — Phase 11</title>
+<title>Macro Regime Dashboard v5 — Phase 12 Fragility</title>
 <meta http-equiv="refresh" content="300">
 <style>
 :root{--bg:#0b0f17;--panel:#121826;--panel2:#1a2233;--border:#253047;--text:#e6edf7;--muted:#8fa3c0;--tertiary:#5e6a82;--accent:#60a5fa}
@@ -89,22 +89,90 @@ h2{font-size:16px;margin:24px 0 10px;color:var(--accent);font-weight:500}
 
 .alerts-log{font-family:'SF Mono',monospace;font-size:11px;color:var(--muted);background:var(--panel2);padding:12px;border-radius:8px;line-height:1.7}
 
+/* ★ Phase 12 — Fragility Index main card */
+.frag-main{background:linear-gradient(180deg,var(--panel) 0%,var(--panel2) 100%);border:2px solid;border-radius:14px;padding:22px 24px;margin-bottom:18px;position:relative;overflow:hidden}
+.frag-main::before{content:"";position:absolute;top:0;right:0;width:120px;height:120px;background:radial-gradient(circle,rgba(255,255,255,0.04) 0%,transparent 70%);pointer-events:none}
+.frag-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:16px;gap:18px}
+.frag-title{font-size:18px;font-weight:700;margin-bottom:4px}
+.frag-sub{font-size:11px;color:var(--accent);font-weight:500;margin-left:6px;background:rgba(96,165,250,0.12);padding:2px 8px;border-radius:8px;letter-spacing:0.3px}
+.frag-phase{font-size:13px;font-weight:500;line-height:1.5}
+.frag-score-block{text-align:right;flex-shrink:0}
+.frag-score{font-size:48px;font-weight:800;line-height:1;letter-spacing:-1.5px;text-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.frag-score-meta{font-size:11px;color:var(--muted);margin-top:2px;font-weight:600;letter-spacing:0.5px}
+.frag-bars{display:grid;grid-template-columns:1fr 1fr;gap:8px 18px;margin-bottom:14px}
+.fb-row{display:grid;grid-template-columns:120px 32px 1fr;gap:8px;align-items:center;font-size:11.5px}
+.fb-lbl{color:var(--muted)}
+.fb-val{text-align:right;font-weight:700;color:var(--text)}
+.fb-track{height:6px;background:var(--panel2);border-radius:3px;overflow:hidden}
+.fb-fill{height:100%;border-radius:3px}
+.frag-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:18px;margin:14px 0;padding-top:14px;border-top:1px solid var(--border)}
+.fv-label,.tp-label{font-size:10.5px;color:var(--tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:8px;font-weight:600}
+.fv-row{display:grid;grid-template-columns:42px 1fr 80px;gap:8px;align-items:center;font-size:11.5px;margin-bottom:5px}
+.fv-pct{font-weight:700;color:var(--text);text-align:right}
+.fv-name{color:var(--muted);font-size:11px}
+.fv-bar{height:5px;background:var(--panel2);border-radius:3px;overflow:hidden}
+.fv-bar div{height:100%}
+.tp-block ul{list-style:none;padding:0;margin:0}
+.tp-block li{font-size:11.5px;color:var(--text);padding:4px 0;display:flex;align-items:center;gap:8px;line-height:1.4}
+.tp-bullet{display:inline-block;width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.tp-dist{color:var(--accent);font-weight:600;font-family:'SF Mono',monospace;font-size:11px}
+.frag-decision{padding:12px 14px;background:rgba(96,165,250,0.06);border-left:3px solid var(--accent);border-radius:6px;font-size:13px;color:var(--text);line-height:1.5;margin-top:6px}
+.hedge-pill{display:inline-block;font-size:11px;background:var(--panel2);color:var(--accent);padding:3px 10px;border-radius:10px;margin-left:8px;font-weight:600}
+
 footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;border-top:1px solid var(--border);padding-top:14px}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-<h1>Macro Regime Dashboard <span style="color:var(--accent);font-size:14px;font-weight:400">v4 · Phase 11 (4 Layer + Cascade)</span></h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · As of 2026-05-01 · 마지막 업데이트: 2026-05-02 21:56:00</div>
+<h1>Macro Regime Dashboard <span style="color:var(--accent);font-size:14px;font-weight:400">v5 · Phase 12 (Latent Fragility)</span></h1>
+<div class="meta">자동 생성 · 5분마다 갱신 · As of 2026-05-01 · 마지막 업데이트: 2026-05-03 00:46:12</div>
 
 <div class="kpis">
-  <div class="kpi"><div class="l">총 sessions</div><div class="v">29</div></div>
+  <div class="kpi"><div class="l">총 sessions</div><div class="v">45</div></div>
   <div class="kpi"><div class="l">현재 alert</div><div class="v" style="color:#22c55e">GREEN</div></div>
   <div class="kpi"><div class="l">현재 cascade</div><div class="v" style="font-size:14px">genuine_calm</div></div>
-  <div class="kpi"><div class="l">genuine_calm</div><div class="v">12 (41%)</div></div>
-  <div class="kpi"><div class="l">confirmed_crisis</div><div class="v">2</div></div>
+  <div class="kpi"><div class="l">genuine_calm</div><div class="v">12 (27%)</div></div>
+  <div class="kpi"><div class="l">confirmed_crisis</div><div class="v">6</div></div>
 </div>
+
+<h2>★ Latent Fragility — 표면 너머의 잠재 위험</h2>
+
+    <div class="frag-main" style="border-color:#f97316">
+      <div class="frag-header">
+        <div class="frag-title-block">
+          <div class="frag-title">★ Latent Fragility Index <span class="frag-sub">Phase 12</span></div>
+          <div class="frag-phase" style="color:#eab308">
+            🟡 Pre-Crisis (★ 잠재 위험 누적) — Surface 강세 + Latent 누적 (★ user framing)
+          </div>
+        </div>
+        <div class="frag-score-block">
+          <div class="frag-score" style="color:#f97316">40.1</div>
+          <div class="frag-score-meta"><span style="color:#f97316">ELEVATED</span> / 100</div>
+        </div>
+      </div>
+
+      <div class="frag-bars">
+        <div class="fb-row"><span class="fb-lbl">Surface strength</span><span class="fb-val">70</span><div class="fb-track"><div class="fb-fill" style="width:70.2%;background:#22c55e"></div></div></div>
+        <div class="fb-row"><span class="fb-lbl">Latent stress ★</span><span class="fb-val">32</span><div class="fb-track"><div class="fb-fill" style="width:32.5%;background:#ef4444"></div></div></div>
+        <div class="fb-row"><span class="fb-lbl">Decoupling</span><span class="fb-val">23</span><div class="fb-track"><div class="fb-fill" style="width:22.8%;background:#f97316"></div></div></div>
+        <div class="fb-row"><span class="fb-lbl">Sustainability</span><span class="fb-val">84</span><div class="fb-track"><div class="fb-fill" style="width:84.3%;background:#60a5fa"></div></div></div>
+      </div>
+
+      <div class="frag-grid">
+        <div class="frag-vectors">
+          <div class="fv-label">Top latent vectors (잠재 위험 source)</div>
+          <div class="fv-row"><span class="fv-pct">  48%</span><span class="fv-name">carry leverage</span><div class="fv-bar"><div style="width:48%;background:#f97316"></div></div></div><div class="fv-row"><span class="fv-pct">  39%</span><span class="fv-name">geopolitical tail</span><div class="fv-bar"><div style="width:39%;background:#f97316"></div></div></div><div class="fv-row"><span class="fv-pct">   7%</span><span class="fv-name">credit stress</span><div class="fv-bar"><div style="width:7%;background:#f97316"></div></div></div><div class="fv-row"><span class="fv-pct">   6%</span><span class="fv-name">sector dispersion</span><div class="fv-bar"><div style="width:6%;background:#f97316"></div></div></div>
+        </div>
+        <div class="tp-block"><div class="tp-label">⚡ Tipping Points</div><ul><li><span class="tp-bullet" style="background:#ef4444"></span>USDJPY 162 돌파 (carry trigger) <span class="tp-dist">+1.7%</span></li><li><span class="tp-bullet" style="background:#ef4444"></span>VIX 25 돌파 (vol regime shift) <span class="tp-dist">+48.0%</span></li><li><span class="tp-bullet" style="background:#eab308"></span>YC 10Y-2Y inversion (recession leading) <span class="tp-dist">+5.1%</span></li></ul></div>
+      </div>
+
+      <div class="frag-decision">
+        💡 <strong>Decision:</strong> 표면 강세 + 잠재 위험 누적 시작 — mild watch, 5% hedge
+        <span class="hedge-pill">tactical hedge 5%</span>
+      </div>
+    </div>
+    
 
 <h2>Cascade Signal — 4 Layer 종합</h2>
 
@@ -210,10 +278,22 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <h2>최근 30일 Phase 11 운영 기록</h2>
 
     <table class="hist-tbl">
-      <thead><tr><th>날짜</th><th>Alert</th><th>Cascade</th><th>Stress</th><th>Flow</th><th>Sentiment</th><th>★</th></tr></thead>
+      <thead><tr>
+        <th>날짜</th>
+        <th>★ Frag</th>
+        <th>Phase</th>
+        <th>Alert</th>
+        <th>Cascade</th>
+        <th>Stress</th>
+        <th>Flow</th>
+        <th>Sentiment</th>
+        <th>!</th>
+      </tr></thead>
       <tbody>
         <tr>
           <td>2026-04-27</td>
+          <td><span class="frag-pill" style="color:#eab308;font-weight:700">37</span></td>
+          <td><span style="color:#eab308;font-size:10px">🟡 pre crisis</span></td>
           <td><span class="alert-pill" style="background:#22c55e33;color:#22c55e">GREEN</span></td>
           <td><span class="cas-pill" style="color:#22c55e">genuine_calm</span></td>
           <td>0.217</td>
@@ -223,6 +303,8 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
         </tr>
         <tr>
           <td>2026-04-28</td>
+          <td><span class="frag-pill" style="color:#f97316;font-weight:700">44</span></td>
+          <td><span style="color:#eab308;font-size:10px">🟡 pre crisis</span></td>
           <td><span class="alert-pill" style="background:#22c55e33;color:#22c55e">GREEN</span></td>
           <td><span class="cas-pill" style="color:#22c55e">genuine_calm</span></td>
           <td>0.200</td>
@@ -232,6 +314,8 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
         </tr>
         <tr>
           <td>2026-04-29</td>
+          <td><span class="frag-pill" style="color:#f97316;font-weight:700">58</span></td>
+          <td><span style="color:#eab308;font-size:10px">🟡 pre crisis</span></td>
           <td><span class="alert-pill" style="background:#22c55e33;color:#22c55e">GREEN</span></td>
           <td><span class="cas-pill" style="color:#22c55e">genuine_calm</span></td>
           <td>0.399</td>
@@ -241,6 +325,8 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
         </tr>
         <tr>
           <td>2026-05-01</td>
+          <td><span class="frag-pill" style="color:#f97316;font-weight:700">40</span></td>
+          <td><span style="color:#eab308;font-size:10px">🟡 pre crisis</span></td>
           <td><span class="alert-pill" style="background:#22c55e33;color:#22c55e">GREEN</span></td>
           <td><span class="cas-pill" style="color:#22c55e">genuine_calm</span></td>
           <td>0.271</td>
@@ -254,7 +340,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <h2>알림 로그 (최근 10)</h2>
 <div class="alerts-log">[2026-04-28T23:32:14.910629] ↓ 해제 ELEVATED → YELLOW (2026-04-27 → 2026-04-28) stress 0.395<br>[2026-04-30T13:19:33.227262] ↑ 격상 YELLOW → ELEVATED (2026-04-28 → 2026-04-29) stress 0.590</div>
 
-<footer>v4 · Phase 11.6 (4 Layer Architecture) · 자동 갱신 · narrative_scare 0 cases</footer>
+<footer>v5 · Phase 12 (Latent Fragility Detection) · 자동 갱신 · narrative_scare 1 cases</footer>
 
 </div>
 </body>

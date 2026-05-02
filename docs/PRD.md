@@ -1,8 +1,18 @@
 # Macro Regime Detection System — PRD
 
-**버전**: v0.9 (Phase 9.2.2 완료 시점)
-**최종 업데이트**: 2026-04-30
-**Status**: Live + Multi-horizon 검증 완료, 다음 phase 결정 대기
+**버전**: v1.2 (Phase 12 Fragility Index 통합)
+**최종 업데이트**: 2026-05-02
+**Status**: Phase 11 (5 Layer + Cascade Sizing) 운영 중. Phase 12 (Latent Fragility) 통합 — daily_complete + dashboard v5 완료, 추가 historical sample 18개 plan 작성 (`research/phase12_historical_samples_plan.md`)
+
+### Phase 12 핵심 framing (사용자 정의)
+> "강세장이자 = 나스닥, S&P 역대 최고 / 언제든 무너질 수 있는 위험성 (이란 전쟁, 공급망 불안) / 그럼에도 수급·기대감이 넘쳐 상승하려는 장세. 도사린 위험은 표면적으로 측정 불가, 즉 명시적 해답 없지만, 그걸 측정하고 싶은 상황"
+
+**시스템 목적 재정의**: buy-hold 수익률 추격 ❌ → **표면 강세 너머 잠재 위험 측정 ★**
+
+### Phase 12 출력
+- `analyses/fragility/fragility_YYYYMMDD.json` — Fragility Index (0-100) + crisis_phase + tipping points
+- Dashboard v5: 메인 카드 = Fragility (Surface/Latent/Decoupling/Sustainability + Top vectors + Tipping)
+- daily_complete.ps1 step 11/12 자동 실행
 
 ---
 
