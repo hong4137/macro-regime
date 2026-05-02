@@ -374,6 +374,41 @@ Fusion (M1-M9) + 7 Cascade scenarios + SPY scoring (non-linear)
 - smart_money_warning 75% HIT (사전 경고 작동)
 - genuine_calm 41% HIT, 0% FP (평시 정확)
 
+**Phase 11.7** — Numerical Forecasting (Layer 4) + acute_shock ✅ 완료
+- `D:\코워크\scripts\detectors\numerical_forecast.py` (linear + VIX mean revert baseline)
+- analyze_v3.py: M10 Numerical Confirmation + **acute_shock cascade**
+- batch + scoring: 5 Layer 통합
+- daily_dashboard.py v4: Layer 4 실제 데이터 표시
+
+**5 Layer Architecture 완성**:
+```
+Layer 1 (Stress Liq) + Layer 2 (Flow) + Layer 3 (Sentiment) + Layer 4 (Forecast) + Layer 5 (Fusion+Cascade)
+```
+
+**v3.2 (Phase 11.7) 결과 — 5 Layer**:
+| Metric | Phase 11.6 | **Phase 11.7** |
+|---|---|---|
+| HIT | 41.8% | **48.2%** ↑ |
+| FALSE_POSITIVE | 10.0% | **8.2%** ↓ |
+| MISS_CRISIS | 2.7% | 2.7% |
+| RED FP | 30% | **20%** ↓↓ |
+| YELLOW HIT | 50% | **87.5%** ★ |
+| T+3 HIT | 43% | **54%** ★ |
+
+**acute_shock 시나리오 작동**:
+- 8 cases (2020-03-16 COVID, 2024-08-05 Yen carry 등 V자 회복 패턴)
+- 37.5% HIT, 0% FP (cascade adjustment)
+- 11.6 의 confirmed_crisis 16 cases (FP 13) → 11.7 에서 acute_shock + PARTIAL 로 약화
+
+**Phase 11 종합 진화 (FP 4배 감소)**:
+```
+Phase 9-10:    FP 50%+ 추정 (fusion-vs-fusion)
+Phase 11.4:    FP 32% (4 layer, linear scoring)
+Phase 11.5 v3: FP 10% (non-linear scoring)
+Phase 11.6:    FP 10% (sentiment 추가)
+Phase 11.7:    FP 8.2% (forecast + acute_shock) ★
+```
+
 **Phase 11.2** — Architecture 재설계 결정
 - Dual-system (quant + LLM) vs Probabilistic continuous vs Crisis-type detection
 - Round 2 의 "Top funds 가 regime-aware alpha 로 pivot" 인사이트 반영
@@ -640,6 +675,11 @@ python analyze_v2.py --date YYYY-MM-DD --mode prompt
 | 2026-05-02 | Phase 11.6 Sentiment Layer + M9 통합 | FinBERT + Crisis cluster + 4 layer architecture |
 | 2026-05-02 | confirmed_crisis 시나리오 검증 (2020-03-16, 2024-08-05) | 4 layer 일치 시 very_high confidence |
 | 2026-05-02 | confirmed_crisis FP 13 → 2 (cascade adjustment) | max_dd 정당화 적용 |
+| 2026-05-02 | Dashboard v4 (Phase 11) live + 4 Layer view | https://hong4137.github.io/macro-regime/ |
+| 2026-05-02 | Daily complete pipeline 에 analyze_v3 + scoring_v3 통합 | 매일 자동 5 layer 분석 |
+| 2026-05-02 | Phase 11.7 Numerical Forecasting Layer 4 + acute_shock | M10 + 단기 충격 V자 회복 분리 |
+| 2026-05-02 | **Phase 11.7 결과: HIT 48.2%, FP 8.2%, RED FP 20%** ★ | FP 4배 감소 달성 |
+| 2026-05-02 | acute_shock 8 cases 흡수 (2020-03-16 COVID, 2024-08-05 Yen) | confirmed_crisis V자 회복 정확 분리 |
 
 ---
 
