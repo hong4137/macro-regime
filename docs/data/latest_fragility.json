@@ -1,49 +1,52 @@
 {
-  "as_of_date": "2026-05-02",
-  "fragility_index": 73.8,
+  "as_of_date": "2026-05-01",
+  "fragility_index": 69.8,
   "fragility_level": "critical",
   "level_color": "#ef4444",
   "crisis_phase": {
     "phase": "pre_crisis",
-    "interpretation": "Pre-crisis cascade (narrative_scare) — Surface vs Latent decoupling"
+    "interpretation": "Surface 강세 + Latent 누적 (★ user framing)"
   },
   "components": {
     "surface_strength": {
-      "score": 50.3,
+      "score": 70.2,
       "components": {
-        "bull_regime": 0.645,
-        "spy_momentum": 0.417,
-        "vix_low": 0.477
+        "bull_regime": 0.471,
+        "spy_momentum": 1,
+        "vix_low": 0.534
       }
     },
     "latent_stress": {
-      "score": 63.2,
+      "score": 56.6,
       "vectors": {
-        "policy_uncertainty": 0.487,
-        "carry_leverage": 0.776,
-        "em_fx_stress": 0.814,
-        "sector_dispersion": 0.5,
-        "credit_stress": 0.4,
-        "geopolitical_tail": 0.85
+        "policy_uncertainty": 0.63,
+        "carry_leverage": 0.874,
+        "em_fx_stress": 0.79,
+        "sector_dispersion": 0.0,
+        "credit_stress": 0.174,
+        "geopolitical_tail": 0.97,
+        "catalyst_density": 0.2
       },
       "contributions_pct": {
-        "policy_uncertainty": 15.4,
-        "carry_leverage": 24.5,
-        "em_fx_stress": 19.3,
-        "sector_dispersion": 7.9,
-        "credit_stress": 12.7,
-        "geopolitical_tail": 20.2
-      }
+        "policy_uncertainty": 20.0,
+        "carry_leverage": 27.8,
+        "em_fx_stress": 18.1,
+        "sector_dispersion": 0.0,
+        "credit_stress": 5.5,
+        "geopolitical_tail": 25.7,
+        "catalyst_density": 2.8
+      },
+      "warnings": []
     },
     "decoupling": {
-      "score": 31.8,
+      "score": 39.7,
       "interpretation": "약한 디커플링"
     },
     "sustainability": {
-      "score": 88.3,
+      "score": 84.3,
       "components": {
-        "flow_strength": 0.833,
-        "sentiment_positive": 0.833,
+        "flow_strength": 0.763,
+        "sentiment_positive": 0.792,
         "cluster_calm": 1.0
       }
     }
@@ -51,46 +54,41 @@
   "tipping_points": [
     {
       "trigger": "USDJPY 162 돌파 (carry trigger)",
-      "current": 159.4,
+      "current": 159.35,
       "target": 162,
-      "distance_pct": 1.6,
+      "distance_pct": 1.7,
       "weight": "high"
     },
     {
       "trigger": "VIX 25 돌파 (vol regime shift)",
-      "current": 17.85,
+      "current": 16.89,
       "target": 25,
-      "distance_pct": 40.1,
+      "distance_pct": 48.0,
       "weight": "high"
     },
     {
       "trigger": "USEPU 600 돌파 (정책 위기)",
-      "current": 295,
+      "current": 352,
       "target": 600,
-      "distance_pct": 103.4,
+      "distance_pct": 70.5,
       "weight": "medium"
     },
     {
       "trigger": "YC 10Y-2Y inversion (recession leading)",
-      "current": 0.5,
+      "current": 0.51,
       "target": 0,
-      "distance_pct": 5.0,
+      "distance_pct": 5.1,
       "weight": "medium"
-    },
-    {
-      "trigger": "Iran 군사 충돌 escalation",
-      "current": "긴장",
-      "target": "확전",
-      "distance_pct": null,
-      "weight": "high"
     }
   ],
   "decision_support": {
-    "stay_invested": false,
-    "tactical_hedge_pct": 30,
-    "review_at_fragility": "daily",
-    "narrative": "Fragility critical — full tactical hedge, cash 30%+"
+    "stay_invested": true,
+    "tactical_hedge_pct": 15,
+    "review_at_fragility": 80,
+    "narrative": "잠재 위험 elevated — 15% tactical hedge, tipping point watch"
   },
-  "narrative": "Fragility 73.8/100 (critical, phase=pre_crisis). Surface 50 / Latent 63 / Decoupling 32 / Sustainability 88. Top vectors: carry_leverage: 24% | geopolitical_tail: 20% | em_fx_stress: 19%",
-  "ts": "2026-05-03T02:18:12.091471"
+  "narrative": "Fragility 69.8/100 (critical, phase=pre_crisis). Surface 70 / Latent 57 / Decoupling 40 / Sustainability 84. Top vectors: carry_leverage: 28% | geopolitical_tail: 26% | policy_uncertainty: 20%",
+  "warnings": [],
+  "measurement_quality": "high",
+  "ts": "2026-05-03T03:16:19.218522"
 }
