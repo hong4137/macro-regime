@@ -75,6 +75,18 @@ h2{font-size:16px;margin:24px 0 10px;color:var(--accent);font-weight:500}
 .cas-pill{font-size:10.5px;font-weight:600}
 .flow-mini, .sent-mini{font-size:10.5px}
 
+.sizing-card{background:var(--panel);border:1px solid var(--border);border-radius:12px;padding:16px 20px;margin-bottom:14px}
+.sz-cascade{font-size:13px;color:var(--accent);font-weight:600;margin-bottom:12px}
+.sz-bars{display:flex;flex-direction:column;gap:7px;margin-bottom:10px}
+.sz-bar{display:grid;grid-template-columns:50px 50px 1fr;gap:8px;align-items:center}
+.sz-lbl{font-size:11.5px;color:var(--muted)}
+.sz-val{font-size:13px;font-weight:700;text-align:right}
+.sz-track{height:8px;background:var(--panel2);border-radius:4px;overflow:hidden}
+.sz-fill{height:100%}
+.sz-interp{font-size:12.5px;color:var(--text);margin-top:8px;line-height:1.5}
+.sz-trajectory{font-size:12px;color:#60a5fa;margin-top:5px;font-style:italic}
+.sz-warn{font-size:12px;color:#eab308;margin-top:5px}
+
 .alerts-log{font-family:'SF Mono',monospace;font-size:11px;color:var(--muted);background:var(--panel2);padding:12px;border-radius:8px;line-height:1.7}
 
 footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;border-top:1px solid var(--border);padding-top:14px}
@@ -84,7 +96,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <div class="wrap">
 
 <h1>Macro Regime Dashboard <span style="color:var(--accent);font-size:14px;font-weight:400">v4 · Phase 11 (4 Layer + Cascade)</span></h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · As of 2026-05-01 · 마지막 업데이트: 2026-05-02 21:21:51</div>
+<div class="meta">자동 생성 · 5분마다 갱신 · As of 2026-05-01 · 마지막 업데이트: 2026-05-02 21:56:00</div>
 
 <div class="kpis">
   <div class="kpi"><div class="l">총 sessions</div><div class="v">29</div></div>
@@ -176,6 +188,22 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
       <div class="audit-label">Mechanism Audit</div>
       <div class="audit-line">M8 Flow: <b>stress_dampened</b> (scale 0.921)</div>
       <div class="audit-line">M9 Sentiment: not applied (neutral)</div>
+    </div>
+    
+
+<h2>Cascade-aware Position Sizing (Phase 11.8)</h2>
+
+    <div class="sizing-card">
+      <div class="layer-label">Cascade-aware Position Sizing</div>
+      <div class="sz-cascade">genuine_calm</div>
+      <div class="sz-bars">
+        <div class="sz-bar"><span class="sz-lbl">Risk</span><span class="sz-val">80%</span><div class="sz-track"><div class="sz-fill" style="width:80.0%;background:#22c55e"></div></div></div>
+        <div class="sz-bar"><span class="sz-lbl">Hedge</span><span class="sz-val">5%</span><div class="sz-track"><div class="sz-fill" style="width:5.0%;background:#f97316"></div></div></div>
+        <div class="sz-bar"><span class="sz-lbl">Cash</span><span class="sz-val">15%</span><div class="sz-track"><div class="sz-fill" style="width:15.0%;background:#8fa3c0"></div></div></div>
+      </div>
+      <div class="sz-interp">진짜 평시 — 정상 포지션, 추가 위험 감수 가능</div>
+      
+      
     </div>
     
 
