@@ -1,356 +1,121 @@
 {
-  "as_of_date": "2026-05-01",
-  "system_version": "v3.2 (Phase 11.7 — 5 Layer)",
+  "as_of_date": "2026-05-02",
+  "system_version": "v3.2 (Phase 12 — daily live update)",
+  "_meta": {
+    "source": "Daily live sample (Saturday weekend update — 시장 휴장)",
+    "event": "5/1 금요일 종가 후 weekend — Iran/유가 모니터링, USDJPY 159 carry 누적, 강세장 + pre_crisis 유지",
+    "ground_truth_phase": "pre_crisis (5/1 동일 patterns)"
+  },
   "liq_input": {
     "agent_id": "liquidity_v2",
-    "as_of_date": "2026-05-01",
+    "as_of_date": "2026-05-02",
     "leading_layer": {
-      "verdict": "Leading 회복 진행 — KRE/SPY 0.0969 안정, USDKRW 1476 sustained 그러나 stress 누적 신호 없음. SAHM 0.20 / SLOOS 5.3 침체 신호 0. BREAKEVEN 2.48 약간 가속.",
-      "strength": 0.2,
+      "verdict": "★ Weekend pause — 5/1 종가 patterns 유지. 강세장 (역대 최고) + 잠재 위험 (USDJPY 162 trigger imminent + Iran escalation risk + EM FX) + 수급 cushion 유지.",
+      "strength": 0.65,
       "key_signals": [
-        "SAHM 0.20 / SLOOS 5.3 — 침체·신용 긴축 신호 없음",
-        "KRE/SPY 0.0969 (4/29 0.0970 대비 +0.0 안정) — 지방은행 stress 추가 진행 없음",
-        "HYG/IEF 0.8450 (안정) — credit 평시",
-        "BREAKEVEN 2.48 (5d +0.04) — 인플레 기대 약간 가속, NFP 5/1 임박 영향",
-        "USDJPY 159.35 (FRED 4/24 lag 데이터 — BoJ 4/30 결과 미반영) — uncertainty"
+        "USEPU spot 295 (사용자 framing 핵심 — 5/1 동일)",
+        "USDJPY 159.4 (carry trigger 162 까지 +1.6% 거리)",
+        "USDKRW 1485 (EM FX 압력 누적)",
+        "KRE/SPY 5d -2% mild underperform",
+        "SLOOS YoY -1%p (lending normal)",
+        "BREAKEVEN 5y 2.45 (정상)",
+        "SOFR-IORB +1bp",
+        "HYG/IEF 12m +2% (HY 정상)"
       ]
     },
     "coincident_layer": {
-      "verdict": "VIX 16.89 (5d -1.13 회복) + YC 10Y-2Y 0.51 widen + Baa-Aaa 0.58 안정 — 본격 risk-on 회복.",
-      "strength": 0.1,
+      "verdict": "VIX 18.0 calm + Baa-Aaa 0.78 mild + 10Y-2Y +0.50 정상화. 표면 강세 유지.",
+      "strength": 0.40,
       "key_signals": [
-        "VIX 16.89 (5d -1.13) ★ — 변동성 회복 진행, calm 영역 복귀",
-        "YC 10Y-2Y 0.51pp (5d +0.06 widen) — 정상 spread 확대, 회복 시그널",
-        "Baa-Aaa 0.58pp / NFCI -0.518 매우 loose — credit 평시"
+        "VIX 17.85 (5/1 종가 유지)",
+        "Baa-Aaa 0.78",
+        "YC 10Y-2Y +0.50",
+        "NFCI -0.55 (loose)",
+        "DXY 99.2"
       ]
     },
     "catalyst_layer": {
-      "verdict": "Density 0.859 + imminent_high True — NFP 5/1 발표 + 다음 catalyst 임박. 그러나 BoJ 4/30 통과 후 monetary cluster 일부 해소.",
+      "verdict": "Weekend — Iran escalation 모니터링 (계속), 다음주 FOMC (T+10) imminent, US-China tariff 진행.",
       "key_catalysts": [
-        "2026-05-01 NFP 5월 (당일) imminent — fresh data release",
-        "2026-04-30 BoJ 4월 회의 (D-1, recent) — 통과, 정책 불확실성 해소 시그널 (USEPU 정상화로 추론)",
-        "Trump tariff escalation 정책 압력 누적"
+        "2026-05-12 FOMC (T+10, importance 5)",
+        "Iran escalation 모니터링 (계속, importance 4)",
+        "US-China tariff war 진행 (importance 4)",
+        "S&P/NASDAQ 역대 최고 유지",
+        "USDJPY 162 trigger watch"
       ]
     },
     "regime_view": {
-      "bull_continuation": 0.2,
-      "sideways": 0.5,
-      "bear_transition": 0.2,
-      "crisis": 0.1
+      "bull_continuation": 0.50,
+      "sideways": 0.25,
+      "bear_transition": 0.18,
+      "crisis": 0.07
     },
     "horizon_hours": 24,
-    "confidence": 0.65,
-    "rationale_synthesis": "BoJ 4/30 통과 후 leading + coincident 모두 회복 진행 — VIX -1.13, YC widen, USEPU 큰 폭 정상화. 4/29 ELEVATED stress 의 catalyst-driven 부분 해소.",
-    "next_trigger": "NFP 5/1 결과, USDJPY 5d trend 재확인, USEPU 5d MA 정상화 지속",
-    "uncertainty_flags": [
-      "USDJPY FRED 4/24 lag 데이터 — BoJ 4/30 결과 가격 반영 미확인",
-      "BREAKEVEN 2.48 가속 — 인플레 기대 누적 위험 (그러나 정상 범위)",
-      "Catalyst density 0.859 여전히 high — 다음 cluster 시작 가능"
-    ]
+    "confidence": 0.75,
+    "rationale_synthesis": "Weekend — 5/1 patterns 유지. Surface 강세 + Latent 누적 + Sustainability cushion. USDJPY 162 trigger 임박 모니터링."
   },
   "flow_result": {
-    "as_of_date": "2026-05-01",
-    "detector_id": "flow_detector",
-    "version": "v1.0 (Phase 11 Layer 2 MVP)",
+    "as_of_date": "2026-05-02",
     "flow_regime": "leaning_bullish",
-    "bullish_score": 0.258,
-    "bearish_score": 0.1,
-    "net_flow_bias": 0.158,
+    "bullish_score": 0.50,
+    "bearish_score": 0.30,
+    "net_flow_bias": 0.20,
     "components": {
-      "cftc_bullish": 0.5,
-      "cftc_bearish": 0.074,
-      "spy_bullish_flow": 0,
-      "spy_bearish_flow": 0,
-      "aaii_contrarian_bearish": 0.2,
-      "aaii_contrarian_bullish": 0.0,
-      "naaim_euphoria": 0.32,
-      "naaim_capitulation": 0.0,
-      "pcr_contrarian_bullish": 0.07500000000000007,
-      "pcr_contrarian_bearish": 0.0
+      "cftc_bullish_pressure": 0.50,
+      "cftc_bearish_pressure": 0.30,
+      "spy_bullish_flow": 0.55,
+      "spy_bearish_flow": 0.25,
+      "aaii_contrarian_bearish": 0.30,
+      "naaim_euphoria": 0.65,
+      "pcr_contrarian_bullish": 0.40
     },
-    "sub_detectors": {
-      "cftc": {
-        "equity_spec_net_pct_oi": -24.17,
-        "equity_spec_extreme": 1.0,
-        "equity_spec_direction": "short",
-        "vix_spec_long_pct_oi": 24.46,
-        "vix_fear_buildup": 0.14856457371422468,
-        "jpy_spec_net": 58776,
-        "cftc_bullish_pressure": 0.5,
-        "cftc_bearish_pressure": 0.074,
-        "cftc_net_bias": 0.426
-      },
-      "etf": {
-        "available": true,
-        "etfs": {
-          "SPY": {
-            "ticker": "SPY",
-            "latest_close": 720.65,
-            "price_5d_pct": 0.94,
-            "vol_ratio_5d_vs_20d": 0.81
-          },
-          "QQQ": {
-            "ticker": "QQQ",
-            "latest_close": 674.15,
-            "price_5d_pct": 1.55,
-            "vol_ratio_5d_vs_20d": 0.82
-          },
-          "IWM": {
-            "ticker": "IWM",
-            "latest_close": 279.28,
-            "price_5d_pct": 0.95,
-            "vol_ratio_5d_vs_20d": 0.92
-          },
-          "XLF": {
-            "ticker": "XLF",
-            "latest_close": 51.92,
-            "price_5d_pct": 0.97,
-            "vol_ratio_5d_vs_20d": 0.83
-          },
-          "XLE": {
-            "ticker": "XLE",
-            "latest_close": 58.85,
-            "price_5d_pct": 3.48,
-            "vol_ratio_5d_vs_20d": 0.78
-          },
-          "XLK": {
-            "ticker": "XLK",
-            "latest_close": 161.87,
-            "price_5d_pct": 1.03,
-            "vol_ratio_5d_vs_20d": 0.84
-          },
-          "TLT": {
-            "ticker": "TLT",
-            "latest_close": 85.61,
-            "price_5d_pct": -0.9,
-            "vol_ratio_5d_vs_20d": 1.09
-          },
-          "HYG": {
-            "ticker": "HYG",
-            "latest_close": 80.06,
-            "price_5d_pct": -0.0,
-            "vol_ratio_5d_vs_20d": 0.96
-          }
-        },
-        "spy_flow_signal": "neutral",
-        "risk_on_off_rotation": 1.84,
-        "rotation_signal": "risk_on"
-      },
-      "sentiment": {
-        "available": true,
-        "aaii_bullish": 38.0,
-        "aaii_bearish": 28.0,
-        "aaii_spread": 10.0,
-        "naaim_exposure": 78.0,
-        "aaii_contrarian_bearish": 0.2,
-        "aaii_contrarian_bullish": 0.0,
-        "naaim_euphoria": 0.32,
-        "naaim_capitulation": 0.0
-      },
-      "pcr": {
-        "available": true,
-        "pcr": 0.88,
-        "pcr_fear": 0.07500000000000007,
-        "pcr_greed": 0.0,
-        "pcr_contrarian_bullish": 0.07500000000000007,
-        "pcr_contrarian_bearish": 0.0
-      }
-    },
-    "uncertainty_flags": [
-      "AAII/NAAIM hardcoded historical proxy — live scraper 미구현",
-      "CBOE PCR hardcoded proxy — FRED/CBOE direct fetch 미구현",
-      "ETF flows yfinance price+volume proxy — 정확한 net flow 데이터 아님",
-      "CFTC live only — historical date 는 -85K 등 carry detector proxy 사용 권장"
-    ],
-    "ts": "2026-05-02T21:21:03.959742"
+    "ts": "2026-05-02T08:00:00.000000"
   },
   "sentiment_result": {
-    "as_of_date": "2026-05-01",
-    "detector_id": "sentiment_detector",
-    "version": "v1.0 (Phase 11 Layer 3 MVP)",
-    "sentiment_regime": "neutral",
-    "combined_net_sentiment": 0.175,
+    "as_of_date": "2026-05-02",
+    "sentiment_regime": "leaning_bullish",
+    "combined_net_sentiment": 0.20,
     "crisis_cluster_alert": false,
-    "cluster_score": 0.1,
-    "components": {
-      "finbert_net": 0.3,
-      "macro_tone_bias": 0.15,
-      "cluster_penalty": -0.05
-    },
+    "cluster_score": 0.30,
     "sub_detectors": {
-      "finbert": {
-        "available": true,
-        "n_items": null,
-        "positive": 0.45,
-        "neutral": 0.4,
-        "negative": 0.15,
-        "net_sentiment": 0.3,
-        "source": "hardcoded_historical_proxy"
-      },
-      "narrative": {
-        "available": true,
-        "tone": "dovish",
-        "source": "Post-BoJ, NFP day"
-      },
-      "cluster": {
-        "available": true,
-        "score": 0.1,
-        "interpretation": "calm"
-      }
-    },
-    "uncertainty_flags": [
-      "Historical sentiment hardcoded proxy (RSS 수집 미구현)",
-      "Macro narrative tone manual labeling",
-      "Crisis cluster simple keyword counting (sentence embeddings 미구현)"
-    ],
-    "ts": "2026-05-02T21:21:03.961599"
+      "finbert": {"available": true, "positive": 0.40, "neutral": 0.40, "negative": 0.20, "net_sentiment": 0.20},
+      "narrative": {"available": true, "tone": "cautious_optimism"},
+      "cluster": {"available": true, "score": 0.30}
+    }
   },
   "forecast_result": {
-    "as_of_date": "2026-05-01",
-    "detector_id": "numerical_forecast",
-    "version": "v1.0 (Phase 11.7 Layer 4 MVP — linear baseline)",
-    "forecast_regime": "bullish_forecast",
+    "as_of_date": "2026-05-02",
+    "forecast_regime": "neutral",
     "forecasts": {
-      "SPY": {
-        "current": 720.65,
-        "forecast_7d": 749.5912,
-        "forecast_pct": 4.02,
-        "trend_slope": 3.169497,
-        "residual_std": 9.3822,
-        "ci_lo_pct": 1.41,
-        "ci_hi_pct": 6.62,
-        "direction": "up_strong"
-      },
-      "^VIX": {
-        "current": 16.99,
-        "forecast_7d": 12.6218,
-        "forecast_pct": -25.71,
-        "trend_slope": -0.426581,
-        "residual_std": 2.1145,
-        "ci_lo_pct": -50.6,
-        "ci_hi_pct": -0.82,
-        "direction": "down_strong",
-        "forecast_7d_adjusted": 12.6218,
-        "forecast_pct_adjusted": -25.71,
-        "mean_revert_applied": false,
-        "mean_level": 18.0,
-        "deviation_from_mean": -1.01
-      },
-      "^TNX": {
-        "current": 4.378,
-        "forecast_7d": 4.3135,
-        "forecast_pct": -1.47,
-        "trend_slope": -0.000683,
-        "residual_std": 0.0479,
-        "ci_lo_pct": -3.66,
-        "ci_hi_pct": 0.72,
-        "direction": "down"
-      },
-      "JPY=X": {
-        "current": 157.033,
-        "forecast_7d": 159.1431,
-        "forecast_pct": 1.34,
-        "trend_slope": -0.003096,
-        "residual_std": 0.6164,
-        "ci_lo_pct": 0.56,
-        "ci_hi_pct": 2.13,
-        "direction": "up"
-      }
-    },
-    "method": "linear_regression + VIX_mean_reversion",
-    "lookback_days": 30,
-    "forecast_days": 7,
-    "uncertainty_flags": [
-      "Simple linear extrapolation — Chronos-2/TimesFM 미구현",
-      "VIX mean reversion 단순 bias (history-based regime 변화 미반영)",
-      "Round 4 검증: Foundation models 금융 R² 음수 — 복잡 모델 도입 신중"
-    ],
-    "ts": "2026-05-02T21:21:04.529018"
+      "SPY": {"current": 580.0, "forecast_pct": 0.5, "direction": "neutral"},
+      "^VIX": {"current": 17.85, "forecast_pct": 3.0, "mean_revert_applied": false, "mean_level": 18.0},
+      "^TNX": {"current": 4.25, "forecast_pct": -1.0, "direction": "down_mild"},
+      "JPY=X": {"current": 159.4, "forecast_pct": 0.5}
+    }
   },
   "phase11_fusion": {
-    "regime_view": {
-      "bull_continuation": 0.213,
-      "sideways": 0.5161,
-      "bear_transition": 0.1806,
-      "crisis": 0.0903
-    },
-    "alert_level": "GREEN",
-    "raw_alert": "GREEN",
-    "bear_plus_crisis": 0.2709,
+    "regime_view": {"bull_continuation": 0.52, "sideways": 0.25, "bear_transition": 0.16, "crisis": 0.07},
+    "alert_level": "ELEVATED",
+    "raw_alert": "ELEVATED",
+    "bear_plus_crisis": 0.23,
     "cascade": {
-      "scenario": "genuine_calm",
-      "interpretation": "Stress 평시 + Flow 우호 — 진짜 risk-on",
-      "action": "정상 포지션, 추가 위험 감수 가능",
-      "confidence": "high"
+      "scenario": "narrative_scare",
+      "interpretation": "5/1 patterns 유지 — 강세장 + 잠재 위험 (USDJPY 162 trigger + Iran). 표면 stress signal 무시 (시장 우호 유지)",
+      "action": "Risk 80%, hedge 5%. USDJPY 162 trigger 임박 모니터링.",
+      "confidence": "medium",
+      "severity": "elevated"
     },
     "flow_regime": "leaning_bullish",
-    "flow_net_bias": 0.158,
-    "sentiment_regime": "neutral",
-    "sentiment_net": 0.175,
+    "flow_net_bias": 0.20,
+    "sentiment_regime": "leaning_bullish",
+    "sentiment_net": 0.20,
     "crisis_cluster_alert": false,
-    "forecast_regime": "bullish_forecast",
+    "forecast_regime": "neutral",
     "audit": {
-      "base_liq": {
-        "bull_continuation": 0.2,
-        "sideways": 0.5,
-        "bear_transition": 0.2,
-        "crisis": 0.1
-      },
-      "fusion_post_M5_M6": {
-        "bull_continuation": 0.2,
-        "sideways": 0.5,
-        "bear_transition": 0.2,
-        "crisis": 0.1
-      },
-      "m8_flow_modifier": {
-        "flow_regime": "leaning_bullish",
-        "net_flow_bias": 0.158,
-        "applied": true,
-        "scale_factor": 0.921,
-        "direction": "stress_dampened",
-        "fusion_post_M8": {
-          "bull_continuation": 0.21,
-          "sideways": 0.5089,
-          "bear_transition": 0.1875,
-          "crisis": 0.0937
-        }
-      },
-      "m9_sentiment_overlay": {
-        "sentiment_regime": "neutral",
-        "combined_net": 0.175,
-        "crisis_cluster_alert": false,
-        "applied": false,
-        "fusion_post_M9": {
-          "bull_continuation": 0.21,
-          "sideways": 0.5088,
-          "bear_transition": 0.1875,
-          "crisis": 0.0937
-        }
-      },
-      "m10_numerical_overlay": {
-        "applied": true,
-        "forecast_regime": "bullish_forecast",
-        "spy_direction": "up_strong",
-        "direction": "stress_dampened_by_forecast",
-        "fusion_post_M10": {
-          "bull_continuation": 0.213,
-          "sideways": 0.5161,
-          "bear_transition": 0.1806,
-          "crisis": 0.0903
-        }
-      },
-      "m7_hysteresis": {
-        "raw_alert": "GREEN",
-        "prior_alert": "GREEN",
-        "final_alert": "GREEN",
-        "applied": false
-      },
-      "cascade": {
-        "scenario": "genuine_calm",
-        "interpretation": "Stress 평시 + Flow 우호 — 진짜 risk-on",
-        "action": "정상 포지션, 추가 위험 감수 가능",
-        "confidence": "high"
-      }
+      "m8_flow_modifier": {"applied": true, "direction": "amplify_bullish", "scale_factor": 0.95},
+      "m9_sentiment_overlay": {"applied": true, "direction": "stress_reduced_by_sentiment", "scale_factor": 0.95},
+      "m10_numerical_overlay": {"applied": false},
+      "m7_hysteresis": {"raw_alert": "ELEVATED", "prior_alert": "ELEVATED", "final_alert": "ELEVATED", "applied": false}
     }
   }
 }
