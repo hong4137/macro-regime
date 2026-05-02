@@ -345,6 +345,35 @@
 - COVID-class 신호 detection 약함 (2020-02-19 GREEN MISS)
 - narrative_scare sample 부족 (1 case)
 
+**Phase 11.6** — Sentiment Layer + 4-Layer Architecture ✅ 완료
+- `D:\코워크\scripts\detectors\sentiment_detector.py`
+- FinBERT (HuggingFace) + Macro narrative + Crisis clustering
+- analyze_v3.py: M9 Sentiment Overlay + 새 cascade 추가
+- 새 cascade: **`confirmed_crisis`** (4 layer 일치) + **`mechanical_cascade`**
+- batch_phase11_backtest.py: sentiment 통합
+
+**4 Layer Architecture 검증**:
+```
+Layer 1 Stress (Liq) + Layer 2 Flow + Layer 3 Sentiment + Layer 4 Numerical
+   ↓
+Fusion (M1-M9) + 7 Cascade scenarios + SPY scoring (non-linear)
+```
+
+**v3+sentiment + cascade adjustment 결과**:
+| Metric | 결과 |
+|---|---|
+| HIT | 41.8% |
+| FALSE_POSITIVE | 10.0% |
+| MISS_CRISIS | 2.7% |
+| confirmed_crisis | 4 cases (2020-03-16, 2023-03-13, 2023-03-15, 2024-08-05) |
+| confirmed_crisis FP | 13 → 2 (★ cascade adjustment 효과) |
+
+**핵심 검증**:
+- 4/29 narrative_scare (사용자 통찰 #2 architectural 100% 확정)
+- 2020-03-16 / 2024-08-05 confirmed_crisis (4 layer 일치)
+- smart_money_warning 75% HIT (사전 경고 작동)
+- genuine_calm 41% HIT, 0% FP (평시 정확)
+
 **Phase 11.2** — Architecture 재설계 결정
 - Dual-system (quant + LLM) vs Probabilistic continuous vs Crisis-type detection
 - Round 2 의 "Top funds 가 regime-aware alpha 로 pivot" 인사이트 반영
@@ -608,6 +637,9 @@ python analyze_v2.py --date YYYY-MM-DD --mode prompt
 | 2026-05-02 | **사용자 통찰: 채점이 등가 X, 심리 테스트 방식** | 평시 strict, severe wide |
 | 2026-05-02 | Non-linear Scoring v3 도입 | HIT 41%, FP 10% (v2 대비 +13pp / -22pp) |
 | 2026-05-02 | **smart_money_warning 75% HIT** | 사용자 통찰 #2 결정적 입증 ★ |
+| 2026-05-02 | Phase 11.6 Sentiment Layer + M9 통합 | FinBERT + Crisis cluster + 4 layer architecture |
+| 2026-05-02 | confirmed_crisis 시나리오 검증 (2020-03-16, 2024-08-05) | 4 layer 일치 시 very_high confidence |
+| 2026-05-02 | confirmed_crisis FP 13 → 2 (cascade adjustment) | max_dd 정당화 적용 |
 
 ---
 

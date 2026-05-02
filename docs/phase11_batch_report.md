@@ -1,6 +1,6 @@
 # Phase 11 Batch Backtest Report
 
-**생성**: 2026-05-02 16:42  
+**생성**: 2026-05-02 19:17  
 **Sessions discovered**: 29  
 **Phase 11 fusion 완료**: 29  
 **SPY scoring 완료**: 29  
@@ -28,10 +28,11 @@
 
 | Scenario | HIT | PARTIAL | FP | MISS | Hit% | FP% |
 |---|---|---|---|---|---|---|
+| `confirmed_crisis` | 1 | 2 | 13 | 0 | 6.2% | 81.2% |
 | `genuine_calm` | 16 | 23 | 0 | 3 | 38.1% | 0.0% |
 | `mixed` | 7 | 8 | 13 | 0 | 25.0% | 46.4% |
 | `narrative_scare` | 1 | 2 | 0 | 0 | 33.3% | 0.0% |
-| `real_stress_brewing` | 7 | 6 | 23 | 0 | 19.4% | 63.9% |
+| `real_stress_brewing` | 6 | 4 | 10 | 0 | 30.0% | 50.0% |
 | `smart_money_warning` | 1 | 3 | 0 | 0 | 25.0% | 0.0% |
 
 ## 4. By Episode
