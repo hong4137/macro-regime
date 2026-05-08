@@ -1,6 +1,6 @@
 {
-  "as_of_date": "2026-05-01",
-  "fragility_index": 69.8,
+  "as_of_date": "2026-05-07",
+  "fragility_index": 77.4,
   "fragility_level": "critical",
   "level_color": "#ef4444",
   "crisis_phase": {
@@ -9,44 +9,44 @@
   },
   "components": {
     "surface_strength": {
-      "score": 70.2,
+      "score": 50.1,
       "components": {
-        "bull_regime": 0.471,
-        "spy_momentum": 1,
-        "vix_low": 0.534
+        "bull_regime": 0.65,
+        "spy_momentum": 0.383,
+        "vix_low": 0.507
       }
     },
     "latent_stress": {
-      "score": 56.6,
+      "score": 66.3,
       "vectors": {
-        "policy_uncertainty": 0.63,
-        "carry_leverage": 0.874,
-        "em_fx_stress": 0.79,
-        "sector_dispersion": 0.0,
-        "credit_stress": 0.174,
-        "geopolitical_tail": 0.97,
-        "catalyst_density": 0.2
+        "policy_uncertainty": 0.855,
+        "carry_leverage": 0.67,
+        "em_fx_stress": 0.792,
+        "sector_dispersion": 0.6,
+        "credit_stress": 0.1,
+        "geopolitical_tail": 0.85,
+        "catalyst_density": 1.0
       },
       "contributions_pct": {
-        "policy_uncertainty": 20.0,
-        "carry_leverage": 27.8,
-        "em_fx_stress": 18.1,
-        "sector_dispersion": 0.0,
-        "credit_stress": 5.5,
-        "geopolitical_tail": 25.7,
-        "catalyst_density": 2.8
+        "policy_uncertainty": 23.2,
+        "carry_leverage": 18.2,
+        "em_fx_stress": 15.5,
+        "sector_dispersion": 9.1,
+        "credit_stress": 2.7,
+        "geopolitical_tail": 19.2,
+        "catalyst_density": 12.1
       },
       "warnings": []
     },
     "decoupling": {
-      "score": 39.7,
+      "score": 33.2,
       "interpretation": "약한 디커플링"
     },
     "sustainability": {
-      "score": 84.3,
+      "score": 91.7,
       "components": {
-        "flow_strength": 0.763,
-        "sentiment_positive": 0.792,
+        "flow_strength": 0.917,
+        "sentiment_positive": 0.833,
         "cluster_calm": 1.0
       }
     }
@@ -54,41 +54,41 @@
   "tipping_points": [
     {
       "trigger": "USDJPY 162 돌파 (carry trigger)",
-      "current": 159.35,
+      "current": 156.76,
       "target": 162,
-      "distance_pct": 1.7,
+      "distance_pct": 3.3,
       "weight": "high"
     },
     {
       "trigger": "VIX 25 돌파 (vol regime shift)",
-      "current": 16.89,
+      "current": 17.39,
       "target": 25,
-      "distance_pct": 48.0,
+      "distance_pct": 43.8,
       "weight": "high"
     },
     {
       "trigger": "USEPU 600 돌파 (정책 위기)",
-      "current": 352,
+      "current": 282,
       "target": 600,
-      "distance_pct": 70.5,
+      "distance_pct": 112.8,
       "weight": "medium"
     },
     {
       "trigger": "YC 10Y-2Y inversion (recession leading)",
-      "current": 0.51,
+      "current": 0.49,
       "target": 0,
-      "distance_pct": 5.1,
+      "distance_pct": 4.9,
       "weight": "medium"
     }
   ],
   "decision_support": {
-    "stay_invested": true,
-    "tactical_hedge_pct": 15,
-    "review_at_fragility": 80,
-    "narrative": "잠재 위험 elevated — 15% tactical hedge, tipping point watch"
+    "stay_invested": false,
+    "tactical_hedge_pct": 30,
+    "review_at_fragility": "daily",
+    "narrative": "Fragility critical — full tactical hedge, cash 30%+"
   },
-  "narrative": "Fragility 69.8/100 (critical, phase=pre_crisis). Surface 70 / Latent 57 / Decoupling 40 / Sustainability 84. Top vectors: carry_leverage: 28% | geopolitical_tail: 26% | policy_uncertainty: 20%",
+  "narrative": "Fragility 77.4/100 (critical, phase=pre_crisis). Surface 50 / Latent 66 / Decoupling 33 / Sustainability 92. Top vectors: policy_uncertainty: 23% | geopolitical_tail: 19% | carry_leverage: 18%",
   "warnings": [],
   "measurement_quality": "high",
-  "ts": "2026-05-03T03:16:19.218522"
+  "ts": "2026-05-08T21:27:52.164025"
 }
