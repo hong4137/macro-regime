@@ -21,14 +21,14 @@
       ],
       "_old_signals": [
         "USDJPY 156.64 (5d delta -0.12) (2026-05-08)",
-        "USDKRW 1461.06 (5d delta -16.16) — EM FX 진정",
+        "USDKRW 1461.06 (5d delta -16.16) — EM FX stress",
         "USDCNY 6.8005",
-        "USEPU spot 383.17 (avg30d 419.46) — policy uncertainty 정상화 진행",
-        "SAHM 0.13 / SLOOS 8.1 — recession leading 안정",
+        "USEPU spot 383.17 (avg30d 383.79) — policy uncertainty",
+        "SAHM 0.13 / SLOOS 8.1 — recession leading",
         "SOFR-IORB -5bp — funding"
       ],
       "_regenerated": true,
-      "_regenerated_ts": "2026-05-13T03:12:30.472388"
+      "_regenerated_ts": "2026-05-13T03:39:00.728312"
     },
     "coincident_layer": {
       "verdict": "VIX 18.38 (+1.19 from 5/8) — FOMC anticipation. SPY 734 mild pullback. KRE/SPY 0.0928 underperform 가속. Baa-Aaa 0.56 stable.",
@@ -43,7 +43,7 @@
         "Net liquidity 5831bn"
       ],
       "_old_signals": [
-        "VIX 18.38 (5d -0.43, FOMC anticipation rise)",
+        "VIX 18.38 (5d +0.09)",
         "Baa-Aaa 0.56pp",
         "Baa-10Y 1.69pp",
         "YC 10Y-2Y +0.47pp",
