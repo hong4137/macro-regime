@@ -1,21 +1,21 @@
 {
-  "as_of_date": "2026-05-12",
-  "system_version": "v3.2 (Phase 12.8 — daily live, FOMC day)",
+  "as_of_date": "2026-05-13",
+  "system_version": "v3.2 (Phase 12.8 — daily live, CPI day)",
   "_meta": {
-    "source": "Daily live sample (★ FOMC day pre-event)",
-    "event": "FOMC 발표 직전 (한국 5/13 새벽 03:00 ET 14:00 발표 예정). USEPU 383 (5/9 683 drop -300, 정상화 진행), VIX 18.38 (★ +1.19 anticipation), SPY 734.47 (-0.4%), KRE/SPY 0.0928 (mild underperform 가속)."
+    "source": "Daily live sample (★ CPI April EOD — 2nd 통과)",
+    "event": "CPI April 발표 후 EOD: VIX 17.99 → 17.87 진정 지속, SPY 738.18 → 742.31 (+0.6% 연속 rally), USEPU 308 → 223 (-85 추가 drop, 정상화 완료), KRE/SPY 0.0924 → 0.0905 (mild underperform 지속). catalyst_density 0.873 (5/12 0.891 down). imminent_high False. FOMC + CPI 2개 critical 이벤트 통과."
   },
   "liq_input": {
     "agent_id": "liquidity_v2",
-    "as_of_date": "2026-05-12",
+    "as_of_date": "2026-05-13",
     "leading_layer": {
-      "verdict": "★ FOMC pre-event. USEPU 383 정상화 진행 (5/9 683 shock 후 drop). VIX 18.38 mild rise (FOMC anticipation). KRE/SPY 0.0928 — 지방은행 mild underperform. FX 데이터 5/8 lag.",
-      "strength": 0.45,
+      "verdict": "★ CPI EOD 흡수: USEPU 223 (-85 추가 drop, 정상화 완료, 5/9 peak 683 대비 -460). VIX 17.87 calm 지속. KRE/SPY 0.0905 — 14 거래일 underperform 지속 (관전). FOMC + CPI 2 critical 이벤트 통과.",
+      "strength": 0.3,
       "key_signals": [
         "USDJPY 156.64 (5d delta -0.12) (2026-05-08)",
         "USDKRW 1461.06 (5d delta -16.16) — EM FX stress",
         "USDCNY 6.8005",
-        "USEPU spot 383.17 (avg30d 383.79) — policy uncertainty",
+        "USEPU spot 223.00 (avg30d 370.00) — policy uncertainty 정상화 완료",
         "SAHM 0.13 / SLOOS 8.1 — recession leading",
         "SOFR-IORB -5bp — funding"
       ],
@@ -23,115 +23,113 @@
         "USDJPY 156.64 (5d delta -0.12) (2026-05-08)",
         "USDKRW 1461.06 (5d delta -16.16) — EM FX stress",
         "USDCNY 6.8005",
-        "USEPU spot 383.17 (avg30d 383.79) — policy uncertainty",
+        "USEPU spot 223.00 (avg30d 370.00) — policy uncertainty 정상화 완료",
         "SAHM 0.13 / SLOOS 8.1 — recession leading",
         "SOFR-IORB -5bp — funding"
-      ],
-      "_regenerated": true,
-      "_regenerated_ts": "2026-05-13T03:39:00.728312"
+      ]
     },
     "coincident_layer": {
-      "verdict": "VIX 18.38 (+1.19 from 5/8) — FOMC anticipation. SPY 734 mild pullback. KRE/SPY 0.0928 underperform 가속. Baa-Aaa 0.56 stable.",
-      "strength": 0.5,
+      "verdict": "VIX 17.87 calm (CPI 흡수). SPY 742.31 (+0.6% 연속 rally, 4/29 715 대비 +3.8%). KRE/SPY 0.0905 mild underperform 14 거래일 지속. Baa-Aaa 0.56 stable.",
+      "strength": 0.3,
       "key_signals": [
-        "VIX 18.38 (5d +0.09)",
+        "VIX 17.87 (CPI EOD)",
         "Baa-Aaa 0.56pp",
-        "Baa-10Y 1.69pp",
-        "YC 10Y-2Y +0.47pp",
+        "Baa-10Y 1.65pp",
+        "YC 10Y-2Y +0.48pp",
         "NFCI -0.510",
         "DXY 118.04",
         "Net liquidity 5831bn"
       ],
       "_old_signals": [
-        "VIX 18.38 (5d +0.09)",
+        "VIX 17.87 (CPI EOD)",
         "Baa-Aaa 0.56pp",
-        "Baa-10Y 1.69pp",
-        "YC 10Y-2Y +0.47pp",
+        "Baa-10Y 1.65pp",
+        "YC 10Y-2Y +0.48pp",
         "NFCI -0.510",
         "DXY 118.04",
         "Net liquidity 5831bn"
       ]
     },
     "catalyst_layer": {
-      "verdict": "Density 0.891 + imminent_high True. FOMC TODAY (5/12, importance 5). CPI T+1 (5/13), Google I/O T+2 (5/14). FOMC 결과 critical watch — USEPU 683 shock 의 정합 검증.",
+      "verdict": "Density 0.873 (FOMC+CPI 통과 후 mild drop) + imminent_high False. Google I/O T+1 (5/14, importance 4), Retail Sales T+2 (5/15, importance 4), NVDA T+6 (5/19, importance 5). 1주일 calm window.",
       "key_catalysts": [
-        "2026-05-12 FOMC + Powell 기자회견 (TODAY, importance 5)",
-        "2026-05-13 CPI April (T+1, importance 5)",
-        "2026-05-14 Google I/O day-1 (T+2, importance 4)",
-        "2026-05-15 Retail Sales (T+3, importance 4)",
-        "2026-05-19 NVDA earnings (T+7, importance 5)",
+        "2026-05-12 FOMC + Powell (DONE, importance 5)",
+        "2026-05-13 CPI April (DONE EOD, importance 5)",
+        "2026-05-14 Google I/O day-1 (T+1, importance 4)",
+        "2026-05-15 Retail Sales April (T+2, importance 4)",
+        "2026-05-19 NVDA earnings (T+6, importance 5)",
         "Iran escalation 모니터링 (continuous)"
       ]
     },
     "regime_view": {
-      "bull_continuation": 0.42,
-      "sideways": 0.3,
-      "bear_transition": 0.2,
-      "crisis": 0.08
+      "bull_continuation": 0.6,
+      "sideways": 0.28,
+      "bear_transition": 0.08,
+      "crisis": 0.04
     },
     "horizon_hours": 24,
-    "confidence": 0.72,
-    "rationale_synthesis": "FOMC day. USEPU 683 shock 후 383 정상화. VIX +1.19 anticipation rise. KRE/SPY underperform mild. 결과 발표 까지 wait-and-see.",
-    "next_trigger": "FOMC 14:00 ET 결과 + Powell 14:30 기자회견"
+    "confidence": 0.8,
+    "rationale_synthesis": "FOMC + CPI 2 critical 통과. USEPU 정상화 완료. VIX calm + SPY 연속 rally. KRE/SPY underperform 관전 포인트. Google I/O T+1.",
+    "next_trigger": "5/14 Google I/O day-1 (개장 후)"
   },
   "flow_result": {
-    "as_of_date": "2026-05-12",
-    "flow_regime": "neutral",
-    "bullish_score": 0.4,
-    "bearish_score": 0.35,
-    "net_flow_bias": 0.05,
+    "as_of_date": "2026-05-13",
+    "flow_regime": "leaning_bullish",
+    "bullish_score": 0.6,
+    "bearish_score": 0.2,
+    "net_flow_bias": 0.4,
     "components": {
-      "cftc_bullish_pressure": 0.4,
-      "cftc_bearish_pressure": 0.35,
-      "spy_bullish_flow": 0.45,
-      "spy_bearish_flow": 0.3,
-      "aaii_contrarian_bearish": 0.45,
-      "naaim_euphoria": 0.5,
-      "pcr_contrarian_bullish": 0.4
+      "cftc_bullish_pressure": 0.6,
+      "cftc_bearish_pressure": 0.2,
+      "spy_bullish_flow": 0.65,
+      "spy_bearish_flow": 0.2,
+      "aaii_contrarian_bearish": 0.35,
+      "naaim_euphoria": 0.6,
+      "pcr_contrarian_bullish": 0.45
     }
   },
   "sentiment_result": {
-    "as_of_date": "2026-05-12",
-    "sentiment_regime": "neutral",
-    "combined_net_sentiment": 0.05,
+    "as_of_date": "2026-05-13",
+    "sentiment_regime": "leaning_bullish",
+    "combined_net_sentiment": 0.3,
     "crisis_cluster_alert": false,
-    "cluster_score": 0.4,
+    "cluster_score": 0.25,
     "sub_detectors": {
       "finbert": {
         "available": true,
-        "positive": 0.35,
-        "neutral": 0.45,
-        "negative": 0.2,
-        "net_sentiment": 0.15
+        "positive": 0.5,
+        "neutral": 0.35,
+        "negative": 0.15,
+        "net_sentiment": 0.35
       },
       "narrative": {
         "available": true,
-        "tone": "wait_and_see"
+        "tone": "broad_relief"
       },
       "cluster": {
         "available": true,
-        "score": 0.4
+        "score": 0.25
       }
     }
   },
   "forecast_result": {
-    "as_of_date": "2026-05-12",
+    "as_of_date": "2026-05-13",
     "forecast_regime": "neutral",
     "forecasts": {
       "SPY": {
-        "current": 734.47,
-        "forecast_pct": 0.0,
+        "current": 742.31,
+        "forecast_pct": 0.3,
         "direction": "neutral"
       },
       "^VIX": {
-        "current": 18.38,
-        "forecast_pct": 5.0,
+        "current": 17.87,
+        "forecast_pct": 0.5,
         "mean_revert_applied": false,
         "mean_level": 18.0
       },
       "^TNX": {
-        "current": 4.38,
-        "forecast_pct": 0.5,
+        "current": 4.42,
+        "forecast_pct": 0.3,
         "direction": "neutral"
       },
       "JPY=X": {
@@ -142,33 +140,37 @@
   },
   "phase11_fusion": {
     "regime_view": {
-      "bull_continuation": 0.42,
-      "sideways": 0.3,
-      "bear_transition": 0.2,
-      "crisis": 0.08
+      "bull_continuation": 0.6,
+      "sideways": 0.28,
+      "bear_transition": 0.08,
+      "crisis": 0.04
     },
-    "alert_level": "YELLOW",
-    "raw_alert": "YELLOW",
-    "bear_plus_crisis": 0.28,
+    "alert_level": "GREEN",
+    "raw_alert": "GREEN",
+    "bear_plus_crisis": 0.12,
     "cascade": {
-      "scenario": "transient_caution",
-      "interpretation": "FOMC day. VIX +1.19 anticipation, KRE/SPY mild underperform, USEPU 정상화. Wait-and-see.",
-      "action": "Risk 70%, hedge 12%. FOMC 결과 watch.",
-      "confidence": "medium",
-      "severity": "mild"
+      "scenario": "broad_recovery",
+      "interpretation": "FOMC + CPI 2 critical 이벤트 통과. USEPU 683 peak → 223 정상화 완료. VIX 17.87 calm 지속. SPY 4/29 715 → 5/13 742.31 (+3.8% in 14 거래일). 사용자 framing (잠재 위험 측정) 정합 — 표면 강세 실현, 잠재 우려 catalyst 통과로 해소.",
+      "action": "Risk 85%, hedge 5%. Google I/O T+1, NVDA T+6 정상 모니터링.",
+      "confidence": "high",
+      "severity": "calm"
     },
-    "flow_regime": "neutral",
-    "flow_net_bias": 0.05,
-    "sentiment_regime": "neutral",
-    "sentiment_net": 0.05,
+    "flow_regime": "leaning_bullish",
+    "flow_net_bias": 0.4,
+    "sentiment_regime": "leaning_bullish",
+    "sentiment_net": 0.3,
     "crisis_cluster_alert": false,
     "forecast_regime": "neutral",
     "audit": {
       "m8_flow_modifier": {
-        "applied": false
+        "applied": true,
+        "direction": "amplify_bullish",
+        "scale_factor": 0.9
       },
       "m9_sentiment_overlay": {
-        "applied": false
+        "applied": true,
+        "direction": "stress_reduced_by_sentiment",
+        "scale_factor": 0.88
       },
       "m10_numerical_overlay": {
         "applied": false

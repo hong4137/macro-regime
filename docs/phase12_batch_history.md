@@ -1,8 +1,8 @@
 # Phase 12 Fragility Index — Batch History 시계열
 
-**생성**: 2026-05-13 03:39  
-**Sessions**: 52  
-**Date range**: 2000-04-14 ~ 2026-05-12
+**생성**: 2026-05-15 06:00  
+**Sessions**: 53  
+**Date range**: 2000-04-14 ~ 2026-05-13
 
 ## 1. Phase 분포 통계
 
@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | **active_crisis** | 19 | 91.0 | 87.3 | 93.9 |
 | **pre_crisis** | 22 | 62.1 | 33.5 | 82.9 |
-| **recovery** | 4 | 27.4 | 18.6 | 34.1 |
+| **recovery** | 5 | 32.0 | 18.6 | 50.2 |
 | **calm** | 7 | 8.8 | 2.2 | 13.7 |
 
 ## 2. Phase 별 Top Latent Vectors (avg %)
@@ -29,7 +29,7 @@
 
 | Vector | Avg contribution |
 |---|---|
-| policy uncertainty | 21.1% |
+| policy uncertainty | 21.0% |
 | geopolitical tail | 19.7% |
 | credit stress | 17.5% |
 | carry leverage | 14.3% |
@@ -39,11 +39,11 @@
 
 | Vector | Avg contribution |
 |---|---|
-| credit stress | 36.1% |
-| policy uncertainty | 15.2% |
-| catalyst density | 12.5% |
-| em fx stress | 11.9% |
-| geopolitical tail | 11.5% |
+| credit stress | 29.4% |
+| policy uncertainty | 16.2% |
+| geopolitical tail | 13.3% |
+| em fx stress | 12.6% |
+| catalyst density | 12.6% |
 
 ### calm
 
@@ -155,18 +155,19 @@
 | 2026-05-07 | **77.4** | critical | `pre_crisis` | 50.1 | 66.3 | 33.2 | 91.7 |
 | 2026-05-08 | **75.8** | critical | `pre_crisis` | 53.3 | 64.4 | 34.3 | 100.0 |
 | 2026-05-09 | **73.2** | critical | `pre_crisis` | 39.9 | 64.6 | 25.8 | 80.0 |
-| 2026-05-12 | **77.9** | critical | `pre_crisis` | 43.7 | 68.0 | 29.7 | 70.8 |
+| 2026-05-12 | **77.5** | critical | `pre_crisis` | 49.5 | 66.5 | 32.9 | 91.7 |
+| 2026-05-13 | **50.2** | elevated | `recovery` | 51.8 | 62.7 | 32.5 | 100.0 |
 
 ## 5. 핵심 발견 (Findings)
 
 ### 5.1 Phase 별 평균 fragility 단계적 분리
 
-- **calm** 8.8 → **recovery** 27.4 → **pre_crisis** 62.1 → **active_crisis** 91.0
+- **calm** 8.8 → **recovery** 32.0 → **pre_crisis** 62.1 → **active_crisis** 91.0
 
 ✅ **모노톤 증가 검증** — phase 별 fragility 가 정상 단계적 분리
 
 ### 5.2 Latent vector dominance
 
 - Active crisis 의 top vector: **credit_stress** (29.9%)
-- Pre-crisis 의 top vector: **policy_uncertainty** (21.1%)
+- Pre-crisis 의 top vector: **policy_uncertainty** (21.0%)
 
