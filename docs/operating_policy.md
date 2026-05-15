@@ -152,3 +152,119 @@ Phase 12.6 운영 가능 상태. 시스템이 **시장 진짜 변동을 LLM nois
 1. 매일 거래일 새 sample 누적 (수동 LLM 분석 + regenerate 자동 표준화)
 2. Catalyst calendar 자동화 (옵션, 별도 프로젝트)
 3. 운영 누적 후 backtest validation 추가
+
+---
+
+## 9. Data Fetch Timing 정책 (2026-05-15 추가)
+
+### 9.1 발견 배경
+
+5/15 fetch (한국 19:30 = 미국 EDT 06:30) 검증에서 발견:
+- fetch_tier1.py 의 yfinance ETF 결과 `latest_date: 2026-05-15` 라벨
+- 그러나 미국 정규장 (EDT 09:30-16:00) 미개장 시각
+- 실제 데이터 검증: SPY 5/14 EOD = 748.17, snapshot 의 5/15 라벨 = 739.40 → **intraday partial 데이터**
+- 즉 야후 finance 가 미국 EDT 일자 라벨로 fetch 시각 기준 데이터를 반환 — **labelling 신뢰 불가**
+
+### 9.2 권고 fetch 시각
+
+| 시간대 (KST) | 미국 ET 시간 | 미국장 상태 | 데이터 신뢰도 | 권고 |
+|---|---|---|---|---|
+| **06:00-09:00** | **17:00-20:00 (전일)** | **정규장 EOD 후** | **★★★ complete** | **권고** |
+| 09:00-18:00 | 20:00-05:00 | 폐장 | ★★ stale (전일 EOD 그대로) | 가능 |
+| 18:00-23:30 | 05:00-10:30 | 미개장 또는 장중 partial | ⚠️ unreliable | **금지** |
+| 23:30-06:00 (익일) | 10:30-17:00 | 정규장 진행 | ⚠️ intraday partial | **금지** |
+
+→ **권장**: 한국 시각 06:00-09:00 사이 daily Task Scheduler 실행
+→ **금지**: 한국 시각 저녁 (미국 ET 새벽/아침) 수동 fetch
+
+### 9.3 fetch 정확성 교차 검증 규칙
+
+snapshot 의 `latest_date` 와 `generated_at_utc` 의 시차 검증:
+
+```
+KST_fetch_time = generated_at_utc.astimezone(KST)
+ET_fetch_time = generated_at_utc.astimezone(US/Eastern)
+
+# 미국 정규장 EOD = ET 16:00. 그 이후 fetch 만 EOD complete.
+if ET_fetch_time < 16:00 (장중) or ET_fetch_time < ET market open:
+    yfinance ETF 의 "오늘 라벨" 데이터는 의심
+    → snapshot 의 raw history 에서 직전 거래일 (D-1) 값 사용
+```
+
+### 9.4 yfinance label 불일치 해결법
+
+snapshot 작성/검증 시:
+1. FRED 일별 데이터 (VIX, USEPU, UST 등) — 1일 lag 신뢰
+2. yfinance ETF — `latest_date` 만 신뢰하지 말고 raw history 의 **연속성 검증**
+   - `D-1` close 가 sample 의 직전일 EOD 와 일치하는지 확인
+   - 불일치 시 사용자가 manual override
+3. `_meta.event` 또는 `data_caveat` 에 fetch timing 명시
+
+### 9.5 운영 정책 update
+
+- **daily Task Scheduler 시각**: 06:00 KST (확인 완료)
+- **수동 fetch 금지 시간**: 한국 시각 17:00-06:00 (미국장 미개장/장중)
+- **데이터 검증**: snapshot 의 raw history 직접 확인 후 sample 작성
+
+---
+
+## 10. 검증 history (Phase 12.6 → 12.8)
+
+| Version | 변경 | sessions | recovery n | 비고 |
+|---|---|---|---|---|
+| 12.6 | T2 snapshot 표준화 | 45 | 4 | LLM noise 부분 보정 |
+| 12.7 | path 3f (lat>40 → pre_crisis) | 50 | 4 | 2023-10-09 false negative fix |
+| 12.8 | path 3c 강화 (lat>30 → pre_crisis) | 52 | 4 | 2023-12-13 false positive fix |
+| 12.8 | + 5/12, 5/13, 5/14 sample | **54** | **6** | **5/13-5/14 첫 연속 recovery 진입** |
+
+### 10.1 View A 최종 검증 (4/27-5/14, 54 sessions batch)
+
+| 검증 항목 | 결과 |
+|---|---|
+| Surface 강세 실현 | SPY +4.50% (716→748.17, 15 거래일) |
+| 잠재 위험 측정 정확 | fragility peak 82.9 (4/29), latent peak 71.4 (5/4-5) |
+| 수급 cushion 실효 | leaning_bullish 14 거래일 지속 |
+| Catalyst 통과 → 자동 recovery | FOMC+CPI+I/O 3 critical 통과 → 5/13-14 recovery |
+| Phase 모노톤 분리 | calm 8.8 < recovery 34.6 < pre 62.1 < active 91.0 |
+| Latent 자체 감소 | 71.4 peak → 59.5 (-11.9) |
+| Sustainability 최강 | 100.0 (5/6, 5/8, 5/13, 5/14 4회) |
+
+→ **View A 완전 정합**. 4/29 imminent (82.9) → 5/14 recovery (47.6) = **-35.3 fragility 감소 in 15 거래일**.
+
+---
+
+## 11. Cross-platform 운영 (2026-05-15 추가)
+
+### 11.1 발견 배경
+
+Cowork bash 샌드박스 (Linux) 에서 직접 스크립트 실행 시도 시 Windows 경로 (`D:\코워크`) 하드코드 에러 발생.
+
+### 11.2 패치된 스크립트
+
+다음 스크립트에 환경변수 + 자동 OS 감지 로직 추가:
+
+- `D:\코워크\scripts\regenerate_from_snapshots.py`
+- `D:\코워크\scripts\fragility_batch.py`
+- `D:\코워크\scripts\fragility_index.py`
+
+```python
+_DEFAULT_WIN = Path(r"D:\코워크")
+_DEFAULT_LIN = Path("/sessions/quirky-magical-bardeen/mnt/코워크")
+_env_base = os.environ.get("PHASE12_BASE_DIR")
+if _env_base:
+    BASE_DIR = Path(_env_base)
+elif _DEFAULT_WIN.exists():
+    BASE_DIR = _DEFAULT_WIN
+elif _DEFAULT_LIN.exists():
+    BASE_DIR = _DEFAULT_LIN
+```
+
+### 11.3 미패치 (Windows 전용)
+
+- `fetch_tier1.py`, `fetch_historical.py` — `.env` API key 위치 Windows 의존
+- `daily_complete.ps1` 등 PowerShell 스크립트 — Windows 전용
+
+### 11.4 사용
+
+**Windows**: 기존대로 PowerShell 에서 직접 실행
+**Linux bash (Cowork)**: 패치된 3개 스크립트는 자동 동작
