@@ -1,14 +1,14 @@
 # Phase 12 Fragility Index — Batch History 시계열
 
-**생성**: 2026-05-17 00:30  
-**Sessions**: 67  
+**생성**: 2026-05-16 16:19  
+**Sessions**: 72  
 **Date range**: 2000-04-14 ~ 2026-05-15
 
 ## 1. Phase 분포 통계
 
 | Phase | n | Avg fragility | Min | Max |
 |---|---|---|---|---|
-| **active_crisis** | 19 | 91.0 | 87.7 | 94.2 |
+| **active_crisis** | 24 | 91.1 | 87.7 | 94.2 |
 | **pre_crisis** | 31 | 55.6 | 32.9 | 84.1 |
 | **recovery** | 8 | 30.9 | 18.0 | 40.6 |
 | **calm** | 9 | 8.2 | 2.2 | 13.1 |
@@ -19,11 +19,11 @@
 
 | Vector | Avg contribution |
 |---|---|
-| credit stress | 25.1% |
-| policy uncertainty | 13.9% |
-| geopolitical tail | 12.8% |
-| catalyst density | 7.8% |
-| em fx stress | 6.5% |
+| credit stress | 25.9% |
+| policy uncertainty | 14.3% |
+| geopolitical tail | 14.0% |
+| catalyst density | 8.2% |
+| em fx stress | 5.7% |
 
 ### pre_crisis
 
@@ -57,10 +57,34 @@
 
 ## 3. Crisis 직전 14일 fragility trajectory
 
-- Active crisis sessions: **19**
-- 14일 이내 prior session 가 있는 case: **7**
+- Active crisis sessions: **24**
+- 14일 이내 prior session 가 있는 case: **11**
 
 ### Per-crisis trajectory
+
+**2008-09-15** (crisis fragility 93.1):
+
+| D- | Date | Fragility | Phase |
+|---|---|---|---|
+| D-3 | 2008-09-12 | 90.5 | active_crisis |
+
+**2008-09-29** (crisis fragility 92.5):
+
+| D- | Date | Fragility | Phase |
+|---|---|---|---|
+| D-14 | 2008-09-15 | 93.1 | active_crisis |
+
+**2008-10-10** (crisis fragility 94.2):
+
+| D- | Date | Fragility | Phase |
+|---|---|---|---|
+| D-11 | 2008-09-29 | 92.5 | active_crisis |
+
+**2018-12-24** (crisis fragility 90.5):
+
+| D- | Date | Fragility | Phase |
+|---|---|---|---|
+| D-5 | 2018-12-19 | 60.9 | pre_crisis |
 
 **2020-03-16** (crisis fragility 90.2):
 
@@ -117,17 +141,21 @@
 |---|---|---|---|---|---|---|---|
 | 2000-04-14 | **88.9** | imminent | `active_crisis` | 5.1 | 26.1 | 1.3 | 30.0 |
 | 2002-10-09 | **92.0** | imminent | `active_crisis` | 2.4 | 46.6 | 1.1 | 9.0 |
+| 2008-09-12 | **90.5** | imminent | `active_crisis` | 2.1 | 36.9 | 0.8 | 9.0 |
 | 2008-09-15 | **93.1** | imminent | `active_crisis` | 2.4 | 54.2 | 1.3 | 9.0 |
+| 2008-09-29 | **92.5** | imminent | `active_crisis` | 0.9 | 50.0 | 0.5 | 9.0 |
 | 2008-10-10 | **94.2** | imminent | `active_crisis` | 1.2 | 61.0 | 0.7 | 9.0 |
 | 2009-03-09 | **93.6** | imminent | `active_crisis` | 1.2 | 57.3 | 0.7 | 9.0 |
 | 2009-03-23 | **34.1** | mild | `recovery` | 43.6 | 42.6 | 18.6 | 76.7 |
 | 2010-05-06 | **89.7** | imminent | `active_crisis` | 36.9 | 31.6 | 11.7 | 30.0 |
 | 2011-08-05 | **91.2** | imminent | `active_crisis` | 5.1 | 41.2 | 2.1 | 30.0 |
 | 2012-09-13 | **18.0** | calm | `recovery` | 66.6 | 22.5 | 15.0 | 100.0 |
+| 2015-08-24 | **90.9** | imminent | `active_crisis` | 1.8 | 39.2 | 0.7 | 9.0 |
 | 2015-12-16 | **38.6** | mild | `pre_crisis` | 40.8 | 34.0 | 13.9 | 70.8 |
 | 2017-09-15 | **2.2** | calm | `calm` | 57.4 | 4.5 | 2.6 | 75.4 |
 | 2018-02-05 | **90.1** | imminent | `active_crisis` | 40.2 | 34.0 | 13.7 | 30.0 |
 | 2018-12-19 | **60.9** | critical | `pre_crisis` | 4.7 | 44.2 | 2.1 | 30.0 |
+| 2018-12-24 | **90.5** | imminent | `active_crisis` | 43.1 | 36.6 | 15.8 | 9.0 |
 | 2019-04-15 | **6.3** | calm | `calm` | 61.0 | 12.7 | 7.7 | 65.7 |
 | 2019-08-05 | **87.7** | imminent | `active_crisis` | 47.0 | 18.0 | 8.5 | 45.0 |
 | 2020-02-19 | **9.6** | calm | `calm` | 48.6 | 19.1 | 9.3 | 71.5 |
@@ -143,6 +171,7 @@
 | 2022-03-16 | **52.5** | elevated | `pre_crisis` | 34.4 | 47.1 | 16.2 | 70.8 |
 | 2022-06-15 | **93.3** | imminent | `active_crisis` | 5.1 | 55.3 | 2.8 | 30.0 |
 | 2022-06-17 | **88.6** | imminent | `active_crisis` | 43.7 | 23.9 | 10.4 | 30.0 |
+| 2022-09-26 | **93.2** | imminent | `active_crisis` | 2.7 | 54.4 | 1.5 | 9.0 |
 | 2022-10-13 | **51.7** | elevated | `pre_crisis` | 2.7 | 37.7 | 1.0 | 55.2 |
 | 2023-03-08 | **8.8** | calm | `calm` | 44.6 | 17.7 | 7.9 | 65.0 |
 | 2023-03-09 | **45.0** | elevated | `pre_crisis` | 23.8 | 21.4 | 5.1 | 22.3 |
@@ -187,12 +216,12 @@
 
 ### 5.1 Phase 별 평균 fragility 단계적 분리
 
-- **calm** 8.2 → **recovery** 30.9 → **pre_crisis** 55.6 → **active_crisis** 91.0
+- **calm** 8.2 → **recovery** 30.9 → **pre_crisis** 55.6 → **active_crisis** 91.1
 
 ✅ **모노톤 증가 검증** — phase 별 fragility 가 정상 단계적 분리
 
 ### 5.2 Latent vector dominance
 
-- Active crisis 의 top vector: **credit_stress** (25.1%)
+- Active crisis 의 top vector: **credit_stress** (25.9%)
 - Pre-crisis 의 top vector: **policy_uncertainty** (17.8%)
 
