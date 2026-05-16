@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-05-15",
-  "fragility_index": 49.5,
+  "fragility_index": 45.7,
   "fragility_level": "elevated",
   "level_color": "#f97316",
   "crisis_phase": {
@@ -17,9 +17,9 @@
       }
     },
     "latent_stress": {
-      "score": 61.9,
+      "score": 57.1,
       "vectors": {
-        "policy_uncertainty": 0.7929999999999999,
+        "policy_uncertainty": 0.528,
         "carry_leverage": 0.666,
         "em_fx_stress": 0.746,
         "sector_dispersion": 0.6,
@@ -28,18 +28,18 @@
         "catalyst_density": 0.42
       },
       "contributions_pct": {
-        "policy_uncertainty": 23.1,
-        "carry_leverage": 19.4,
-        "em_fx_stress": 15.7,
-        "sector_dispersion": 9.7,
-        "credit_stress": 2.5,
-        "geopolitical_tail": 24.2,
-        "catalyst_density": 5.4
+        "policy_uncertainty": 16.6,
+        "carry_leverage": 21.0,
+        "em_fx_stress": 17.0,
+        "sector_dispersion": 10.5,
+        "credit_stress": 2.7,
+        "geopolitical_tail": 26.3,
+        "catalyst_density": 5.9
       },
       "warnings": []
     },
     "decoupling": {
-      "score": 28.8,
+      "score": 26.6,
       "interpretation": "약한 디커플링"
     },
     "sustainability": {
@@ -68,9 +68,9 @@
     },
     {
       "trigger": "USEPU 600 돌파 (정책 위기)",
-      "current": 257,
+      "current": 151,
       "target": 600,
-      "distance_pct": 133.5,
+      "distance_pct": 297.4,
       "weight": "medium"
     },
     {
@@ -87,8 +87,8 @@
     "review_at_fragility": 60,
     "narrative": "표면 강세 + 잠재 위험 누적 시작 — mild watch, 5% hedge"
   },
-  "narrative": "Fragility 49.5/100 (elevated, phase=recovery). Surface 46 / Latent 62 / Decoupling 29 / Sustainability 82. Top vectors: geopolitical_tail: 24% | policy_uncertainty: 23% | carry_leverage: 19%",
+  "narrative": "Fragility 45.7/100 (elevated, phase=recovery). Surface 46 / Latent 57 / Decoupling 27 / Sustainability 82. Top vectors: geopolitical_tail: 26% | carry_leverage: 21% | em_fx_stress: 17%",
   "warnings": [],
   "measurement_quality": "high",
-  "ts": "2026-05-16T18:01:15.987753"
+  "ts": "2026-05-16T18:13:02.238491"
 }

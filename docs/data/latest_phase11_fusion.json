@@ -30,7 +30,7 @@
         "USDJPY 156.64 (5d delta -0.12) (2026-05-08)",
         "USDKRW 1461.06 (5d delta -16.16) — EM FX stress",
         "USDCNY 6.8005",
-        "USEPU 5dMA 257.92 (raw spot 151.67, weekday bias-adj n=5, avg30d 366.26) — policy uncertainty",
+        "USEPU spot 151.67 (avg30d 366.26, 5dMA-ref 257.92 weekday raw-preserve n=5) — policy uncertainty",
         "SAHM 0.13 / SLOOS 8.1 — recession leading",
         "SOFR-IORB -9bp — funding"
       ],
@@ -56,7 +56,7 @@
         "SOFR-IORB -9bp — funding"
       ],
       "_regenerated": true,
-      "_regenerated_ts": "2026-05-16T18:01:08.368651"
+      "_regenerated_ts": "2026-05-16T18:13:01.107453"
     },
     "coincident_layer": {
       "verdict": "VIX 17.26 calm 유지 (5/14 latest). SPY 5/15 739.17 (-1.21% mild pullback, 4/29 711.58 대비 +3.88% in 16 거래일). KRE/SPY 0.0906 stable. BREAKEVEN 2.49 / FORWARD 2.28 — 인플레 기대 정상 범위.",
