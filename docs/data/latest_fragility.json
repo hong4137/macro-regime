@@ -13,7 +13,10 @@
       "components": {
         "bull_regime": 0.48,
         "spy_momentum": 0.417,
-        "vix_low": 0.516
+        "vix_low": 0.516,
+        "vix_curr_used": 17.26,
+        "vix_source": "forecast",
+        "spy_source": "forecast"
       }
     },
     "latent_stress": {
@@ -90,5 +93,5 @@
   "narrative": "Fragility 45.7/100 (elevated, phase=recovery). Surface 46 / Latent 57 / Decoupling 27 / Sustainability 82. Top vectors: geopolitical_tail: 26% | carry_leverage: 21% | em_fx_stress: 17%",
   "warnings": [],
   "measurement_quality": "high",
-  "ts": "2026-05-16T21:57:35.380944"
+  "ts": "2026-05-16T22:46:48.740651"
 }

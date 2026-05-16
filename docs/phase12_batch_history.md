@@ -1,6 +1,6 @@
 # Phase 12 Fragility Index — Batch History 시계열
 
-**생성**: 2026-05-16 21:57  
+**생성**: 2026-05-16 22:46  
 **Sessions**: 64  
 **Date range**: 2000-04-14 ~ 2026-05-15
 
@@ -9,9 +9,9 @@
 | Phase | n | Avg fragility | Min | Max |
 |---|---|---|---|---|
 | **active_crisis** | 19 | 91.0 | 87.7 | 93.9 |
-| **pre_crisis** | 28 | 62.7 | 33.5 | 82.9 |
+| **pre_crisis** | 27 | 63.3 | 33.5 | 82.9 |
 | **recovery** | 7 | 36.2 | 18.6 | 50.2 |
-| **calm** | 10 | 8.6 | 2.2 | 13.7 |
+| **calm** | 11 | 9.6 | 2.2 | 19.6 |
 
 ## 2. Phase 별 Top Latent Vectors (avg %)
 
@@ -30,10 +30,10 @@
 | Vector | Avg contribution |
 |---|---|
 | policy uncertainty | 21.0% |
-| geopolitical tail | 20.9% |
-| credit stress | 16.5% |
-| carry leverage | 15.5% |
-| em fx stress | 13.4% |
+| geopolitical tail | 20.7% |
+| carry leverage | 16.0% |
+| credit stress | 15.8% |
+| em fx stress | 13.9% |
 
 ### recovery
 
@@ -49,11 +49,11 @@
 
 | Vector | Avg contribution |
 |---|---|
-| credit stress | 56.6% |
-| catalyst density | 11.9% |
-| sector dispersion | 9.0% |
-| em fx stress | 6.4% |
-| geopolitical tail | 6.2% |
+| credit stress | 54.5% |
+| catalyst density | 11.6% |
+| sector dispersion | 9.3% |
+| geopolitical tail | 7.9% |
+| em fx stress | 5.9% |
 
 ## 3. Crisis 직전 14일 fragility trajectory
 
@@ -66,14 +66,14 @@
 
 | D- | Date | Fragility | Phase |
 |---|---|---|---|
-| D-7 | 2020-03-09 | 45.6 | pre_crisis |
+| D-7 | 2020-03-09 | 19.6 | calm |
 
 **2020-03-23** (crisis fragility 92.6):
 
 | D- | Date | Fragility | Phase |
 |---|---|---|---|
 | D-7 | 2020-03-16 | 90.3 | active_crisis |
-| D-14 | 2020-03-09 | 45.6 | pre_crisis |
+| D-14 | 2020-03-09 | 19.6 | calm |
 
 **2022-06-17** (crisis fragility 88.7):
 
@@ -127,10 +127,10 @@
 | 2019-04-15 | **6.7** | calm | `calm` | 61.0 | 13.4 | 8.2 | 65.7 |
 | 2019-08-05 | **87.7** | imminent | `active_crisis` | 47.0 | 18.0 | 8.5 | 45.0 |
 | 2020-02-19 | **10.1** | calm | `calm` | 48.6 | 20.1 | 9.8 | 71.5 |
-| 2020-02-21 | **7.8** | calm | `calm` | 50.0 | 15.5 | 7.8 | 65.0 |
-| 2020-02-24 | **8.2** | calm | `calm` | 50.0 | 16.3 | 8.2 | 65.0 |
-| 2020-02-27 | **9.3** | calm | `calm` | 50.0 | 18.6 | 9.3 | 65.0 |
-| 2020-03-09 | **45.6** | elevated | `pre_crisis` | 50.0 | 39.1 | 19.6 | 65.0 |
+| 2020-02-21 | **7.8** | calm | `calm` | 37.1 | 15.5 | 5.8 | 65.0 |
+| 2020-02-24 | **8.2** | calm | `calm` | 15.0 | 16.3 | 2.4 | 65.0 |
+| 2020-02-27 | **9.3** | calm | `calm` | 15.0 | 18.6 | 2.8 | 65.0 |
+| 2020-03-09 | **19.6** | calm | `calm` | 15.0 | 39.1 | 5.9 | 65.0 |
 | 2020-03-16 | **90.3** | imminent | `active_crisis` | 31.4 | 35.2 | 11.1 | 9.0 |
 | 2020-03-23 | **92.6** | imminent | `active_crisis` | 0.7 | 50.6 | 0.4 | 22.3 |
 | 2021-05-15 | **3.8** | calm | `calm` | 43.9 | 7.5 | 3.3 | 55.5 |
@@ -180,7 +180,7 @@
 
 ### 5.1 Phase 별 평균 fragility 단계적 분리
 
-- **calm** 8.6 → **recovery** 36.2 → **pre_crisis** 62.7 → **active_crisis** 91.0
+- **calm** 9.6 → **recovery** 36.2 → **pre_crisis** 63.3 → **active_crisis** 91.0
 
 ✅ **모노톤 증가 검증** — phase 별 fragility 가 정상 단계적 분리
 
