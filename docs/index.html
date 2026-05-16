@@ -134,7 +134,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <div class="wrap">
 
 <h1>거시경제 국면 대시보드 <span style="color:var(--accent);font-size:14px;font-weight:400">v5 · Phase 12 (잠재 취약성 측정)</span></h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-15 · 마지막 업데이트: 2026-05-17 02:16:57</div>
+<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-15 · 마지막 업데이트: 2026-05-17 02:33:39</div>
 
 <div class="kpis">
   <div class="kpi"><div class="l">전체 세션</div><div class="v">72</div></div>
@@ -510,11 +510,11 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
         </tr>
         <tr>
           <td>2026-05-13</td>
-          <td><span class="frag-pill" style="color:#f97316;font-weight:700">41</span></td>
-          <td><span style="color:#60a5fa;font-size:10px">🔵 회복기</span></td>
-          <td><span class="alert-pill" style="background:#22c55e33;color:#22c55e">GREEN</span></td>
-          <td><span class="cas-pill" style="color:#60a5fa">broad_recovery</span></td>
-          <td>0.120</td>
+          <td><span class="frag-pill" style="color:#f97316;font-weight:700">58</span></td>
+          <td><span style="color:#eab308;font-size:10px">🟡 위기 임박</span></td>
+          <td><span class="alert-pill" style="background:#eab30833;color:#eab308">YELLOW</span></td>
+          <td><span class="cas-pill" style="color:#eab308">transient_caution</span></td>
+          <td>0.300</td>
           <td><span class="flow-mini" style="color:#86efac">leaning bullish</span></td>
           <td><span class="sent-mini" style="color:#888">leaning bullish</span></td>
           <td></td>
@@ -523,11 +523,11 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
         </tr>
         <tr>
           <td>2026-05-14</td>
-          <td><span class="frag-pill" style="color:#eab308;font-weight:700">38</span></td>
-          <td><span style="color:#60a5fa;font-size:10px">🔵 회복기</span></td>
-          <td><span class="alert-pill" style="background:#22c55e33;color:#22c55e">GREEN</span></td>
-          <td><span class="cas-pill" style="color:#60a5fa">broad_recovery</span></td>
-          <td>0.100</td>
+          <td><span class="frag-pill" style="color:#f97316;font-weight:700">55</span></td>
+          <td><span style="color:#eab308;font-size:10px">🟡 위기 임박</span></td>
+          <td><span class="alert-pill" style="background:#eab30833;color:#eab308">YELLOW</span></td>
+          <td><span class="cas-pill" style="color:#eab308">transient_caution</span></td>
+          <td>0.280</td>
           <td><span class="flow-mini" style="color:#86efac">leaning bullish</span></td>
           <td><span class="sent-mini" style="color:#888">leaning bullish</span></td>
           <td></td>
@@ -642,22 +642,82 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
       <tr><td style="padding:6px;color:#dc2626;">mechanical_cascade</td><td style="padding:6px;">50%+</td><td style="padding:6px;">방어 모드</td><td style="padding:6px;">강제 매도, 즉시 회피</td></tr>
     </table>
 
+    <h3 style="color:#fbbf24;">⚡ 스트레스 (Stress) — bear + crisis regime 확률 합</h3>
+    <p style="background:#0f172a;padding:12px;border-left:3px solid #ef4444;border-radius:4px;margin-bottom:12px;">
+      대시보드 <strong>"스트레스"</strong> 컬럼의 숫자값 (예: 0.399) 은 <strong>bear_plus_crisis</strong> —
+      유동성 에이전트가 향후 24시간 horizon 에서 시장이 <strong>bear_transition</strong> 또는
+      <strong>crisis</strong> regime 으로 진입할 확률의 <strong>합</strong>입니다.
+    </p>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:12px;font-size:13px;">
+      <tr style="background:#0f172a;">
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">값 범위</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">의미</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">색상</th>
+      </tr>
+      <tr><td style="padding:6px;">0.00 ~ 0.20</td><td style="padding:6px;">정상 — bear/crisis 확률 낮음</td><td style="padding:6px;color:#22c55e;">GREEN</td></tr>
+      <tr><td style="padding:6px;">0.20 ~ 0.40</td><td style="padding:6px;">약한 stress — 주의 단계</td><td style="padding:6px;color:#eab308;">YELLOW</td></tr>
+      <tr><td style="padding:6px;">0.40 ~ 0.60</td><td style="padding:6px;">상승된 stress — bear 비중 증가</td><td style="padding:6px;color:#f97316;">ELEVATED</td></tr>
+      <tr><td style="padding:6px;">0.60 ~ 1.00</td><td style="padding:6px;">강한 stress — crisis 비중 dominant</td><td style="padding:6px;color:#ef4444;">RED</td></tr>
+    </table>
+    <p style="color:#94a3b8;font-size:13px;margin-bottom:12px;">
+      4 regime 확률은 <strong>bull_continuation + sideways + bear_transition + crisis = 1.0</strong> 으로 정규화됩니다 (합 1.0).
+      stress = bear + crisis 만 합산한 <strong>방어적 시각의 종합 확률</strong>.
+    </p>
+
+    <h3 style="color:#fbbf24;">📐 취약성 vs 스트레스 vs 국면 — 3 차원 비교</h3>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;font-size:13px;">
+      <tr style="background:#0f172a;">
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">차원</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">★ 취약성 (Fragility)</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">⚡ 스트레스 (Stress)</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">📊 국면 (Phase)</th>
+      </tr>
+      <tr><td style="padding:6px;border-bottom:1px solid #1e293b;">답하는 질문</td><td style="padding:6px;border-bottom:1px solid #1e293b;">"지금 잠재 risk 가 얼마나?"</td><td style="padding:6px;border-bottom:1px solid #1e293b;">"향후 24h bear/crisis 확률?"</td><td style="padding:6px;border-bottom:1px solid #1e293b;">"지금 어디 단계?"</td></tr>
+      <tr><td style="padding:6px;border-bottom:1px solid #1e293b;">측정 시점</td><td style="padding:6px;border-bottom:1px solid #1e293b;">현재 (static snapshot)</td><td style="padding:6px;border-bottom:1px solid #1e293b;">★ 24시간 outlook (dynamic)</td><td style="padding:6px;border-bottom:1px solid #1e293b;">현재 (단계 라벨)</td></tr>
+      <tr><td style="padding:6px;border-bottom:1px solid #1e293b;">산출 입력</td><td style="padding:6px;border-bottom:1px solid #1e293b;">12 vector latent 합 + surface + decoupling + sustainability</td><td style="padding:6px;border-bottom:1px solid #1e293b;">유동성 에이전트의 regime 확률 분포</td><td style="padding:6px;border-bottom:1px solid #1e293b;">취약성 + sustainability</td></tr>
+      <tr><td style="padding:6px;border-bottom:1px solid #1e293b;">값 범위</td><td style="padding:6px;border-bottom:1px solid #1e293b;">0 ~ 100</td><td style="padding:6px;border-bottom:1px solid #1e293b;">0.00 ~ 1.00</td><td style="padding:6px;border-bottom:1px solid #1e293b;">4단계 라벨</td></tr>
+      <tr><td style="padding:6px;">예측 능력</td><td style="padding:6px;">❌ 측정만 (예측 X)</td><td style="padding:6px;">△ 24h 확률 분포</td><td style="padding:6px;">❌ 측정만 (예측 X)</td></tr>
+    </table>
+
+    <h3 style="color:#fbbf24;">🔬 실제 비교 — 4/29 vs Lehman D-1</h3>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;font-size:13px;">
+      <tr style="background:#0f172a;">
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">Case</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">취약성</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">스트레스 (bear+crisis)</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">국면</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">사후 사실</th>
+      </tr>
+      <tr><td style="padding:6px;">2026-04-29 (현재)</td><td style="padding:6px;color:#ef4444;">84.1</td><td style="padding:6px;color:#f97316;">0.399</td><td style="padding:6px;color:#f59e0b;">위기 임박</td><td style="padding:6px;">5/15 +3.88% 회복</td></tr>
+      <tr><td style="padding:6px;">2008-09-12 Lehman D-1</td><td style="padding:6px;color:#dc2626;">90.5</td><td style="padding:6px;color:#dc2626;">0.880</td><td style="padding:6px;color:#ef4444;">활성 위기</td><td style="padding:6px;">T+30 -27.31%</td></tr>
+      <tr><td style="padding:6px;">2020-02-21 COVID D-1</td><td style="padding:6px;color:#22c55e;">7.5</td><td style="padding:6px;color:#22c55e;">0.05</td><td style="padding:6px;color:#22c55e;">평시</td><td style="padding:6px;color:#ef4444;">T+30 -26.68% (★ FN)</td></tr>
+    </table>
+    <p style="color:#94a3b8;font-size:13px;margin-bottom:20px;">
+      → <strong>스트레스 (bear+crisis)</strong> 가 매우 높으면 (Lehman 0.88) 시스템이 24h 내 bear/crisis 진입 확률을 강하게 측정한 상태.
+      4/29 (0.399) 는 중간 — "잠재 stress 적재됨 (취약성 84) 그러나 sustainability 유지로 24h outlook 은 moderate".
+      COVID D-1 (0.05) 는 시스템 한계 — 외부 surprise (질병) 는 유동성 vector 로 측정 불가.
+    </p>
+
     <h3 style="color:#fbbf24;">🧬 비유 — 의학적 관점</h3>
     <p style="background:#0f172a;padding:12px;border-left:3px solid #60a5fa;border-radius:4px;">
+      <strong>취약성</strong> = 환자의 <em>혈압/콜레스테롤/체중</em> 등 누적 risk factor 점수<br>
+      <strong>스트레스</strong> = 환자의 <em>다음 24시간 응급실 갈 확률</em> (다이나믹 outlook)<br>
       <strong>국면</strong> = 환자의 <em>활력징후 점수</em> (1~5 등급, 단순 위험도)<br>
       <strong>캐스케이드</strong> = 환자의 <em>병명/진단</em> (감기/폐렴/심근경색)<br><br>
       같은 활력징후 4등급이라도:<br>
       • 감기 (≈ narrative_scare) → 휴식만으로 OK<br>
       • 폐렴 (≈ real_stress_brewing) → 항생제 필요<br>
       • 심근경색 초기 (≈ mechanical_cascade) → 즉시 응급실<br><br>
-      → <strong>활력징후만 보고 처방하면 위험. 둘 다 봐야 정확한 처치.</strong>
+      → <strong>4 가지 모두 봐야 정확한 처치</strong>. 단일 지표만으로는 부족.
     </p>
 
     <h3 style="color:#fbbf24;">💡 대시보드 표 읽는 법</h3>
     <ol style="padding-left:24px;">
-      <li><strong>국면</strong> 보고 → 지금 시점이 위기 단계의 어디인지 확인</li>
-      <li><strong>캐스케이드</strong> 보고 → 그 위기의 <strong>성격/원인</strong> 파악</li>
-      <li>둘 조합해서 정확한 action 결정 (포지션/헷지 비율)</li>
+      <li><strong>★ 취약성</strong> 보고 → 잠재 risk 적재량 (0~100) 확인 — "지금 누적된 stress"</li>
+      <li><strong>국면</strong> 보고 → 위기 단계의 어디인지 확인 — "지금 어디 단계"</li>
+      <li><strong>⚡ 스트레스</strong> 보고 → 24h bear/crisis 진입 확률 (0~1) 파악 — "다음 방향 outlook"</li>
+      <li><strong>캐스케이드</strong> 보고 → 위기의 성격/원인 파악 — "왜 이 상태인지"</li>
+      <li>4개 조합해서 정확한 action 결정 (포지션/헷지 비율)</li>
     </ol>
 
   </div>
