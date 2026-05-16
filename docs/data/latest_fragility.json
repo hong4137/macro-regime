@@ -1,8 +1,8 @@
 {
   "as_of_date": "2026-05-15",
-  "fragility_index": 46.4,
-  "fragility_level": "elevated",
-  "level_color": "#f97316",
+  "fragility_index": 37.5,
+  "fragility_level": "mild",
+  "level_color": "#eab308",
   "crisis_phase": {
     "phase": "recovery",
     "interpretation": "Post-stress recovery (cascade)"
@@ -20,7 +20,7 @@
       }
     },
     "latent_stress": {
-      "score": 58.0,
+      "score": 46.9,
       "vectors": {
         "policy_uncertainty": 0.528,
         "carry_leverage": 0.666,
@@ -29,30 +29,30 @@
         "credit_stress": 0.086,
         "geopolitical_tail": 1.0,
         "catalyst_density": 0.42,
-        "bond_vol_stress": 0.0,
-        "vol_of_vol_spike": 0.0,
-        "safe_haven_demand": 0.0,
-        "oil_shock": 0.0,
-        "em_credit_stress": 0.0
+        "bond_vol_stress": 0,
+        "vol_of_vol_spike": 0.216,
+        "safe_haven_demand": 0,
+        "oil_shock": 0.533,
+        "em_credit_stress": 0.1
       },
       "contributions_pct": {
-        "policy_uncertainty": 13.7,
-        "carry_leverage": 14.9,
-        "em_fx_stress": 12.9,
-        "sector_dispersion": 8.3,
-        "credit_stress": 1.9,
-        "geopolitical_tail": 20.7,
-        "catalyst_density": 3.6,
+        "policy_uncertainty": 16.9,
+        "carry_leverage": 18.4,
+        "em_fx_stress": 15.9,
+        "sector_dispersion": 10.2,
+        "credit_stress": 2.4,
+        "geopolitical_tail": 25.6,
+        "catalyst_density": 4.5,
         "bond_vol_stress": 0.0,
-        "vol_of_vol_spike": 0.0,
+        "vol_of_vol_spike": 2.3,
         "safe_haven_demand": 0.0,
-        "oil_shock": 0.0,
-        "em_credit_stress": 0.0
+        "oil_shock": 3.4,
+        "em_credit_stress": 0.4
       },
       "warnings": []
     },
     "decoupling": {
-      "score": 27.0,
+      "score": 21.8,
       "interpretation": "약한 디커플링"
     },
     "sustainability": {
@@ -70,13 +70,6 @@
       "current": 156.64,
       "target": 162,
       "distance_pct": 3.4,
-      "weight": "high"
-    },
-    {
-      "trigger": "VIX 25 돌파 (vol regime shift)",
-      "current": 17.26,
-      "target": 25,
-      "distance_pct": 44.8,
       "weight": "high"
     },
     {
@@ -100,8 +93,8 @@
     "review_at_fragility": 60,
     "narrative": "표면 강세 + 잠재 위험 누적 시작 — mild watch, 5% hedge"
   },
-  "narrative": "Fragility 46.4/100 (elevated, phase=recovery). Surface 46 / Latent 58 / Decoupling 27 / Sustainability 82. Top vectors: geopolitical_tail: 21% | carry_leverage: 15% | policy_uncertainty: 14%",
+  "narrative": "Fragility 37.5/100 (mild, phase=recovery). Surface 46 / Latent 47 / Decoupling 22 / Sustainability 82. Top vectors: geopolitical_tail: 26% | carry_leverage: 18% | policy_uncertainty: 17%",
   "warnings": [],
   "measurement_quality": "high",
-  "ts": "2026-05-17T00:20:20.573167"
+  "ts": "2026-05-17T00:30:46.614292"
 }

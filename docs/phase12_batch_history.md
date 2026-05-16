@@ -1,6 +1,6 @@
 # Phase 12 Fragility Index — Batch History 시계열
 
-**생성**: 2026-05-17 00:20  
+**생성**: 2026-05-17 00:30  
 **Sessions**: 67  
 **Date range**: 2000-04-14 ~ 2026-05-15
 
@@ -9,8 +9,8 @@
 | Phase | n | Avg fragility | Min | Max |
 |---|---|---|---|---|
 | **active_crisis** | 19 | 91.0 | 87.7 | 94.2 |
-| **pre_crisis** | 31 | 61.0 | 32.9 | 84.1 |
-| **recovery** | 8 | 34.4 | 18.0 | 50.3 |
+| **pre_crisis** | 31 | 55.6 | 32.9 | 84.1 |
+| **recovery** | 8 | 30.9 | 18.0 | 40.6 |
 | **calm** | 9 | 8.2 | 2.2 | 13.1 |
 
 ## 2. Phase 별 Top Latent Vectors (avg %)
@@ -29,21 +29,21 @@
 
 | Vector | Avg contribution |
 |---|---|
-| policy uncertainty | 16.0% |
-| geopolitical tail | 16.0% |
-| credit stress | 13.6% |
-| carry leverage | 10.0% |
-| em fx stress | 9.5% |
+| policy uncertainty | 17.8% |
+| geopolitical tail | 17.6% |
+| credit stress | 13.8% |
+| carry leverage | 11.1% |
+| em fx stress | 10.6% |
 
 ### recovery
 
 | Vector | Avg contribution |
 |---|---|
-| credit stress | 16.6% |
-| policy uncertainty | 11.9% |
-| em fx stress | 11.4% |
-| geopolitical tail | 11.4% |
-| carry leverage | 10.1% |
+| credit stress | 16.8% |
+| policy uncertainty | 13.2% |
+| geopolitical tail | 13.1% |
+| em fx stress | 12.5% |
+| carry leverage | 11.3% |
 
 ### calm
 
@@ -166,33 +166,33 @@
 | 2026-04-27 | **55.5** | elevated | `pre_crisis` | 61.2 | 46.1 | 28.2 | 83.9 |
 | 2026-04-28 | **69.2** | critical | `pre_crisis` | 69.9 | 56.1 | 39.2 | 81.0 |
 | 2026-04-29 | **84.1** | imminent | `pre_crisis` | 64.0 | 69.3 | 44.4 | 82.0 |
-| 2026-04-30 | **71.9** | critical | `pre_crisis` | 41.9 | 63.1 | 26.4 | 76.7 |
+| 2026-04-30 | **73.3** | critical | `pre_crisis` | 41.9 | 64.3 | 26.9 | 76.7 |
 | 2026-05-01 | **70.8** | critical | `pre_crisis` | 70.2 | 57.4 | 40.3 | 84.3 |
-| 2026-05-02 | **71.9** | critical | `pre_crisis` | 70.2 | 58.3 | 40.9 | 84.3 |
-| 2026-05-03 | **71.9** | critical | `pre_crisis` | 70.2 | 58.3 | 40.9 | 84.3 |
-| 2026-05-04 | **83.7** | imminent | `pre_crisis` | 47.2 | 72.3 | 34.1 | 80.0 |
-| 2026-05-05 | **83.6** | imminent | `pre_crisis` | 46.8 | 72.3 | 33.8 | 91.7 |
-| 2026-05-06 | **77.3** | critical | `pre_crisis` | 47.3 | 66.8 | 31.6 | 100.0 |
-| 2026-05-07 | **78.0** | critical | `pre_crisis` | 50.1 | 66.8 | 33.5 | 91.7 |
-| 2026-05-08 | **76.5** | critical | `pre_crisis` | 53.3 | 65.0 | 34.6 | 100.0 |
-| 2026-05-09 | **74.1** | critical | `pre_crisis` | 39.9 | 65.4 | 26.1 | 80.0 |
-| 2026-05-10 | **71.6** | critical | `pre_crisis` | 39.7 | 63.2 | 25.1 | 80.0 |
-| 2026-05-11 | **73.0** | critical | `pre_crisis` | 39.5 | 64.5 | 25.5 | 80.0 |
-| 2026-05-12 | **78.3** | critical | `pre_crisis` | 49.5 | 67.2 | 33.3 | 91.7 |
-| 2026-05-13 | **50.3** | elevated | `recovery` | 51.8 | 62.9 | 32.6 | 100.0 |
-| 2026-05-14 | **47.5** | elevated | `recovery` | 50.1 | 59.4 | 29.8 | 100.0 |
-| 2026-05-15 | **46.4** | elevated | `recovery` | 46.5 | 58.0 | 27.0 | 82.5 |
+| 2026-05-02 | **56.6** | elevated | `pre_crisis` | 70.2 | 45.9 | 32.2 | 84.3 |
+| 2026-05-03 | **56.6** | elevated | `pre_crisis` | 70.2 | 45.9 | 32.2 | 84.3 |
+| 2026-05-04 | **66.9** | critical | `pre_crisis` | 47.2 | 57.8 | 27.3 | 80.0 |
+| 2026-05-05 | **66.8** | critical | `pre_crisis` | 46.8 | 57.8 | 27.1 | 91.7 |
+| 2026-05-06 | **62.1** | critical | `pre_crisis` | 47.3 | 53.6 | 25.4 | 100.0 |
+| 2026-05-07 | **62.6** | critical | `pre_crisis` | 50.1 | 53.6 | 26.9 | 91.7 |
+| 2026-05-08 | **61.6** | critical | `pre_crisis` | 53.3 | 52.3 | 27.9 | 100.0 |
+| 2026-05-09 | **59.6** | elevated | `pre_crisis` | 39.9 | 52.6 | 21.0 | 80.0 |
+| 2026-05-10 | **57.6** | elevated | `pre_crisis` | 39.7 | 50.9 | 20.2 | 80.0 |
+| 2026-05-11 | **57.4** | elevated | `pre_crisis` | 39.5 | 50.7 | 20.0 | 80.0 |
+| 2026-05-12 | **62.8** | critical | `pre_crisis` | 49.5 | 53.9 | 26.7 | 91.7 |
+| 2026-05-13 | **40.6** | elevated | `recovery` | 51.8 | 50.7 | 26.3 | 100.0 |
+| 2026-05-14 | **38.4** | mild | `recovery` | 50.1 | 48.0 | 24.0 | 100.0 |
+| 2026-05-15 | **37.5** | mild | `recovery` | 46.5 | 46.9 | 21.8 | 82.5 |
 
 ## 5. 핵심 발견 (Findings)
 
 ### 5.1 Phase 별 평균 fragility 단계적 분리
 
-- **calm** 8.2 → **recovery** 34.4 → **pre_crisis** 61.0 → **active_crisis** 91.0
+- **calm** 8.2 → **recovery** 30.9 → **pre_crisis** 55.6 → **active_crisis** 91.0
 
 ✅ **모노톤 증가 검증** — phase 별 fragility 가 정상 단계적 분리
 
 ### 5.2 Latent vector dominance
 
 - Active crisis 의 top vector: **credit_stress** (25.1%)
-- Pre-crisis 의 top vector: **policy_uncertainty** (16.0%)
+- Pre-crisis 의 top vector: **policy_uncertainty** (17.8%)
 
