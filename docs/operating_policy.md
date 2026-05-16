@@ -432,4 +432,102 @@ python create_sample_from_snapshot.py --date YYYY-MM-DD \
 - 2007-12 (Bear Stearns 헤지펀드 붕괴)
 - 2008-03-15 (Bear Stearns 인수)
 - 2022-01-25 (Russia 침공 1개월 전)
-- 2022-02-22 (Russia 침공 2일 전)
+- 2022-02-22 (Russia 침공 2일 전) → ✓ 2026-05-16 검증됨 (pre_crisis 39.5)
+
+---
+
+## 14. Volatility Surface + Cross-Asset 5 Vector (Phase 12.10/12.10.1, 2026-05-16 신규)
+
+### 14.1 발견 배경 — Backtest 시스템 약점
+
+Backtest report (60 sessions) + Path 3g 검증 (4 case) 결과 발견된 한계:
+- SVB-type 위기 (2023-03-08): VIX 19 정상, surface > 20 → Path 3g 미발동 → calm 분류 ❌
+- Carry unwind (2024-08-01 D-1): VIX 18, SPY +0.33% → 사전 신호 없음 ❌
+- 시스템이 **VIX/SPY 시장 데이터 외 채권 vol, vol of vol, safe haven flow, oil 등 추가 차원 부재**
+
+### 14.2 추가된 5 Indicator + Latent Vector
+
+Indicator evaluation matrix (14 indicator 6 차원 평가) 결과 Top 5 채택:
+
+| Indicator | Source | Vector | Weight | 별점 |
+|---|---|---|---|---|
+| **^MOVE** (ICE BofAML Treasury Vol) | yfinance | `bond_vol_stress` | 0.10 | ★★★★★ SVB-type leading |
+| **^VVIX** (VIX of VIX) | yfinance | `vol_of_vol_spike` | 0.05 | ★★★★ VIX panic 임박 |
+| **GLD** (Gold ETF) | yfinance | `safe_haven_demand` | 0.04 | ★★★★ Risk-off flow |
+| **USO** (Oil ETF) | yfinance | `oil_shock` | 0.03 | ★★★★ Geopolitical proxy |
+| **EMB** (EM Bond ETF) | yfinance | `em_credit_stress` | 0.02 | ★★★★ Global EM credit |
+
+상세 분석: `D:\코워크\research\indicator_evaluation_matrix_v3.2.md`
+
+### 14.3 Latent Vector Score 공식
+
+```python
+# MOVE — bond vol (정상 80, SVB 직전 140+)
+move_score = max(0, min(1, (move - 80) / 100))
+
+# VVIX — vol of vol (정상 80, panic 임박 110+)
+vvix_score = max(0, min(1, (vvix - 80) / 60))
+
+# GLD 5d% — safe haven (위기 시 +3% 이상)
+gold_score = max(0, min(1, (gold_5d - 1) / 5))
+
+# USO 5d% — oil shock (geopolitical, +10%+)
+oil_score = max(0, min(1, (oil_5d - 3) / 15))
+
+# EMB 5d% — EM credit stress (음수, < -3%)
+emb_score = max(0, min(1, (-emb_5d - 1) / 5))
+```
+
+### 14.4 12 Vector 균형 + Weight 정규화 (Phase 12.10.1 ★)
+
+**문제**: Historical sample (2017~2024) 에 새 5 indicator 데이터 부재 → 새 vector 0 값 → 전체 fragility 약화 (baseline shift 10-20pt).
+
+**해결**: **Active vectors only** — leading_layer 텍스트에 indicator 패턴 있을 때만 weight 활성:
+
+```python
+vector_patterns = {
+    "bond_vol_stress":   r"MOVE\s+\d",
+    "vol_of_vol_spike":  r"VVIX\s+\d",
+    "safe_haven_demand": r"GLD\s+\d.*5d",
+    "oil_shock":         r"(USO|WTI)\s+\d.*5d",
+    "em_credit_stress":  r"EMB\s+\d.*5d",
+}
+active_weights = {k: w for k, w in weights.items()
+                  if k not in vector_patterns or re.search(vector_patterns[k], signals_text)}
+normalized = {k: w / sum(active_weights.values()) for k, w in active_weights.items()}
+```
+
+**효과**:
+- Historical sample: 7 vector 정규화 (sum = 1.0) → **이전 baseline 완전 보존**
+- 새 sample: 12 vector 활성 (sum = 1.0) → **새 indicator 효과 발휘**
+- Backward compatible
+
+### 14.5 검증 결과 (67 sessions, 2026-05-16)
+
+| 항목 | 결과 |
+|---|---|
+| 4/29 imminent | 82.9 → **84.1 imminent** ✓ 완전 복원 |
+| Active crisis 19건 | 91.0 avg 유지 ✓ |
+| COVID transition (2/24, 2/27, 3/09) | pre_crisis 유지 ✓ (Path 3g) |
+| Russia 2/22 | pre_crisis 39.5 → 39.9 유지 ✓ |
+| 모노톤 분리 | 8.2 < 34.4 < 61.0 < 91.0 ✓ |
+| Calm-recovery gap | 4.9pt 안전 ✓ |
+
+### 14.6 향후 검증 권고
+
+새 5 indicator 가 sample 에 자동 추출되는지 (regenerate_from_snapshots.py 후 leading_layer 텍스트 확인):
+```
+- MOVE 79.87 (5d +X.X%) — ★ bond vol (SVB-type leading)
+- VVIX 92.94 (5d +X.X%) — VIX panic leading
+- GLD 417.29 5d +X.X% — safe haven flow
+- USO 148.23 5d +X.X% — oil/geopolitical
+- EMB 94.71 5d +X.X% — EM credit
+```
+
+향후 NVDA 5/19 등 fresh sample 에서 위 5 줄 모두 등장해야 시스템 정상.
+
+### 14.7 미해결
+
+- ⚠️ Historical sample (4/27~5/15) backfill: 새 5 indicator 의 120 day yfinance history 있으므로 가능 — regenerate 재실행 필요
+- ⚠️ ^MOVE / ^VVIX yfinance 안정성 모니터링
+- 후속: KBE, JNK, JGB 등 차순위 indicator 추가 검토
