@@ -48,15 +48,15 @@
         "2026-05-08"
       ],
       "_old_signals": [
-        "USDJPY 156.64 (5d delta -0.12) (2026-05-08, lag)",
+        "USDJPY 156.64 (5d delta -0.12) (2026-05-08)",
         "USDKRW 1461.06 (5d delta -16.16) — EM FX stress",
         "USDCNY 6.8005",
-        "USEPU 5dMA 257.92 (raw spot N/A 5/15 FRED lag, weekday n=5 using 5/14 latest, avg30d ~360) — policy uncertainty",
+        "USEPU 5dMA 257.92 (raw spot 151.67, weekday bias-adj n=5, avg30d 366.26) — policy uncertainty",
         "SAHM 0.13 / SLOOS 8.1 — recession leading",
         "SOFR-IORB -9bp — funding"
       ],
       "_regenerated": true,
-      "_regenerated_ts": "2026-05-16T12:31:34.659642"
+      "_regenerated_ts": "2026-05-16T18:01:08.368651"
     },
     "coincident_layer": {
       "verdict": "VIX 17.26 calm 유지 (5/14 latest). SPY 5/15 739.17 (-1.21% mild pullback, 4/29 711.58 대비 +3.88% in 16 거래일). KRE/SPY 0.0906 stable. BREAKEVEN 2.49 / FORWARD 2.28 — 인플레 기대 정상 범위.",
@@ -73,15 +73,13 @@
       "_market_session": "open",
       "_market_data_origin": "2026-05-15",
       "_old_signals": [
-        "VIX 17.26 (5/14 latest, calm 유지)",
-        "Baa-Aaa 0.57pp (5/14 fresh)",
-        "Baa-10Y 1.62pp (5/14)",
-        "YC 10Y-2Y +0.50pp (5/15)",
-        "YC 10Y-3M +0.90pp (5/15)",
-        "NFCI -0.524 (5/8 lag)",
-        "DXY 118.04 (5/8 lag)",
-        "Net liquidity ~5832bn",
-        "BREAKEVEN 10Y 2.49 / FORWARD 5Y5Y 2.28 (5/15 fresh) — 인플레 기대 정상"
+        "VIX 17.26 (5d +0.18)",
+        "Baa-Aaa 0.56pp",
+        "Baa-10Y 1.66pp",
+        "YC 10Y-2Y +0.48pp",
+        "NFCI -0.524",
+        "DXY 118.04",
+        "Net liquidity 5888bn"
       ]
     },
     "catalyst_layer": {
