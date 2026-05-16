@@ -361,3 +361,75 @@ target_date 의 요일 확인:
 - ⚠️ 17개 sample 보정 미적용 (snapshot 부재): 2000-04-14, 2002-10-09, 2008-09-15, 2008-10-10, 2009-03-09, 2009-03-23, 2010-05-06, 2011-08-05, 2012-09-13, 2015-12-16, 2018-02-05, 2018-12-19, 2022-03-16, 2022-06-15, 2024-09-18, 2024-10-01, 2026-04-30, 2026-05-02, 2026-05-03, 2026-05-10, 2026-05-11, 2026-05-14 — snapshot 확보 가능 시 재처리
 - ⚠️ FRED USEPUINDXD publish lag — 당일 raw 미공개 시 직전일 latest 사용 (5dMA window 의 most recent 로)
 - 후속: GEPUCURRENT (Global EPU) 도 동일 weekend bias 검토 필요
+
+---
+
+## 13. Pure Surface Panic 인식 — Path 3g (2026-05-16 신규, Phase 12.9.2)
+
+### 13.1 발견 배경
+
+COVID transition sample (2020-02-21, 02-24, 02-27, 03-09) 자동 생성 후 시스템이 모두 calm 분류 → 시스템 design 한계 발견:
+- Surface 계산이 **LLM regime_view (bear_transition + crisis)** 에 의존
+- VIX 39 panic, SPY -12% crash 직접 반영 안 됨
+- Auto-created sample (LLM 분석 없음) → surface = 50 default 고정
+
+### 13.2 두 가지 패치
+
+**A. compute_surface_strength (fragility_index.py)**:
+- forecast.^VIX.current 없을 때 → **coincident_layer.key_signals 텍스트에서 VIX 직접 추출 fallback**
+- Backward compatible (forecast 있는 sample 결과 동일)
+
+**B. detect_crisis_phase — Path 3g 신규**:
+```python
+# 3g) Pure Surface Panic
+if surf < 20:
+    return {"phase": "pre_crisis",
+            "interpretation": "Pure surface panic — VIX/SPY 극단 stress, latent 미반영"}
+```
+
+**C. Pre_crisis fragility synthesis — Pure panic boost**:
+```python
+if surf < 20 and lat < 30:  # latent 누적 case 는 기존 path 들에서 처리
+    base += (25 - surf) * 1.5  # surf 15 → +15, surf 5 → +30
+```
+→ Historical sample 들은 대부분 lat>30 이므로 영향 없음.
+
+### 13.3 검증 결과 — COVID transition
+
+| Sample | Surface | Latent | Phase | Fragility | 평가 |
+|---|---|---|---|---|---|
+| 2020-02-19 | 48.6 | 20.1 | calm | 10.1 | D-3 정상 (시그널 없음) |
+| 2020-02-21 | 37.1 | 15.5 | calm | 7.8 | D-1 mild |
+| **2020-02-24** | **15.0** | 16.3 | **pre_crisis** ✓ | **39.6** | Path 3g 발동 |
+| **2020-02-27** | **15.0** | 18.6 | **pre_crisis** ✓ | **42.0** | panic 인식 |
+| **2020-03-09** | **15.0** | 39.1 | **pre_crisis** ✓ | **48.6** | (lat>30 → boost 없음) |
+| 2020-03-16 | 31.4 | 35.2 | active_crisis | 90.3 | 기존 유지 |
+
+### 13.4 Historical 영향
+
+기존 60 sessions 결과 모두 동일 — Path 3g 의 lat<30 조건이 보호:
+- 2008-09-15 surf 2.4 lat 54.4 → lat>30 → boost 없음 (active_crisis path 우선)
+- 2018-12-19 surf 4.7 lat 43.2 → lat>30 → boost 없음 (fragility 59.9 유지)
+- 모든 active_crisis 19건 변화 없음
+
+### 13.5 Auto Sample Creator (create_sample_from_snapshot.py)
+
+LLM 분석 없이 historical sample 자동 생성:
+- snapshot history 에서 모든 indicator 추출 (SPY/VIX/UST/FX/USEPU/SAHM 등 15+)
+- USEPU 하이브리드 보정 자동 적용
+- forecast 영역에 실제 시장 데이터 채움 (SPY 5d realized %, VIX current)
+- regime_view = baseline default (LLM 분석 없으므로) — Surface 자동 계산이 이를 보완
+
+```powershell
+python create_sample_from_snapshot.py --date YYYY-MM-DD \
+    --news "이벤트 설명" \
+    --catalyst-importance 4-5
+```
+
+### 13.6 후속 검증 권고
+
+추가 catalyst-driven pre-crisis sample 작성 후 Path 3g 추가 검증:
+- 2007-12 (Bear Stearns 헤지펀드 붕괴)
+- 2008-03-15 (Bear Stearns 인수)
+- 2022-01-25 (Russia 침공 1개월 전)
+- 2022-02-22 (Russia 침공 2일 전)
