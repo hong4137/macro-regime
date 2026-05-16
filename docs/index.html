@@ -134,7 +134,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <div class="wrap">
 
 <h1>거시경제 국면 대시보드 <span style="color:var(--accent);font-size:14px;font-weight:400">v5 · Phase 12 (잠재 취약성 측정)</span></h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-15 · 마지막 업데이트: 2026-05-16 18:13:02</div>
+<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-15 · 마지막 업데이트: 2026-05-16 18:39:02</div>
 
 <div class="kpis">
   <div class="kpi"><div class="l">전체 세션</div><div class="v">60</div></div>
@@ -520,6 +520,108 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
       <p class="situation-text">🔵 회복기 — 취약성 <b>46</b> (elevated). 최근 위기 후 회복 진행 중. 표면 46 회복 + 지속 가능성 82 복원. 잠재 위험 57 일부 잔존하지만 점진 감소.<br>주요 잠재 위험 요인: 지정학 꼬리위험 (이란/Russia/관세) 26% · 캐리 트레이드 레버리지 (USDJPY) 21% · 신흥국 통화 압력 (USDKRW) 17%.<br><br>📈 위험자산 점진 추가, 잔존 잠재 위험은 모니터링.</p>
     </div>
     
+
+<h2>📚 시스템 가이드 — 국면 vs 캐스케이드</h2>
+<details class="guide-card" style="background:#1e293b;border:1px solid #334155;border-radius:8px;padding:16px;margin-top:12px;color:#e2e8f0;">
+  <summary style="cursor:pointer;font-size:15px;font-weight:600;color:#60a5fa;padding:4px 0;">▶ 펼쳐서 보기 (대시보드 표 해석법)</summary>
+  <div style="margin-top:16px;line-height:1.7;font-size:14px;">
+
+    <h3 style="color:#fbbf24;margin-top:0;">🎯 한 줄 차이</h3>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;">
+      <tr style="background:#0f172a;">
+        <th style="padding:8px;text-align:left;border-bottom:1px solid #334155;">차원</th>
+        <th style="padding:8px;text-align:left;border-bottom:1px solid #334155;">국면 (Phase)</th>
+        <th style="padding:8px;text-align:left;border-bottom:1px solid #334155;">캐스케이드 (Cascade)</th>
+      </tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #1e293b;">답하는 질문</td><td style="padding:8px;border-bottom:1px solid #1e293b;">"지금 <strong>어디</strong>?" (시간축)</td><td style="padding:8px;border-bottom:1px solid #1e293b;">"<strong>어떻게</strong> 그 상태?" (성격축)</td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #1e293b;">본질</td><td style="padding:8px;border-bottom:1px solid #1e293b;">위기 <strong>단계</strong></td><td style="padding:8px;border-bottom:1px solid #1e293b;">위기 <strong>성격/메커니즘</strong></td></tr>
+      <tr><td style="padding:8px;border-bottom:1px solid #1e293b;">분류 수</td><td style="padding:8px;border-bottom:1px solid #1e293b;">4단계 (정량)</td><td style="padding:8px;border-bottom:1px solid #1e293b;">16+ 시나리오 (정성)</td></tr>
+      <tr><td style="padding:8px;">산출 입력</td><td style="padding:8px;">fragility + sustainability</td><td style="padding:8px;">M5~M10 mechanism + 4 Layer alignment</td></tr>
+    </table>
+
+    <h3 style="color:#fbbf24;">📊 국면 (Phase) — 4단계</h3>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px;">
+      <div style="background:#22c55e;color:#000;padding:8px 14px;border-radius:6px;font-weight:600;">평시 (calm)<br><span style="font-size:11px;font-weight:400;">avg 8.6</span></div>
+      <div style="background:#60a5fa;color:#000;padding:8px 14px;border-radius:6px;font-weight:600;">회복기 (recovery)<br><span style="font-size:11px;font-weight:400;">avg 36.2</span></div>
+      <div style="background:#f59e0b;color:#000;padding:8px 14px;border-radius:6px;font-weight:600;">위기 임박 (pre_crisis)<br><span style="font-size:11px;font-weight:400;">avg 63.3</span></div>
+      <div style="background:#ef4444;color:#fff;padding:8px 14px;border-radius:6px;font-weight:600;">활성 위기 (active_crisis)<br><span style="font-size:11px;font-weight:400;">avg 91.0</span></div>
+    </div>
+    <p style="color:#94a3b8;font-size:13px;margin-bottom:20px;">단순 단계 구분. fragility 값과 sustainability 기반. 시간이 흐르면 단계가 이동.</p>
+
+    <h3 style="color:#fbbf24;">🌊 캐스케이드 (Cascade) — 16+ 시나리오 (severity 순)</h3>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;font-size:13px;">
+      <tr style="background:#0f172a;">
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">아이콘</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">시나리오</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">의미</th>
+      </tr>
+      <tr><td style="padding:6px;">🟢</td><td style="padding:6px;color:#22c55e;"><strong>genuine_calm</strong></td><td style="padding:6px;">진짜 평시 — stress 없고 flow 우호</td></tr>
+      <tr><td style="padding:6px;">🔵</td><td style="padding:6px;color:#60a5fa;"><strong>broad_recovery</strong></td><td style="padding:6px;">광범위 회복 — stress 약화 + flow 우호</td></tr>
+      <tr><td style="padding:6px;">✅</td><td style="padding:6px;color:#22c55e;"><strong>post_event_relief</strong></td><td style="padding:6px;">이벤트 후 안도 (FOMC/CPI 통과)</td></tr>
+      <tr><td style="padding:6px;">🟡</td><td style="padding:6px;color:#eab308;"><strong>transient_caution</strong></td><td style="padding:6px;">일시적 주의 — 잠시 spike, 곧 해소</td></tr>
+      <tr><td style="padding:6px;">👁</td><td style="padding:6px;color:#fbbf24;"><strong>narrative_scare</strong></td><td style="padding:6px;">서사 공포 — 시장 fear-driven, fundamentals 무관 가능</td></tr>
+      <tr><td style="padding:6px;">🟡</td><td style="padding:6px;color:#eab308;"><strong>broad_caution</strong></td><td style="padding:6px;">광범위 주의 — 여러 신호 약한 stress</td></tr>
+      <tr><td style="padding:6px;">⚠️</td><td style="padding:6px;color:#f59e0b;"><strong>smart_money_warning</strong></td><td style="padding:6px;">스마트머니 경고 — 기관 포지셔닝 변화</td></tr>
+      <tr><td style="padding:6px;">🟡</td><td style="padding:6px;color:#eab308;"><strong>front_loaded_caution</strong></td><td style="padding:6px;">선반영 주의</td></tr>
+      <tr><td style="padding:6px;">🟠</td><td style="padding:6px;color:#f97316;"><strong>approaching_risk</strong></td><td style="padding:6px;">위험 접근 — stress 누적 가속</td></tr>
+      <tr><td style="padding:6px;">🔴</td><td style="padding:6px;color:#ef4444;"><strong>regime_shift_imminent</strong></td><td style="padding:6px;">체제 전환 임박</td></tr>
+      <tr><td style="padding:6px;">🔴</td><td style="padding:6px;color:#dc2626;"><strong>real_stress_brewing</strong></td><td style="padding:6px;">실제 stress 누적</td></tr>
+      <tr><td style="padding:6px;">🔴</td><td style="padding:6px;color:#dc2626;"><strong>escalating_stress</strong></td><td style="padding:6px;">stress 확대</td></tr>
+      <tr><td style="padding:6px;">💥</td><td style="padding:6px;color:#dc2626;"><strong>mechanical_cascade</strong></td><td style="padding:6px;">기계적 연쇄 (margin call 등 강제 매도)</td></tr>
+      <tr><td style="padding:6px;">🚨</td><td style="padding:6px;color:#dc2626;"><strong>confirmed_crisis / full_stress</strong></td><td style="padding:6px;">위기 확인 / 전면 스트레스</td></tr>
+    </table>
+
+    <h3 style="color:#fbbf24;">🔬 실제 예시 — 같은 국면, 다른 캐스케이드</h3>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;font-size:13px;">
+      <tr style="background:#0f172a;">
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">날짜</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">국면</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">캐스케이드</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">해석</th>
+      </tr>
+      <tr><td style="padding:6px;">5/04</td><td style="padding:6px;">위기 임박</td><td style="padding:6px;color:#eab308;">transient_caution</td><td style="padding:6px;">일시적 spike — 곧 해소 예상</td></tr>
+      <tr><td style="padding:6px;">5/05</td><td style="padding:6px;">위기 임박</td><td style="padding:6px;color:#fbbf24;">narrative_scare</td><td style="padding:6px;">시장 fear-driven, 표면적 두려움</td></tr>
+      <tr><td style="padding:6px;">5/06</td><td style="padding:6px;">위기 임박</td><td style="padding:6px;color:#22c55e;">genuine_calm</td><td style="padding:6px;">표면 stress 있으나 진짜 평시 (역설 — flow 우호)</td></tr>
+      <tr><td style="padding:6px;">5/12</td><td style="padding:6px;">위기 임박</td><td style="padding:6px;color:#22c55e;">post_event_relief</td><td style="padding:6px;">FOMC 통과 후 안도 정상화</td></tr>
+      <tr><td style="padding:6px;">5/13</td><td style="padding:6px;color:#60a5fa;">회복기</td><td style="padding:6px;color:#60a5fa;">broad_recovery</td><td style="padding:6px;">광범위 회복 시작</td></tr>
+    </table>
+    <p style="color:#94a3b8;font-size:13px;margin-bottom:20px;">→ 5/4 vs 5/5 vs 5/12 모두 fragility 76~83 "위기 임박"이지만 캐스케이드는 완전히 다른 성격</p>
+
+    <h3 style="color:#fbbf24;">🎬 Actionable 차이 — 같은 fragility 80 이라도</h3>
+    <table style="width:100%;border-collapse:collapse;margin-bottom:20px;font-size:13px;">
+      <tr style="background:#0f172a;">
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">캐스케이드</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">Hedge</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">포지션</th>
+        <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">근거</th>
+      </tr>
+      <tr><td style="padding:6px;color:#22c55e;">genuine_calm</td><td style="padding:6px;">0%</td><td style="padding:6px;">정상 risk-on</td><td style="padding:6px;">진짜 평시</td></tr>
+      <tr><td style="padding:6px;color:#eab308;">transient_caution</td><td style="padding:6px;">5%</td><td style="padding:6px;">정상 유지</td><td style="padding:6px;">일시적, 곧 해소</td></tr>
+      <tr><td style="padding:6px;color:#fbbf24;">narrative_scare</td><td style="padding:6px;">10~15%</td><td style="padding:6px;">risk 75%</td><td style="padding:6px;">가짜 두려움, monitor</td></tr>
+      <tr><td style="padding:6px;color:#dc2626;">real_stress_brewing</td><td style="padding:6px;">30~40%</td><td style="padding:6px;">risk 50%</td><td style="padding:6px;">실제 stress, 대비 강화</td></tr>
+      <tr><td style="padding:6px;color:#dc2626;">mechanical_cascade</td><td style="padding:6px;">50%+</td><td style="padding:6px;">방어 모드</td><td style="padding:6px;">강제 매도, 즉시 회피</td></tr>
+    </table>
+
+    <h3 style="color:#fbbf24;">🧬 비유 — 의학적 관점</h3>
+    <p style="background:#0f172a;padding:12px;border-left:3px solid #60a5fa;border-radius:4px;">
+      <strong>국면</strong> = 환자의 <em>활력징후 점수</em> (1~5 등급, 단순 위험도)<br>
+      <strong>캐스케이드</strong> = 환자의 <em>병명/진단</em> (감기/폐렴/심근경색)<br><br>
+      같은 활력징후 4등급이라도:<br>
+      • 감기 (≈ narrative_scare) → 휴식만으로 OK<br>
+      • 폐렴 (≈ real_stress_brewing) → 항생제 필요<br>
+      • 심근경색 초기 (≈ mechanical_cascade) → 즉시 응급실<br><br>
+      → <strong>활력징후만 보고 처방하면 위험. 둘 다 봐야 정확한 처치.</strong>
+    </p>
+
+    <h3 style="color:#fbbf24;">💡 대시보드 표 읽는 법</h3>
+    <ol style="padding-left:24px;">
+      <li><strong>국면</strong> 보고 → 지금 시점이 위기 단계의 어디인지 확인</li>
+      <li><strong>캐스케이드</strong> 보고 → 그 위기의 <strong>성격/원인</strong> 파악</li>
+      <li>둘 조합해서 정확한 action 결정 (포지션/헷지 비율)</li>
+    </ol>
+
+  </div>
+</details>
 
 <footer>v5 · Phase 12 (Latent Fragility Detection) · 자동 갱신 · narrative_scare 4 cases</footer>
 

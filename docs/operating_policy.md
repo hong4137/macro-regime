@@ -1,24 +1,42 @@
 # 시스템 운영 정책
 
-**최종 업데이트**: 2026-05-03
-**Status**: Phase 12.6 (T1 robustness + T2 snapshot 표준화) 운영 시작
+**최종 업데이트**: 2026-05-16
+**Status**: Phase 12.9.1 (USEPU 하이브리드 보정 + 캘린더 전체 sample 정책) 운영 시작
 
 ---
 
-## 1. Sample 작성 정책
+## 1. Sample 작성 정책 (★ v3.1 갱신 — 캘린더 전체)
 
-### 1.1 거래일 기준
-- **미국 시장 거래일 (월-금) 만** phase11_fusion sample 작성
-- 토·일·미국 공휴일 (Independence Day, Thanksgiving 등) 은 sample 작성 안 함
-- 한국 공휴일은 무관 (미국 시장 기준)
+### 1.1 캘린더 전체 sample (★ 정책 변경)
 
-### 1.2 휴장일 처리
-- Sample 작성하지 않음
-- Dashboard 는 직전 거래일 fragility 표시
-- 시계열 검증 시 휴장일 transition 제외 (거래일 → 거래일만 분석)
+**이전 (v2 까지)**: 거래일만 sample 작성  
+**현재 (v3.1)**: **모든 캘린더 날짜 sample 작성** (토/일/공휴일 포함)
 
-### 1.3 Catalyst calendar
-- 거래일 무관 daily refresh — imminent events 의 시간 거리는 매일 줄어듦
+근거:
+- 사용자 framing: "잠재 위험은 표면적으로 측정 불가" — 시장 휴장에도 macro/뉴스 변동 추적
+- USEPU (FRED EPU index) 매일 publish (주말 포함)
+- 누락 sample 갭이 trajectory 분석 정합성 약화
+- 거래일 grid 만 사용하면 weekend macro shock 포착 불가
+
+### 1.2 휴장일 처리 (★ 신규)
+
+| 항목 | 처리 |
+|---|---|
+| **시장 데이터 (SPY/VIX/KRE 등)** | 직전 거래일 EOD reuse, `_market_data_origin` 명시 |
+| **macro 데이터 (USEPU/FRED 등)** | 휴장일 raw 값 그대로 사용 (FRED 매일 publish) |
+| **USEPU 보정** | weekend (토/일) → 5dMA 적용 (weekend bias 제거, 섹션 12 참조) |
+| **flow/sentiment** | 직전 거래일 reuse + `_weekend_reused_from` 표시 |
+| **메타 표시** | `market_session: "open" or "closed"`, `market_data_origin` 명시 |
+| **phase11_fusion** | 휴장일 = 인접 거래일 결과 inherit + `_weekend_inherited_from` 표시 (analyze_v3 재계산 시 갱신) |
+
+### 1.3 거래일 sample (정상)
+
+- 미국 거래일 (월~금, 공휴일 제외): 정상 sample
+- `market_session: "open"`
+- 모든 layer 자동 계산
+
+### 1.4 Catalyst calendar
+- 캘린더 무관 daily refresh — imminent events 의 시간 거리는 매일 줄어듦
 
 ---
 
@@ -208,28 +226,33 @@ snapshot 작성/검증 시:
 
 ---
 
-## 10. 검증 history (Phase 12.6 → 12.8)
+## 10. 검증 history (Phase 12.6 → 12.9.1)
 
 | Version | 변경 | sessions | recovery n | 비고 |
 |---|---|---|---|---|
 | 12.6 | T2 snapshot 표준화 | 45 | 4 | LLM noise 부분 보정 |
 | 12.7 | path 3f (lat>40 → pre_crisis) | 50 | 4 | 2023-10-09 false negative fix |
 | 12.8 | path 3c 강화 (lat>30 → pre_crisis) | 52 | 4 | 2023-12-13 false positive fix |
-| 12.8 | + 5/12, 5/13, 5/14 sample | **54** | **6** | **5/13-5/14 첫 연속 recovery 진입** |
+| 12.8 | + 5/12, 5/13, 5/14 sample | 54 | 6 | 5/13-5/14 첫 연속 recovery 진입 |
+| **12.9** | **캘린더 전체 sample (4/30, 5/2, 5/3, 5/10, 5/11 신규)** | **59** | 6 | weekend 정책 변경, 단순 5dMA 시도 |
+| **12.9.1** | **USEPU 하이브리드 보정 (weekday=raw, weekend=5dMA)** | **60** | **7** | **2023-10-09 path 3f true positive 보존 + weekend bias 제거** |
 
-### 10.1 View A 최종 검증 (4/27-5/14, 54 sessions batch)
+### 10.1 View A 최종 검증 (4/27-5/15, 60 sessions batch, v3.1 하이브리드)
 
 | 검증 항목 | 결과 |
 |---|---|
-| Surface 강세 실현 | SPY +4.50% (716→748.17, 15 거래일) |
-| 잠재 위험 측정 정확 | fragility peak 82.9 (4/29), latent peak 71.4 (5/4-5) |
-| 수급 cushion 실효 | leaning_bullish 14 거래일 지속 |
-| Catalyst 통과 → 자동 recovery | FOMC+CPI+I/O 3 critical 통과 → 5/13-14 recovery |
-| Phase 모노톤 분리 | calm 8.8 < recovery 34.6 < pre 62.1 < active 91.0 |
-| Latent 자체 감소 | 71.4 peak → 59.5 (-11.9) |
-| Sustainability 최강 | 100.0 (5/6, 5/8, 5/13, 5/14 4회) |
+| Surface 강세 실현 | SPY +3.88% (711.58→739.17, 16 거래일) |
+| 잠재 위험 측정 정확 | fragility peak 82.9 (4/29, USEPU raw 578 weekday signal) |
+| 수급 cushion 실효 | leaning_bullish 16 거래일 지속 |
+| Catalyst 통과 → 자동 recovery | FOMC+CPI+I/O+Retail Sales **4 critical** 통과 → 5/13-15 recovery |
+| Phase 모노톤 분리 | calm 8.6 < recovery 36.2 < pre 63.3 < active 91.0 (gap 4.9pt 안전) |
+| Latent 자체 감소 | 71.4 peak → 57.1 (-14.3) |
+| Sustainability 최강 | 100.0 (5/6, 5/8, 5/13 등) |
+| **Weekend bias 제거** | 5/2 raw 1056 → 5dMA 379 (system artifact 처리) |
+| **Weekday spike 보존** | 4/29 raw 578, 5/5 raw 540 imminent peak 유지 |
+| **path 3f true positive** | 2023-10-09 raw 264 elevated 보존 — T+14d SPY -5% 잡힘 |
 
-→ **View A 완전 정합**. 4/29 imminent (82.9) → 5/14 recovery (47.6) = **-35.3 fragility 감소 in 15 거래일**.
+→ **View A 완전 정합**. 4/29 imminent (82.9) → 5/15 recovery (45.7) = **-37.2 fragility 감소 in 16 거래일**.
 
 ---
 
@@ -268,3 +291,73 @@ elif _DEFAULT_LIN.exists():
 
 **Windows**: 기존대로 PowerShell 에서 직접 실행
 **Linux bash (Cowork)**: 패치된 3개 스크립트는 자동 동작
+
+---
+
+## 12. USEPU 하이브리드 보정 정책 (2026-05-16 신규, Phase 12.9.1)
+
+### 12.1 발견 배경
+
+USEPU (FRED EPU Daily Index) 의 시계열 특성:
+
+| 현상 | 원인 | 처리 필요 |
+|---|---|---|
+| **Weekend bias** (토/일 인위적 spike) | FRED EPU = 뉴스 article 비율 기반. 주말 뉴스 corpus 작음 → policy-related 비율 인위 부풀려짐 | ✓ 제거 (system artifact) |
+| **Weekday spike** (평일 실제 정책 충격) | 진짜 정책 이벤트 (Trump tariff, FOMC leak, 지정학 등) | ✗ 보존 (true signal) |
+
+**실제 사례 확인**:
+- Weekend spike (artifact): 4/11 (토) raw 822, 4/25 (토) raw 564, **5/2 (토) raw 1056** (system max), 5/9 (토) raw 683
+- Weekday spike (true signal): 4/29 (수) raw 578 → imminent peak 82.9, **2023-10-09 (월) raw 264 → T+14d SPY -5% 정확히 잡음**
+
+### 12.2 하이브리드 알고리즘
+
+```
+target_date 의 요일 확인:
+  - weekday (월~금): USEPU = raw (signal 보존)
+  - weekend (토/일): USEPU = weekday-only 5-day MA (weekend bias 제거)
+
+5dMA 계산 (weekend 전용):
+  - 전 5개 weekday (Mon-Fri) 값의 평균
+  - target 이전 + target 자체 (weekday 이면 포함)
+  - target 이 weekend 이면 strictly before
+```
+
+### 12.3 구현 파일
+
+- **regenerate_from_snapshots.py**: `compute_usepu_weekday_5dma()` helper + `build_standardized_signals()` 분기 처리
+- **fragility_index.py**: regex 우선순위 — `USEPU 5dMA` > `USEPU spot` > `USEPU \d+`
+  - weekend sample 텍스트: `"USEPU 5dMA 379 (raw spot 1056, weekend bias-adj n=5, ...)"` → 5dMA 매칭
+  - weekday sample 텍스트: `"USEPU spot 578 (avg30d 352, 5dMA-ref 364 weekday raw-preserve n=5, ...)"` → spot 매칭 (raw)
+
+### 12.4 정책 검증 (Phase 12.9 vs 12.9.1)
+
+| Test case | v2 (raw 만) | v3 단순 5dMA | **v3.1 하이브리드** |
+|---|---|---|---|
+| **2023-10-09 path 3f** (월) | 49.5 elevated ✓ | 18.9 calm ❌ | **49.5 elevated ✓** |
+| **2026-04-29 imminent** (수) | 82.9 imminent ✓ | 75.5 critical ❌ | **82.9 imminent ✓** |
+| **2026-05-02 weekend** (토) | 71.1 (raw 1056 saturated) | 71.1 (5dMA 379) | **71.1 (5dMA 379) ✓** |
+| **2026-05-09 weekend** (토) | 73.2 (raw 683 saturated) | 73.2 (5dMA 356) | **73.2 (5dMA 356) ✓** |
+| 모노톤 분리 | OK | overlap 0.3pt ⚠️ | **gap 4.9pt 안전 ✓** |
+
+→ **하이브리드는 양 trade-off 모두 해결**.
+
+### 12.5 sample 메타 표시 규칙
+
+신규 sample 작성 시 _meta 에 다음 명시:
+
+```json
+{
+  "market_session": "open" or "closed",
+  "market_data_origin": "YYYY-MM-DD",  // 휴장일이면 직전 거래일
+  "usepu_raw": <number>,
+  "usepu_corrected_5dma": <number>,
+  "correction_method": "weekday_only_5d_ma (hybrid: weekend uses 5dMA)",
+  "correction_window_dates": [...]  // 사용된 5 weekday
+}
+```
+
+### 12.6 미해결 / 후속
+
+- ⚠️ 17개 sample 보정 미적용 (snapshot 부재): 2000-04-14, 2002-10-09, 2008-09-15, 2008-10-10, 2009-03-09, 2009-03-23, 2010-05-06, 2011-08-05, 2012-09-13, 2015-12-16, 2018-02-05, 2018-12-19, 2022-03-16, 2022-06-15, 2024-09-18, 2024-10-01, 2026-04-30, 2026-05-02, 2026-05-03, 2026-05-10, 2026-05-11, 2026-05-14 — snapshot 확보 가능 시 재처리
+- ⚠️ FRED USEPUINDXD publish lag — 당일 raw 미공개 시 직전일 latest 사용 (5dMA window 의 most recent 로)
+- 후속: GEPUCURRENT (Global EPU) 도 동일 weekend bias 검토 필요
