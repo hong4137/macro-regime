@@ -134,7 +134,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <div class="wrap">
 
 <h1>거시경제 국면 대시보드 <span style="color:var(--accent);font-size:14px;font-weight:400">v5 · Phase 12 (잠재 취약성 측정)</span></h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-16 · 마지막 업데이트: 2026-05-18 02:29:08</div>
+<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-16 · 마지막 업데이트: 2026-05-18 02:37:14</div>
 
 <div class="kpis">
   <div class="kpi"><div class="l">전체 세션</div><div class="v">186</div></div>
@@ -163,19 +163,25 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
       
       <div class="risk-gauge" style="background:linear-gradient(90deg, #0f172a 0%, #ef444422 100%);border:1px solid #ef4444;border-radius:8px;padding:14px;margin-top:14px;">
         <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-          <div style="font-weight:600;color:#ef4444;font-size:14px;">⚠️ 1-4일 위험 등급 (★ Phase 12.14 Contrarian Gauge)</div>
-          <div style="font-size:20px;font-weight:700;color:#ef4444;">70/100</div>
+          <div style="font-weight:600;color:#ef4444;font-size:14px;">⚠️ ★ 2-Tier Forward Risk Gauge (★ Phase 12.14 v3)</div>
+          <div style="font-size:20px;font-weight:700;color:#ef4444;">60/100</div>
         </div>
         <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
-          <div style="background:#ef444433;color:#ef4444;padding:4px 12px;border-radius:6px;font-weight:600;font-size:13px;">Drawdown Risk</div>
-          <div style="color:#94a3b8;font-size:12px;flex:1;">★ 위기 시작점 가능성 — 사후 5-7d drawdown 위험</div>
+          <div style="background:#ef444433;color:#ef4444;padding:4px 12px;border-radius:6px;font-weight:600;font-size:13px;">★ Tier B — Approaching</div>
+          <div style="color:#86efac;font-size:11px;font-weight:600;">Horizon: D-3 to D-4</div>
+          <div style="color:#94a3b8;font-size:12px;flex:1;">★ D-3~D-4 위기 가능성 (catch rate 50-100%) — SVB D-4 39.6, Carry D-3 90</div>
         </div>
         <div style="margin-top:6px;padding:8px 10px;background:#0a0f1c;border-radius:4px;font-size:12px;">
-          <strong style="color:#fbbf24;">권고 Action:</strong> <span style="color:#cbd5e1;">Mild hedge (15-25%)</span>
+          <strong style="color:#fbbf24;">권고 Action:</strong> <span style="color:#cbd5e1;">★ Mild hedge (15-25%) — 이번주 후반 위기 가능성</span>
         </div>
-        <div style="margin-top:6px;color:#5e6a82;font-size:11px;">
-          ★ Pre_crisis 영역 Contrarian: AUC 0.11 (★ inverse signal). In-sample 100% but n=4. Walk-Forward Spearman 0.49.
-          외부 surprise (COVID-type) 본질 한계.
+        <div style="margin-top:8px;padding:6px 8px;background:#0a1f1c;border-radius:4px;font-size:11px;color:#86efac;">
+          <strong>★ 2-Tier 진짜 Forward Horizon (n=12 Pre-event)</strong>:<br>
+          • <strong style="color:#dc2626;">Tier A (D-1~D-2 Imminent)</strong>: Frag 50+ → 60-67% catch — Carry D-1 89, SVB D-1 45, Russia D-2 48<br>
+          • <strong style="color:#f97316;">Tier B (D-3~D-4 Approaching)</strong>: Frag 35-50 → 50-100% catch — SVB D-4 ★ 39.6, Carry D-3 90<br>
+          • <strong style="color:#5e6a82;">Tier C (D-5+ Beyond reach)</strong>: ★ 0% catch (본질 한계 — 시장 외부 정보 없음)
+        </div>
+        <div style="margin-top:6px;color:#5e6a82;font-size:10px;">
+          ★ "5-7일 위험" 이전 표현 ★ overstated. 실제는 ★ D-1~D-4. AUC 0.11 (T+30 Contrarian).
         </div>
       </div>
 
@@ -195,7 +201,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
       </div>
 
       <div class="frag-decision">
-        💡 <strong>판단:</strong> ★ 위기 시작점 가능성 — 사후 5-7d drawdown 위험
+        💡 <strong>판단:</strong> ★ D-3~D-4 위기 가능성 (catch rate 50-100%) — SVB D-4 39.6, Carry D-3 90
         <span class="hedge-pill">전술 헷지 20%</span>
       </div>
     </div>

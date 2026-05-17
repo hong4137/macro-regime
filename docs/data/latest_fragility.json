@@ -89,19 +89,20 @@
   "decision_support": {
     "stay_invested": true,
     "tactical_hedge_pct": 20,
-    "review_at_fragility": "daily",
-    "narrative": "★ 위기 시작점 가능성 — 사후 5-7d drawdown 위험",
-    "recommended_action": "Mild hedge (15-25%)",
+    "review_at_fragility": 50,
+    "narrative": "★ D-3~D-4 위기 가능성 (catch rate 50-100%) — SVB D-4 39.6, Carry D-3 90",
+    "recommended_action": "★ Mild hedge (15-25%) — 이번주 후반 위기 가능성",
     "risk_gauge_5d": {
-      "risk_score": 70,
-      "risk_level": "Drawdown Risk",
-      "interpretation": "★ 위기 시작점 가능성 — 사후 5-7d drawdown 위험",
-      "recommended_action": "Mild hedge (15-25%)",
-      "hedge_ratio": 20
+      "risk_score": 60,
+      "risk_level": "★ Tier B — Approaching",
+      "interpretation": "★ D-3~D-4 위기 가능성 (catch rate 50-100%) — SVB D-4 39.6, Carry D-3 90",
+      "recommended_action": "★ Mild hedge (15-25%) — 이번주 후반 위기 가능성",
+      "hedge_ratio": 20,
+      "horizon": "D-3 to D-4"
     }
   },
   "narrative": "Fragility 35.2/100 (mild, phase=pre_crisis). Surface 45 / Latent 31 / Decoupling 14 / Sustainability 65. Top vectors: carry_leverage: 49% | sector_dispersion: 39%",
   "warnings": [],
   "measurement_quality": "high",
-  "ts": "2026-05-18T02:21:31.256425"
+  "ts": "2026-05-18T02:37:13.216550"
 }
