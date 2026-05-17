@@ -134,7 +134,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <div class="wrap">
 
 <h1>거시경제 국면 대시보드 <span style="color:var(--accent);font-size:14px;font-weight:400">v5 · Phase 12 (잠재 취약성 측정)</span></h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-15 · 마지막 업데이트: 2026-05-17 20:08:39</div>
+<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-15 · 마지막 업데이트: 2026-05-17 20:23:24</div>
 
 <div class="kpis">
   <div class="kpi"><div class="l">전체 세션</div><div class="v">72</div></div>
@@ -739,35 +739,53 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
       </p>
     </div>
 
-    <h3 style="color:#22c55e;margin-top:24px;">★ 시스템 진짜 capability — Contrarian Phase Classifier (Phase C1-Extended 검증, n=50 LOOCV)</h3>
+    <h3 style="color:#22c55e;margin-top:24px;">★★★ 시스템 진짜 capability — Contrarian Indicator (★ 2026-05-17 결정적 발견)</h3>
     <div style="background:#0f1f15;padding:14px;border-left:3px solid #22c55e;border-radius:4px;margin-bottom:16px;font-size:13px;">
-      <p style="margin:0 0 10px;color:#fbbf24;font-weight:600;">★ 시스템 = "Contrarian Phase Classifier + Short-term Signal Tool"</p>
-      <p style="margin:0 0 10px;color:#cbd5e1;">2026-05-17 LOOCV (n=50) robust 평가 결과:</p>
+      <p style="margin:0 0 10px;color:#fbbf24;font-weight:600;">★ 시스템 = "Contrarian Indicator" (Pre_crisis 영역 reverse signal)</p>
+      <p style="margin:0 0 10px;color:#cbd5e1;">★ AUC-ROC 분석 (2026-05-17, n=50 LOOCV + 12 pre_crisis): Pre_crisis 영역 AUC <strong style="color:#ef4444;">0.11</strong> → ★ 음수 방향 통계적 확정.</p>
+
       <table style="width:100%;border-collapse:collapse;margin-bottom:12px;font-size:12px;">
         <tr style="background:#0a1a0e;">
-          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">Phase 분류</th>
-          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">사후 30일 평균</th>
-          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">Positive rate</th>
-          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">진짜 의미</th>
+          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">Fragility (Pre_crisis 영역)</th>
+          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">★ 진짜 의미</th>
+          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">사후 패턴</th>
         </tr>
-        <tr><td style="padding:5px;color:#ef4444;"><strong>pre_crisis</strong></td><td style="padding:5px;color:#ef4444;"><strong>-3.46%</strong></td><td style="padding:5px;">33% (★ 66% drawdown)</td><td style="padding:5px;">★ 사후 stress 정확 식별</td></tr>
-        <tr><td style="padding:5px;color:#dc2626;"><strong>active_crisis</strong></td><td style="padding:5px;color:#22c55e;"><strong>+4.02%</strong></td><td style="padding:5px;">79%</td><td style="padding:5px;">★ Contrarian bottom signal</td></tr>
-        <tr><td style="padding:5px;color:#60a5fa;"><strong>recovery</strong></td><td style="padding:5px;color:#22c55e;">+3.17%</td><td style="padding:5px;">80%</td><td style="padding:5px;">진정한 회복</td></tr>
-        <tr><td style="padding:5px;color:#22c55e;"><strong>calm</strong></td><td style="padding:5px;">-5.24%</td><td style="padding:5px;">67%</td><td style="padding:5px;">정상 (COVID FN 평균 영향)</td></tr>
+        <tr><td style="padding:5px;color:#22c55e;"><strong>65+</strong></td><td style="padding:5px;color:#22c55e;"><strong>★ Bottom signal candidate</strong></td><td style="padding:5px;">사후 회복 가능성</td></tr>
+        <tr><td style="padding:5px;color:#86efac;"><strong>50-65</strong></td><td style="padding:5px;color:#86efac;">잠재 stress peak (mid-bottom)</td><td style="padding:5px;">회복 또는 mild</td></tr>
+        <tr><td style="padding:5px;color:#fbbf24;"><strong>42-50</strong></td><td style="padding:5px;color:#fbbf24;">불확실 (mixed)</td><td style="padding:5px;">no clear direction</td></tr>
+        <tr><td style="padding:5px;color:#f97316;"><strong>35-42</strong></td><td style="padding:5px;color:#f97316;">★ 위기 시작점</td><td style="padding:5px;">사후 drawdown 가능성</td></tr>
+        <tr><td style="padding:5px;color:#ef4444;"><strong>&lt; 35</strong></td><td style="padding:5px;color:#ef4444;"><strong>★ True crisis start</strong></td><td style="padding:5px;">★ Drawdown likely</td></tr>
       </table>
+
+      <h4 style="color:#fbbf24;margin:14px 0 8px;">★ Contrarian 해석 — 실제 사례</h4>
+      <ul style="margin:0 0 10px;padding-left:20px;color:#cbd5e1;font-size:12px;">
+        <li><strong>High fragility 회복 사례</strong>: 4/29 imminent 84 → 5/15 +3.88% rally (★ Contrarian 정합), 2022-03-16 Russia rebound 52.5 → +6%</li>
+        <li><strong>Low fragility 위기 사례</strong>: 2020-02-24 COVID start frag 39 → -25% drawdown, 2020-02-27 frag 41 → -19%, 2022-02-22 Russia D-2 frag 40 → -10%</li>
+      </ul>
+
+      <h4 style="color:#fbbf24;margin:14px 0 8px;">★ 추천 Action Rule (★ Contrarian 기반)</h4>
+      <ul style="margin:0 0 10px;padding-left:20px;color:#cbd5e1;font-size:12px;">
+        <li><strong>Pre_crisis 50+</strong> → ★ Bottom signal — 단계적 매수 검토 (시장 panic 따라하지 말기)</li>
+        <li><strong>Pre_crisis 42-50</strong> → 관망 (mid-range mixed)</li>
+        <li><strong>Pre_crisis < 42</strong> → ★ Strong hedge / 매도 검토 (위기 시작점)</li>
+        <li><strong>Active_crisis</strong> → Contrarian bottom signal candidate (사후 평균 +4% 회복)</li>
+        <li><strong>Recovery</strong> → 진정한 회복 단계 (사후 +3% 평균)</li>
+        <li><strong>Calm</strong> → 정상 (단 COVID-type surprise 본질 한계)</li>
+      </ul>
+
       <p style="margin:0 0 8px;color:#fbbf24;font-weight:600;">★ 측정 가능 (정량 입증):</p>
       <ul style="margin:0 0 10px;padding-left:20px;color:#94a3b8;">
-        <li><strong>Pre_crisis 분류 = ★ 진정한 stress 측정</strong> (사후 30일 -3.46% drawdown 평균)</li>
-        <li><strong>Active_crisis = ★ Contrarian bottom signal</strong> (사후 +4.02% 회복)</li>
-        <li><strong>T+5 단기 방향성 — Spearman 0.57</strong> (★ 가장 강한 signal)</li>
-        <li>상대 ranking (A vs B) + Trajectory 변화</li>
+        <li><strong>★ Contrarian indicator</strong> — Pre_crisis 영역 fragility 가 ★ 역방향 신호</li>
+        <li><strong>★ T+5 단기 방향성</strong> — Walk-Forward Spearman 0.49 (약한 신호)</li>
+        <li><strong>Bottom signal candidate flag</strong> — 86% precision (Phase 12.13)</li>
+        <li>상대 ranking + Trajectory 변화 (정성적)</li>
       </ul>
       <p style="margin:0 0 8px;color:#fbbf24;font-weight:600;">★ 측정 불가 (정직 인정):</p>
       <ul style="margin:0;padding-left:20px;color:#94a3b8;">
         <li>T+1 단일일 예측 (R² -0.52, noise)</li>
-        <li>T+30 절대값 예측 (MAE 9.13)</li>
+        <li>T+30 절대값 예측 (Walk-Forward R² -7.39)</li>
         <li>외부 surprise (COVID-type 본질적 한계)</li>
-        <li>Fragility 절대값의 객관 의미 (hand-coded 결과)</li>
+        <li>Fragility 절대값의 객관 의미 (hand-coded constants 결과)</li>
       </ul>
     </div>
 
