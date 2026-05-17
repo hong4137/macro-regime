@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-05-16",
-  "fragility_index": 37.5,
+  "fragility_index": 35.2,
   "fragility_level": "mild",
   "level_color": "#eab308",
   "crisis_phase": {
@@ -20,7 +20,7 @@
       }
     },
     "latent_stress": {
-      "score": 32.6,
+      "score": 30.6,
       "vectors": {
         "policy_uncertainty": 0.3,
         "carry_leverage": 0.666,
@@ -35,28 +35,30 @@
         "oil_shock": 0.533,
         "em_credit_stress": 0.1,
         "tail_risk_pricing": 0.0,
-        "vix_backwardation": 0.0
+        "vix_backwardation": 0.0,
+        "yield_curve_inversion": 0
       },
       "contributions_pct": {
         "policy_uncertainty": 0.0,
-        "carry_leverage": 46.0,
+        "carry_leverage": 49.0,
         "em_fx_stress": 0.0,
-        "sector_dispersion": 36.8,
-        "credit_stress": 1.4,
+        "sector_dispersion": 39.3,
+        "credit_stress": 1.5,
         "geopolitical_tail": 0.0,
-        "catalyst_density": 1.4,
+        "catalyst_density": 1.5,
         "bond_vol_stress": 0.0,
         "vol_of_vol_spike": 0.0,
         "safe_haven_demand": 0.0,
         "oil_shock": 0.0,
-        "em_credit_stress": 4.3,
+        "em_credit_stress": 4.6,
         "tail_risk_pricing": 0.0,
-        "vix_backwardation": 0.0
+        "vix_backwardation": 0.0,
+        "yield_curve_inversion": 0.0
       },
       "warnings": []
     },
     "decoupling": {
-      "score": 14.7,
+      "score": 13.8,
       "interpretation": "정상 (surface ≈ latent)"
     },
     "sustainability": {
@@ -98,8 +100,8 @@
       "hedge_ratio": 20
     }
   },
-  "narrative": "Fragility 37.5/100 (mild, phase=pre_crisis). Surface 45 / Latent 33 / Decoupling 15 / Sustainability 65. Top vectors: carry_leverage: 46% | sector_dispersion: 37%",
+  "narrative": "Fragility 35.2/100 (mild, phase=pre_crisis). Surface 45 / Latent 31 / Decoupling 14 / Sustainability 65. Top vectors: carry_leverage: 49% | sector_dispersion: 39%",
   "warnings": [],
   "measurement_quality": "high",
-  "ts": "2026-05-18T01:37:31.939510"
+  "ts": "2026-05-18T01:45:14.671766"
 }
