@@ -134,7 +134,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <div class="wrap">
 
 <h1>거시경제 국면 대시보드 <span style="color:var(--accent);font-size:14px;font-weight:400">v5 · Phase 12 (잠재 취약성 측정)</span></h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-16 · 마지막 업데이트: 2026-05-17 23:48:41</div>
+<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-16 · 마지막 업데이트: 2026-05-17 23:52:26</div>
 
 <div class="kpis">
   <div class="kpi"><div class="l">전체 세션</div><div class="v">127</div></div>
@@ -789,18 +789,22 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
       <p style="margin:0 0 10px;color:#fbbf24;font-weight:600;">★ 시스템 = "Contrarian Indicator" (Pre_crisis 영역 reverse signal)</p>
       <p style="margin:0 0 10px;color:#cbd5e1;">★ AUC-ROC 분석 (2026-05-17, n=50 LOOCV + 12 pre_crisis): Pre_crisis 영역 AUC <strong style="color:#ef4444;">0.11</strong> → ★ 음수 방향 통계적 확정.</p>
 
+      <p style="margin:0 0 10px;color:#fbbf24;font-size:12px;">★ Sample 127 확장 후 정직 결과 (★ 이전 100% precision 은 n=4 overfit 입증):</p>
       <table style="width:100%;border-collapse:collapse;margin-bottom:12px;font-size:12px;">
         <tr style="background:#0a1a0e;">
           <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">Fragility (Pre_crisis 영역)</th>
-          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">★ 진짜 의미</th>
-          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">사후 패턴</th>
+          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">★ 정직 의미 (Sample 34)</th>
+          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">Precision / Recall</th>
         </tr>
-        <tr><td style="padding:5px;color:#22c55e;"><strong>65+</strong></td><td style="padding:5px;color:#22c55e;"><strong>★ Bottom signal candidate</strong></td><td style="padding:5px;">사후 회복 가능성</td></tr>
-        <tr><td style="padding:5px;color:#86efac;"><strong>50-65</strong></td><td style="padding:5px;color:#86efac;">잠재 stress peak (mid-bottom)</td><td style="padding:5px;">회복 또는 mild</td></tr>
-        <tr><td style="padding:5px;color:#fbbf24;"><strong>42-50</strong></td><td style="padding:5px;color:#fbbf24;">불확실 (mixed)</td><td style="padding:5px;">no clear direction</td></tr>
-        <tr><td style="padding:5px;color:#f97316;"><strong>35-42</strong></td><td style="padding:5px;color:#f97316;">★ 위기 시작점</td><td style="padding:5px;">사후 drawdown 가능성</td></tr>
-        <tr><td style="padding:5px;color:#ef4444;"><strong>&lt; 35</strong></td><td style="padding:5px;color:#ef4444;"><strong>★ True crisis start</strong></td><td style="padding:5px;">★ Drawdown likely</td></tr>
+        <tr><td style="padding:5px;color:#22c55e;"><strong>≥ 48</strong></td><td style="padding:5px;color:#22c55e;">Mild bottom signal</td><td style="padding:5px;">P 32% / R 100%</td></tr>
+        <tr><td style="padding:5px;color:#86efac;"><strong>42-48</strong></td><td style="padding:5px;color:#86efac;">Neutral (mixed)</td><td style="padding:5px;">P 31% / R 56%</td></tr>
+        <tr><td style="padding:5px;color:#fbbf24;"><strong>35-42</strong></td><td style="padding:5px;color:#fbbf24;">Mild drawdown warning</td><td style="padding:5px;">P 27-31% / R 44-56%</td></tr>
+        <tr><td style="padding:5px;color:#ef4444;"><strong>&lt; 35</strong></td><td style="padding:5px;color:#ef4444;"><strong>★ Strict warning</strong></td><td style="padding:5px;">P 67% / R 22%</td></tr>
       </table>
+      <p style="margin:0 0 10px;color:#94a3b8;font-size:11px;">
+        ★ ★ 정직 한계: T+5 Spearman 0.31 (이전 0.91 이 overfit). 모든 영역 overlap 큼.
+        진짜 drawdown vs 회복: avg fragility 39 (drawdown ≤-10%) vs 51 (recovery ≥+5%) — 약한 inverse.
+      </p>
 
       <h4 style="color:#fbbf24;margin:14px 0 8px;">★ Contrarian 해석 — 실제 사례</h4>
       <ul style="margin:0 0 10px;padding-left:20px;color:#cbd5e1;font-size:12px;">
