@@ -531,3 +531,103 @@ normalized = {k: w / sum(active_weights.values()) for k, w in active_weights.ite
 - ⚠️ Historical sample (4/27~5/15) backfill: 새 5 indicator 의 120 day yfinance history 있으므로 가능 — regenerate 재실행 필요
 - ⚠️ ^MOVE / ^VVIX yfinance 안정성 모니터링
 - 후속: KBE, JNK, JGB 등 차순위 indicator 추가 검토
+
+
+---
+
+## Section 15 — 정직성 Commitment (2026-05-17 Phase A/B/C audit 후 도입)
+
+### 15.1 사용자 commitment
+
+> "솔직하고 자신을 속이지 않는 진짜 측정 도구가 되도록 합시다"
+
+### 15.2 ★ 시스템 진짜 정의 — 'Stress Visualization Tool'
+
+**Phase C1 결과 (2026-05-17)**:
+- 현재 weights 의 historical T+30 SPY drawdown R² = **-7.55** (★ 음수)
+- Hold-out R² = -0.41
+- → 시스템 **forward-looking predictive 능력 거의 없음** 정량 입증
+
+**시스템 capability**:
+- ✓ 현재 시점 12 vector 다차원 stress 시각화
+- ✓ 상대 ranking (A vs B)
+- ✓ Trajectory 변화 (시간 경과)
+- ✓ Cascade 시나리오 정성 해석
+- ✗ T+30 SPY drawdown 정량 예측 (능력 없음)
+- ✗ 위기 발생 binary classification (self-tautology)
+- ✗ 외부 surprise (COVID-type, 본질적 한계)
+
+### 15.3 ★ 자의성 commitment — 결과-Driven 변경 금지
+
+**금지 행위**:
+1. ❌ Trajectory 가 "자연스럽게" 보이도록 사후 input 조정
+2. ❌ 알려진 historical case 잡기 위한 logic patch (Path 3g 같은)
+3. ❌ Baseline 보존 위한 weight 정규화 (4/29 84.1 유지 같은 expectation)
+4. ❌ "94.7% 정합" 같은 self-validation numbers publish
+5. ❌ Hand-write sample 의 input 으로 시스템 정확도 주장
+
+**허용 행위**:
+1. ✓ Train sample (36개) 만 사용한 statistical refit (Phase C)
+2. ✓ Hold-out 8 개로 진짜 정확도 측정
+3. ✓ Pre-registered prediction 의 사후 결과로 ROC analysis
+4. ✓ Sensitivity analysis 기반 robustness 개선
+5. ✓ Sample input 의 부정합 (regime/strength 모순 등) 객관적 수정
+
+### 15.4 Pre-Registered Prediction Policy (★ 5/18 부터 운영)
+
+**Protocol**:
+- 매 거래일 sample 작성 → fragility 계산 → Hash commit
+- Logic 수정 ★ 금지 (commit 후 평가까지)
+- Ledger: `D:\코워크\research\preregistered_predictions.jsonl` (append-only)
+
+**Evaluation**:
+- T+30 거래일 시점에 사후 결과 비교
+- TP / TN / FP / FN 분류
+- 6개월 후 (2026-11) 진짜 forward-looking 정확도 측정
+
+### 15.5 Dashboard / Messaging 원칙
+
+**Dashboard 에 항상 표시**:
+- "★ 시스템 진짜 capability — 정직한 한계 명시" 섹션
+- R² 음수 결과 명시
+- "Risk Predictor 아님 — Stress Visualization Tool" 명시
+
+**금지 messaging**:
+- "X% 정합" 같은 self-validation
+- "fragility 80 = 위기 임박" 같은 정량 예측 주장
+- "Active_crisis 분류 = drawdown 임박" 같은 추론
+
+**허용 messaging**:
+- 시스템이 측정한 vector 의 정성 narrative
+- Trajectory shape 의 의미 (4/29 → 5/15 같은)
+- 자의성/한계의 정직한 명시
+
+### 15.6 미래 시스템 재설계 단계
+
+**Phase C (statistical refit)** — 진정한 측정 도구로 진화:
+- C1: Vector weights regression ✓ (2026-05-17 1차 시도)
+- C2: Phase formula constants ROC fit (미실행)
+- C3: Cascade density historical 추정 (미실행)
+
+**Phase D (운영 정책)** — 정직성 보장:
+- D1: Logic change log 의무화
+- D2: Hold-out validation 매월 자동 재평가
+- D3: Pre-registered prediction 누적 evaluation
+
+**Phase E (정직 messaging)** — 사용자 commitment 의 외부 표현:
+- Dashboard / Handoff / Reports 의 system 정의 일관 명시 ✓ (2026-05-17)
+- 자기-검증 numbers 폐기 ✓
+
+### 15.7 다음 step (1년 roadmap)
+
+- **2026-05-18~22**: 첫 pre-registered predictions (5 entries)
+- **2026-05-19 NVDA**: 결정적 prediction lock
+- **2026-06-18**: 5/18 sample 의 첫 T+30 평가
+- **2026-08-31**: ~80 pre-registered predictions 누적
+- **2026-11-17**: 6개월 milestone — 진짜 정확도 측정
+- **2027-05-17**: 1년 milestone — 시스템 capability 결정적 평가
+
+### 15.8 운영 commitment 명문화 (2026-05-17)
+
+이 문서 (operating_policy.md) Section 15 가 시스템 정직성의 binding commitment.
+모든 후속 변경은 이 commitment 와 일관해야 함.
