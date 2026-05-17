@@ -1,18 +1,18 @@
 {
-  "as_of_date": "2026-05-15",
-  "fragility_index": 29.2,
+  "as_of_date": "2026-05-16",
+  "fragility_index": 37.5,
   "fragility_level": "mild",
   "level_color": "#eab308",
   "crisis_phase": {
-    "phase": "recovery",
-    "interpretation": "Post-stress recovery (cascade)"
+    "phase": "pre_crisis",
+    "interpretation": "Surface 강세 + Latent 누적 (★ user framing)"
   },
   "components": {
     "surface_strength": {
-      "score": 46.5,
+      "score": 45.2,
       "components": {
-        "bull_regime": 0.48,
-        "spy_momentum": 0.417,
+        "bull_regime": 0.5,
+        "spy_momentum": 0.368,
         "vix_low": 0.516,
         "vix_curr_used": 17.26,
         "vix_source": "forecast",
@@ -20,15 +20,15 @@
       }
     },
     "latent_stress": {
-      "score": 36.5,
+      "score": 32.6,
       "vectors": {
-        "policy_uncertainty": 0.528,
+        "policy_uncertainty": 0.3,
         "carry_leverage": 0.666,
         "em_fx_stress": 0.746,
-        "sector_dispersion": 0.6,
-        "credit_stress": 0.086,
-        "geopolitical_tail": 1.0,
-        "catalyst_density": 0.42,
+        "sector_dispersion": 0.5,
+        "credit_stress": 0.1,
+        "geopolitical_tail": 0.0,
+        "catalyst_density": 0.12,
         "bond_vol_stress": 0,
         "vol_of_vol_spike": 0.216,
         "safe_haven_demand": 0,
@@ -37,29 +37,29 @@
       },
       "contributions_pct": {
         "policy_uncertainty": 0.0,
-        "carry_leverage": 45.5,
+        "carry_leverage": 50.9,
         "em_fx_stress": 0.0,
-        "sector_dispersion": 44.1,
-        "credit_stress": 1.2,
+        "sector_dispersion": 41.1,
+        "credit_stress": 1.6,
         "geopolitical_tail": 0.0,
-        "catalyst_density": 4.8,
+        "catalyst_density": 1.5,
         "bond_vol_stress": 0.0,
         "vol_of_vol_spike": 0.0,
         "safe_haven_demand": 0.0,
         "oil_shock": 0.0,
-        "em_credit_stress": 4.2
+        "em_credit_stress": 4.7
       },
       "warnings": []
     },
     "decoupling": {
-      "score": 17.0,
+      "score": 14.7,
       "interpretation": "정상 (surface ≈ latent)"
     },
     "sustainability": {
-      "score": 82.5,
+      "score": 65.0,
       "components": {
-        "flow_strength": 0.75,
-        "sentiment_positive": 0.75,
+        "flow_strength": 0.5,
+        "sentiment_positive": 0.5,
         "cluster_calm": 1.0
       }
     }
@@ -73,36 +73,29 @@
       "weight": "high"
     },
     {
-      "trigger": "USEPU 600 돌파 (정책 위기)",
-      "current": 151,
-      "target": 600,
-      "distance_pct": 297.4,
-      "weight": "medium"
-    },
-    {
       "trigger": "YC 10Y-2Y inversion (recession leading)",
-      "current": 0.48,
+      "current": 0.5,
       "target": 0,
-      "distance_pct": 4.8,
+      "distance_pct": 5.0,
       "weight": "medium"
     }
   ],
   "decision_support": {
     "stay_invested": true,
-    "tactical_hedge_pct": 5,
-    "review_at_fragility": 50,
-    "narrative": "회복 단계 — 사후 평균 +3% (★ 진정한 회복)",
-    "recommended_action": "정상 risk-on, mild buy 검토",
+    "tactical_hedge_pct": 20,
+    "review_at_fragility": "daily",
+    "narrative": "★ 위기 시작점 가능성 — 사후 5-7d drawdown 위험",
+    "recommended_action": "Mild hedge (15-25%)",
     "risk_gauge_5d": {
-      "risk_score": 20,
-      "risk_level": "Recovery",
-      "interpretation": "회복 단계 — 사후 평균 +3% (★ 진정한 회복)",
-      "recommended_action": "정상 risk-on, mild buy 검토",
-      "hedge_ratio": 5
+      "risk_score": 70,
+      "risk_level": "Drawdown Risk",
+      "interpretation": "★ 위기 시작점 가능성 — 사후 5-7d drawdown 위험",
+      "recommended_action": "Mild hedge (15-25%)",
+      "hedge_ratio": 20
     }
   },
-  "narrative": "Fragility 29.2/100 (mild, phase=recovery). Surface 46 / Latent 36 / Decoupling 17 / Sustainability 82. Top vectors: carry_leverage: 46% | sector_dispersion: 44%",
+  "narrative": "Fragility 37.5/100 (mild, phase=pre_crisis). Surface 45 / Latent 33 / Decoupling 15 / Sustainability 65. Top vectors: carry_leverage: 51% | sector_dispersion: 41%",
   "warnings": [],
   "measurement_quality": "high",
-  "ts": "2026-05-17T22:46:16.935440"
+  "ts": "2026-05-17T23:31:06.480104"
 }
