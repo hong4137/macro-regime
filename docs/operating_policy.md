@@ -557,33 +557,116 @@ normalized = {k: w / sum(active_weights.values()) for k, w in active_weights.ite
 - ✗ 위기 발생 binary classification (self-tautology)
 - ✗ 외부 surprise (COVID-type, 본질적 한계)
 
-### 15.3 ★ 자의성 commitment — 결과-Driven 변경 금지
+### 15.3 ★ 사용자 commitment 정확한 정의 (2026-05-17 update)
 
-**금지 행위**:
-1. ❌ Trajectory 가 "자연스럽게" 보이도록 사후 input 조정
-2. ❌ 알려진 historical case 잡기 위한 logic patch (Path 3g 같은)
-3. ❌ Baseline 보존 위한 weight 정규화 (4/29 84.1 유지 같은 expectation)
-4. ❌ "94.7% 정합" 같은 self-validation numbers publish
-5. ❌ Hand-write sample 의 input 으로 시스템 정확도 주장
+**원문**: "로직이 틀렸는데, 그 로직을 맞는 것처럼 보이게 하려고 ★ 객관적 수치를 마음대로 변형시키지 말라"
 
-**허용 행위**:
-1. ✓ Train sample (36개) 만 사용한 statistical refit (Phase C)
-2. ✓ Hold-out 8 개로 진짜 정확도 측정
-3. ✓ Pre-registered prediction 의 사후 결과로 ROC analysis
-4. ✓ Sensitivity analysis 기반 robustness 개선
-5. ✓ Sample input 의 부정합 (regime/strength 모순 등) 객관적 수정
+#### ★ 3 카테고리 — 변경 자유도 정의
 
-### 15.4 Pre-Registered Prediction Policy (★ 5/18 부터 운영)
+| 카테고리 | 정의 | 변경 자유도 |
+|---------|------|------------|
+| **A. 객관 시장 데이터** | SPY/NDX close, VIX, FRED (USEPU, USDKRW, USDJPY, Baa-Aaa), yfinance (MOVE, VVIX, GLD, USO, EMB), KRE, HYG | ★★★ **절대 변형 금지** |
+| **B. LLM 분석가 판단** | regime_view (bull/sideways/bear/crisis 확률), cascade scenario, strength score, narrative tone | 결과-driven 조정 자제 (회색) |
+| **C. 시스템 logic** | Vector weights, phase formulas, thresholds, cascade-density mapping, path logic (3f, 3g), normalization scheme | ★★★ **자유롭게 진화 권장** |
 
-**Protocol**:
+#### ❌ 절대 금지 — 객관 수치 변형 (Category A)
+
+1. ❌ SPY close 사후 결과 맞추려 수정 (예: 5/13 742.31 → 730)
+2. ❌ FRED USEPU 변형 (예: 5/13 raw 223 → 300)
+3. ❌ VIX, USDKRW, MOVE 등 yfinance/FRED 데이터 변형
+4. ❌ NDX 시트 데이터 사후 조정
+5. ❌ 사후 SPY drawdown (T+30) 변형해서 시스템 정확도 인위적 향상
+
+→ ★ 이건 "현실 왜곡". 사용자 commitment 의 가장 엄격한 line.
+
+#### ⚠️ 회색 — LLM 판단값 결과-driven 조정 자제 (Category B)
+
+이전 사례 (★ 인정):
+- 2026-05-12~14 sample 의 regime_view 를 "trajectory 매끄럽게" motivation 으로 조정
+- 5/13: bull 0.60 → 0.30, cascade broad_recovery → transient_caution
+- 5/14: bull 0.65 → 0.30, 동일
+
+해석:
+- LLM 판단 자체의 internal inconsistency (bull 0.6 + leading_strength 0.3 모순) 수정 측면 ✓
+- 다만 motivation 의 일부가 "trajectory matter" → 결과-driven 측면 ⚠
+
+향후:
+- LLM 판단값 변경 시 motivation 명시 + ledger 기록
+- 모순 발견 시 ✓, "결과 매끄럽게" ✗
+
+#### ✅ 권장 — 시스템 logic 진화 (Category C)
+
+★ 모든 logic 변경 자유. Backfit 같은 logic 도 OK.
+
+1. ✓ **새 indicator 추가** (KBE, JNK, RVX, JGB yield 등 새 정보원)
+2. ✓ **Statistical refit** (regression, ML, Bayesian)
+3. ✓ **Phase formula 데이터 기반 재추정** (ROC-optimal, statistical fit)
+4. ✓ **Path logic 변경/추가** (Path 3g 같은 — sample 보고 추가도 OK)
+5. ✓ **Vector weights 조정** (LOOCV, sample 기반 fit)
+6. ✓ **Threshold tuning** (alert_min, cascade-density 등)
+7. ✓ **Cascade scenario 정의 변경**
+8. ✓ **Normalization scheme** (Active weight 정규화 같은)
+9. ✓ **새 version label** (Phase 12.11, 12.12, ...)
+
+★ Why 자유?
+- Logic 은 우리가 만든 것 — 진화 가능
+- 객관 데이터 (시장) 와 다름
+- Logic 개선 시 ✓ 새 sample 부터 적용 (기존 prediction lock 유지)
+
+#### Critical Distinction — 같은 결과 보고 한 행위라도
+
+| 행위 | 카테고리 | 평가 |
+|------|---------|------|
+| "5/13 결과가 안 맞으니 5/13 SPY close 를 730 으로 수정" | A | ❌ ★ 절대 금지 |
+| "5/13 결과가 안 맞으니 5/13 regime_view 의 bull 을 0.30 으로 수정" | B | ⚠️ 회색 (motivation 보고) |
+| "5/13 결과가 안 맞으니 vector weights 를 새로 fit + 5/14 부터 적용" | C | ✅ 권장 |
+| "Active 무조건 85+ 강제 formula 가 부정확 → ROC-optimal 로 재추정 + 5/18 부터 적용" | C | ✅ 권장 |
+| "COVID 잡으려 Path 3g 추가 + Lock 된 COVID prediction 은 변경 안 함" | C | ✅ OK |
+
+### 15.4 Version-Based Logic Evolution Policy (★ 5/18 부터 운영)
+
+#### Rule 1: Prediction Lock (Strict)
+
+- 각 prediction 의 fragility 값 ★ commit 후 변경 금지
+- 그 시점 system version 으로 만든 결과 영구 보존
+- 사후 평가는 그 prediction 의 정확도 평가 (lock 된 값으로)
+
+#### Rule 2: Logic Evolution (Open + Documented)
+
+★ Logic 변경 ✓ 허용 + 권장. 단, 모든 변경에:
+- **Motivation** 명시 (왜 변경?)
+- **변경 전/후 비교** (sample 영향 정량)
+- **새 version label** (Phase 12.11, 12.12, ...)
+- **Hold-out 사전 평가** 권장 (도입 전 성능 측정)
+- **변경 ledger** 에 기록 (`logic_change_log.md`)
+
+#### Rule 3: Sliding Window Evaluation
+
+```
+Logic v1 으로 만든 prediction A (5/18~5/30) → A 의 사후 결과 평가 (v1 기준)
+Logic v2 로 만든 prediction B (6/01~6/30) → B 의 사후 결과 평가 (v2 기준)
+★ 두 version 의 forward accuracy 비교 → 진화 가치 측정
+```
+
+#### Rule 4: Backfit 차단 (가장 critical)
+
+- ❌ 새 logic 으로 과거 lock 된 prediction 재계산 후 "성능 향상" 주장
+- ❌ Hold-out 결과 보고 그 sample 분류 변경
+- ❌ "5/18 결과 안 맞으니 5/18 logic 수정" — 5/18 lock 후 5/19 logic 만 변경 가능
+
+#### Protocol
+
 - 매 거래일 sample 작성 → fragility 계산 → Hash commit
-- Logic 수정 ★ 금지 (commit 후 평가까지)
+- Logic version + commit hash 기록 → 사후 재현 가능
 - Ledger: `D:\코워크\research\preregistered_predictions.jsonl` (append-only)
+- 변경 ledger: `D:\코워크\research\logic_change_log.md`
 
-**Evaluation**:
+#### Evaluation
+
 - T+30 거래일 시점에 사후 결과 비교
-- TP / TN / FP / FN 분류
+- TP / TN / FP / FN + correlation metrics
 - 6개월 후 (2026-11) 진짜 forward-looking 정확도 측정
+- ★ Version 별 정확도 분리 평가 → 진화 효과 측정
 
 ### 15.5 Dashboard / Messaging 원칙
 

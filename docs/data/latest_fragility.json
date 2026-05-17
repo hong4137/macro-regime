@@ -1,6 +1,6 @@
 {
   "as_of_date": "2026-05-15",
-  "fragility_index": 37.5,
+  "fragility_index": 29.2,
   "fragility_level": "mild",
   "level_color": "#eab308",
   "crisis_phase": {
@@ -20,7 +20,7 @@
       }
     },
     "latent_stress": {
-      "score": 46.9,
+      "score": 36.5,
       "vectors": {
         "policy_uncertainty": 0.528,
         "carry_leverage": 0.666,
@@ -36,24 +36,24 @@
         "em_credit_stress": 0.1
       },
       "contributions_pct": {
-        "policy_uncertainty": 16.9,
-        "carry_leverage": 18.4,
-        "em_fx_stress": 15.9,
-        "sector_dispersion": 10.2,
-        "credit_stress": 2.4,
-        "geopolitical_tail": 25.6,
-        "catalyst_density": 4.5,
+        "policy_uncertainty": 0.0,
+        "carry_leverage": 45.5,
+        "em_fx_stress": 0.0,
+        "sector_dispersion": 44.1,
+        "credit_stress": 1.2,
+        "geopolitical_tail": 0.0,
+        "catalyst_density": 4.8,
         "bond_vol_stress": 0.0,
-        "vol_of_vol_spike": 2.3,
+        "vol_of_vol_spike": 0.0,
         "safe_haven_demand": 0.0,
-        "oil_shock": 3.4,
-        "em_credit_stress": 0.4
+        "oil_shock": 0.0,
+        "em_credit_stress": 4.2
       },
       "warnings": []
     },
     "decoupling": {
-      "score": 21.8,
-      "interpretation": "약한 디커플링"
+      "score": 17.0,
+      "interpretation": "정상 (surface ≈ latent)"
     },
     "sustainability": {
       "score": 82.5,
@@ -89,12 +89,12 @@
   ],
   "decision_support": {
     "stay_invested": true,
-    "tactical_hedge_pct": 5,
-    "review_at_fragility": 60,
-    "narrative": "표면 강세 + 잠재 위험 누적 시작 — mild watch, 5% hedge"
+    "tactical_hedge_pct": 0,
+    "review_at_fragility": 50,
+    "narrative": "표면 + 내재 모두 안정 — 정상 포지션"
   },
-  "narrative": "Fragility 37.5/100 (mild, phase=recovery). Surface 46 / Latent 47 / Decoupling 22 / Sustainability 82. Top vectors: geopolitical_tail: 26% | carry_leverage: 18% | policy_uncertainty: 17%",
+  "narrative": "Fragility 29.2/100 (mild, phase=recovery). Surface 46 / Latent 36 / Decoupling 17 / Sustainability 82. Top vectors: carry_leverage: 46% | sector_dispersion: 44%",
   "warnings": [],
   "measurement_quality": "high",
-  "ts": "2026-05-16T17:48:04.680306"
+  "ts": "2026-05-17T15:48:59.268398"
 }
