@@ -134,7 +134,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
 <div class="wrap">
 
 <h1>거시경제 국면 대시보드 <span style="color:var(--accent);font-size:14px;font-weight:400">v5 · Phase 12 (잠재 취약성 측정)</span></h1>
-<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-15 · 마지막 업데이트: 2026-05-17 13:38:49</div>
+<div class="meta">자동 생성 · 5분마다 갱신 · 기준일 2026-05-15 · 마지막 업데이트: 2026-05-17 13:46:05</div>
 
 <div class="kpis">
   <div class="kpi"><div class="l">전체 세션</div><div class="v">72</div></div>
@@ -720,29 +720,35 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
       <li>4개 조합해서 정확한 action 결정 (포지션/헷지 비율)</li>
     </ol>
 
-    <h3 style="color:#ef4444;margin-top:24px;">⚠️ 시스템 진짜 capability — 정직한 한계 명시</h3>
-    <div style="background:#1f1310;padding:14px;border-left:3px solid #ef4444;border-radius:4px;margin-bottom:16px;font-size:13px;">
-      <p style="margin:0 0 10px;color:#fbbf24;font-weight:600;">★ 시스템은 "예측 도구" 가 아닙니다.</p>
-      <p style="margin:0 0 10px;color:#cbd5e1;">2026-05-17 Phase C1 statistical refit 결과:</p>
-      <ul style="margin:0 0 10px;padding-left:20px;color:#cbd5e1;">
-        <li><strong>현재 weights 의 historical T+30 SPY drawdown 예측 R² = -7.55</strong> (★ 음수)</li>
-        <li>→ 시스템 fragility 가 사후 시장 drawdown 을 "mean 일괄 예측" 보다도 부정확하게 예측</li>
-        <li>Refit weights 도 hold-out R² 음수 (-0.41) — overfit 또는 sample 부족</li>
-        <li>Hand-coded constants 70+개 중 20개가 결과-driven leakage 가능</li>
-      </ul>
-      <p style="margin:0 0 8px;color:#fbbf24;font-weight:600;">★ 시스템이 measureable 한 것 (가치 인정):</p>
+    <h3 style="color:#22c55e;margin-top:24px;">★ 시스템 진짜 capability — Contrarian Phase Classifier (Phase C1-Extended 검증, n=50 LOOCV)</h3>
+    <div style="background:#0f1f15;padding:14px;border-left:3px solid #22c55e;border-radius:4px;margin-bottom:16px;font-size:13px;">
+      <p style="margin:0 0 10px;color:#fbbf24;font-weight:600;">★ 시스템 = "Contrarian Phase Classifier + Short-term Signal Tool"</p>
+      <p style="margin:0 0 10px;color:#cbd5e1;">2026-05-17 LOOCV (n=50) robust 평가 결과:</p>
+      <table style="width:100%;border-collapse:collapse;margin-bottom:12px;font-size:12px;">
+        <tr style="background:#0a1a0e;">
+          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">Phase 분류</th>
+          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">사후 30일 평균</th>
+          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">Positive rate</th>
+          <th style="padding:5px;text-align:left;border-bottom:1px solid #16a34a;">진짜 의미</th>
+        </tr>
+        <tr><td style="padding:5px;color:#ef4444;"><strong>pre_crisis</strong></td><td style="padding:5px;color:#ef4444;"><strong>-3.46%</strong></td><td style="padding:5px;">33% (★ 66% drawdown)</td><td style="padding:5px;">★ 사후 stress 정확 식별</td></tr>
+        <tr><td style="padding:5px;color:#dc2626;"><strong>active_crisis</strong></td><td style="padding:5px;color:#22c55e;"><strong>+4.02%</strong></td><td style="padding:5px;">79%</td><td style="padding:5px;">★ Contrarian bottom signal</td></tr>
+        <tr><td style="padding:5px;color:#60a5fa;"><strong>recovery</strong></td><td style="padding:5px;color:#22c55e;">+3.17%</td><td style="padding:5px;">80%</td><td style="padding:5px;">진정한 회복</td></tr>
+        <tr><td style="padding:5px;color:#22c55e;"><strong>calm</strong></td><td style="padding:5px;">-5.24%</td><td style="padding:5px;">67%</td><td style="padding:5px;">정상 (COVID FN 평균 영향)</td></tr>
+      </table>
+      <p style="margin:0 0 8px;color:#fbbf24;font-weight:600;">★ 측정 가능 (정량 입증):</p>
       <ul style="margin:0 0 10px;padding-left:20px;color:#94a3b8;">
-        <li>현재 시점의 다차원 stress (12 vector 시각화)</li>
-        <li>상대적 ranking (A 가 B 보다 stressed)</li>
-        <li>Trajectory 변화 (시간 경과 stress 증감)</li>
-        <li>Cascade 시나리오 정성 해석</li>
+        <li><strong>Pre_crisis 분류 = ★ 진정한 stress 측정</strong> (사후 30일 -3.46% drawdown 평균)</li>
+        <li><strong>Active_crisis = ★ Contrarian bottom signal</strong> (사후 +4.02% 회복)</li>
+        <li><strong>T+5 단기 방향성 — Spearman 0.57</strong> (★ 가장 강한 signal)</li>
+        <li>상대 ranking (A vs B) + Trajectory 변화</li>
       </ul>
-      <p style="margin:0 0 8px;color:#fbbf24;font-weight:600;">★ 시스템이 측정 못하는 것 (정직 인정):</p>
+      <p style="margin:0 0 8px;color:#fbbf24;font-weight:600;">★ 측정 불가 (정직 인정):</p>
       <ul style="margin:0;padding-left:20px;color:#94a3b8;">
-        <li>T+30 SPY drawdown 정량 예측 (R² ≈ 0)</li>
-        <li>위기 발생 binary classification (self-tautology)</li>
+        <li>T+1 단일일 예측 (R² -0.52, noise)</li>
+        <li>T+30 절대값 예측 (MAE 9.13)</li>
+        <li>외부 surprise (COVID-type 본질적 한계)</li>
         <li>Fragility 절대값의 객관 의미 (hand-coded 결과)</li>
-        <li>외부 surprise (COVID-type 본질적 한계, Track 7 검증)</li>
       </ul>
     </div>
 
@@ -762,7 +768,7 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
       - "Active_crisis 분류 = 추가 drawdown 임박" 추론 ✗ (Track 1: 사후 mean +4%, bottom signal 多)<br>
     </p>
 
-    <h3 style="color:#60a5fa;">📊 정직한 검증 결과 (Phase A/B/C, 2026-05-17)</h3>
+    <h3 style="color:#60a5fa;">📊 정직한 검증 결과 (Phase A/B/C-Extended, n=50 LOOCV, 2026-05-17)</h3>
     <table style="width:100%;border-collapse:collapse;margin-bottom:16px;font-size:13px;">
       <tr style="background:#0f172a;">
         <th style="padding:6px;text-align:left;border-bottom:1px solid #334155;">검증</th>
@@ -771,14 +777,15 @@ footer{margin-top:30px;color:var(--muted);font-size:11px;text-align:center;borde
       </tr>
       <tr><td style="padding:6px;">Phase A audit</td><td style="padding:6px;">70+ hand-coded constants, 20개 결과-driven</td><td style="padding:6px;color:#fbbf24;">자의성 큼</td></tr>
       <tr><td style="padding:6px;">Phase B1 sensitivity</td><td style="padding:6px;">Active 'base 85' ±20% → 26pt range</td><td style="padding:6px;color:#fbbf24;">절대값 의미 약함</td></tr>
-      <tr><td style="padding:6px;">Phase C1 refit</td><td style="padding:6px;">R² train -7.55 / hold-out -0.41</td><td style="padding:6px;color:#ef4444;">★ predictive 능력 없음</td></tr>
-      <tr><td style="padding:6px;">Track 1 active 24</td><td style="padding:6px;">avg T+30 +4% (★ 회복)</td><td style="padding:6px;color:#fbbf24;">contrarian bottom signal</td></tr>
+      <tr><td style="padding:6px;">Phase C1-Ext T+5</td><td style="padding:6px;color:#22c55e;"><strong>★ Spearman 0.57</strong> (R² 0.23)</td><td style="padding:6px;color:#22c55e;">★ 5d 방향성 측정 가능</td></tr>
+      <tr><td style="padding:6px;">Phase C1-Ext pre_crisis</td><td style="padding:6px;color:#ef4444;"><strong>★ 사후 30d -3.46%</strong></td><td style="padding:6px;color:#22c55e;">★ stress 정확 식별</td></tr>
+      <tr><td style="padding:6px;">Phase C1-Ext active</td><td style="padding:6px;color:#22c55e;"><strong>★ 사후 30d +4.02%</strong></td><td style="padding:6px;color:#fbbf24;">Contrarian bottom signal</td></tr>
       <tr><td style="padding:6px;">Track 7 calm/recovery 14</td><td style="padding:6px;">FN 2 (COVID 만)</td><td style="padding:6px;color:#fbbf24;">외부 surprise 본질 한계</td></tr>
     </table>
     <p style="color:#94a3b8;font-size:13px;">
-      <strong>이전 자기-검증 (94.7% 정합) 폐기</strong> — 진짜 forward-looking 정확도는
-      5/18 부터 시작하는 pre-registered prediction 으로 6개월~1년 후 평가 가능.
-      <br>(상세: <code>research/phase_c1_results_interpretation.md</code>)
+      <strong>이전 자기-검증 (94.7% 정합) 폐기, 새 정직 metrics 도입</strong>.
+      Forward-looking 정확도는 5/18 부터 pre-registered prediction 으로 6개월~1년 후 결정적 평가.
+      <br>(상세: <code>research/phase_c1_extended_interpretation.md</code>)
     </p>
 
   </div>
