@@ -104,7 +104,5 @@
   "narrative": "Fragility 35.2/100 (mild, phase=pre_crisis). Surface 45 / Latent 31 / Decoupling 14 / Sustainability 65. Top vectors: carry_leverage: 49% | sector_dispersion: 39%",
   "warnings": [],
   "measurement_quality": "high",
-  "ts": "2026-05-18T02:37:13.216550",
-  "_weekend_inherited_from": "2026-05-16",
-  "_inheritance_reason": "No batch run (operating_policy.md §1.2 — fragility: 인접 거래일 inherit until next batch)"
+  "ts": "2026-05-19T23:15:45.834552"
 }
