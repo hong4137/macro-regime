@@ -1,6 +1,6 @@
 # Phase 12 Fragility Index — Batch History 시계열
 
-**생성**: 2026-05-19 23:55  
+**생성**: 2026-05-20 00:01  
 **Sessions**: 228  
 **Date range**: 2000-04-14 ~ 2026-05-19
 
@@ -9,9 +9,9 @@
 | Phase | n | Avg fragility | Min | Max |
 |---|---|---|---|---|
 | **active_crisis** | 24 | 89.3 | 87.7 | 91.0 |
-| **pre_crisis** | 86 | 41.8 | 20.0 | 73.2 |
+| **pre_crisis** | 85 | 41.9 | 20.0 | 73.2 |
 | **recovery** | 10 | 21.6 | 12.9 | 40.3 |
-| **calm** | 108 | 8.7 | 2.2 | 18.7 |
+| **calm** | 109 | 8.7 | 2.2 | 18.7 |
 
 ## 2. Phase 별 Top Latent Vectors (avg %)
 
@@ -29,10 +29,10 @@
 
 | Vector | Avg contribution |
 |---|---|
-| sector dispersion | 31.2% |
-| carry leverage | 17.9% |
-| credit stress | 11.5% |
-| bond vol stress | 11.5% |
+| sector dispersion | 31.1% |
+| carry leverage | 17.5% |
+| credit stress | 11.6% |
+| bond vol stress | 11.6% |
 | yield curve inversion | 4.6% |
 
 ### recovery
@@ -49,10 +49,10 @@
 
 | Vector | Avg contribution |
 |---|---|
-| sector dispersion | 39.9% |
-| credit stress | 18.9% |
-| carry leverage | 8.5% |
-| bond vol stress | 7.7% |
+| sector dispersion | 39.5% |
+| credit stress | 18.8% |
+| carry leverage | 9.1% |
+| bond vol stress | 7.6% |
 | vix backwardation | 4.6% |
 
 ## 3. Crisis 직전 14일 fragility trajectory
@@ -438,18 +438,18 @@
 | 2026-05-16 | **35.2** | mild | `pre_crisis` | 45.2 | 30.6 | 13.8 | 65.0 |
 | 2026-05-17 | **35.2** | mild | `pre_crisis` | 45.2 | 30.6 | 13.8 | 65.0 |
 | 2026-05-18 | **11.8** | calm | `calm` | 43.6 | 23.7 | 10.3 | 65.0 |
-| 2026-05-19 | **35.2** | mild | `pre_crisis` | 45.2 | 30.6 | 13.8 | 65.0 |
+| 2026-05-19 | **11.8** | calm | `calm` | 43.6 | 23.7 | 10.3 | 65.0 |
 
 ## 5. 핵심 발견 (Findings)
 
 ### 5.1 Phase 별 평균 fragility 단계적 분리
 
-- **calm** 8.7 → **recovery** 21.6 → **pre_crisis** 41.8 → **active_crisis** 89.3
+- **calm** 8.7 → **recovery** 21.6 → **pre_crisis** 41.9 → **active_crisis** 89.3
 
 ✅ **모노톤 증가 검증** — phase 별 fragility 가 정상 단계적 분리
 
 ### 5.2 Latent vector dominance
 
 - Active crisis 의 top vector: **sector_dispersion** (16.7%)
-- Pre-crisis 의 top vector: **sector_dispersion** (31.2%)
+- Pre-crisis 의 top vector: **sector_dispersion** (31.1%)
 

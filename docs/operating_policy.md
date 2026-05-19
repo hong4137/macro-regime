@@ -1,7 +1,72 @@
 # 시스템 운영 정책
 
-**최종 업데이트**: 2026-05-16
-**Status**: Phase 12.9.1 (USEPU 하이브리드 보정 + 캘린더 전체 sample 정책) 운영 시작
+**최종 업데이트**: 2026-05-19
+**Status**: Phase 12.18 (Sample 확장 n=228, weights Phase 12.16 유지) + Manual Trigger 정책
+
+---
+
+## 0. ★ Manual Trigger 정책 (★ 2026-05-19 신규)
+
+### 0.1 배경
+
+- 자동 스케줄링 (Windows 작업 스케줄러 / cron) = ★ 사용자 컴퓨터가 켜져 있어야 작동
+- 사용자 컴퓨터는 항상 켜져 있지 않음 → ★ 자동 스케줄링 의미 없음
+- 따라서 batch 실행은 ★ "사용자 trigger 기반" 으로 운영
+
+### 0.2 Trigger 방식
+
+★ **사용자가 "오늘 [날짜] [시각] 입니다" 라고 알려주면**, Claude 는 ★ 그 시점 기준으로 ★ 누락된 batch 를 자동 진행한다.
+
+**예시 trigger 표현** (★ 모두 동일하게 동작):
+- "지금 5월 19일 오후 10시입니다"
+- "오늘 5/20 새벽 1시"
+- "지금 한국시각 화요일 밤"
+- "한국시각 2026-05-20 06:00"
+- "오늘은 5월 20일이야"
+
+### 0.3 Trigger 시 Claude 가 자동 진행하는 작업
+
+1. ★ **누락된 날짜 식별** — 마지막 batch 실행 시각 ~ 사용자 알린 시각 사이에 누락된 거래일
+2. ★ **각 날짜별 batch 진행 (PowerShell command 작성 + 사용자에게 제공)**:
+   - fetch_historical.py --date YYYY-MM-DD (시장 데이터 가져오기)
+   - fetch_tier1.py --date YYYY-MM-DD (보조 지표 가져오기)
+   - create_sample_from_snapshot.py --date YYYY-MM-DD (sample 생성)
+   - regenerate_from_snapshots.py --dates YYYY-MM-DD (텍스트 표준화)
+   - analyze_v3.py --date YYYY-MM-DD (캐스케이드 LLM 분류)
+   - fragility_batch.py (잠재 위험도 일괄 재계산)
+   - daily_dashboard.py (대시보드 재생성)
+   - publish.ps1 (GitHub Pages 동기화)
+3. ★ **휴장일 처리** (§1.2 정책 따라): 미국 시장 휴장일은 직전 거래일 inherit + `_weekend_inherited_from` 표시
+4. ★ **잠재 위험도 / phase11_fusion / 캐스케이드 모두 갱신**
+5. ★ **GitHub Pages publish 까지 완료**
+
+### 0.4 Trigger 후 사용자가 확인할 것
+
+- 새 잠재 위험도 값 (이전 inherit 값 → 진짜 값으로 변경)
+- 새 캐스케이드 분류 (auto_pending → 진짜 시나리오)
+- 대시보드의 표/카드 모두 갱신
+- GitHub Pages (https://hong4137.github.io/macro-regime/) 반영
+
+### 0.5 Trigger 없을 때
+
+- ★ 대시보드는 ★ 직전 batch 데이터 그대로 유지
+- 휴장일 inherit 로 빈 자리는 채움 (정책 §1.2)
+- ★ 사용자가 trigger 안 하면 ★ 자동 갱신 없음 (★ 명시적 정책)
+
+### 0.6 Trigger 의 실용 의미
+
+- 사용자는 ★ 시장 마감 후 (한국시각 새벽 5시) ~ 다음 날 사이 ★ 편한 시점에 trigger
+- 매일 trigger 안 해도 됨 — 며칠 누적해서 한 번에 trigger 가능
+- 단, ★ 5/18 부터 pre-registered prediction 추적 시작했으므로 ★ 누락 일수가 많으면 신뢰도 평가에 영향
+- 권장: ★ 1주일에 ★ 최소 2~3번 trigger (월/수/금 정도)
+
+### 0.7 Claude 의 의무 (★ 명시)
+
+- 사용자가 trigger 하면 ★ 즉시 누락 날짜 진단
+- ★ 휴장일은 inherit (자동 fetch 시도 X)
+- ★ 실제 시장 개장일 만 fetch + 분석
+- ★ Trigger 없이 화면 갱신 요청 시 → ★ inherit 만 진행 (실제 batch 안 함)
+- ★ 정책 명시: "Trigger 가 있어야 진짜 batch 실행" — Claude 가 자체 판단으로 시간을 추정하지 않음
 
 ---
 

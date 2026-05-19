@@ -1,71 +1,97 @@
 {
   "as_of_date": "2026-05-19",
-  "system_version": "v3.2 (Phase 12.9.1 — auto-created from snapshot, closed)",
+  "system_version": "v3.2 (Phase 12.9.1 — auto-created from snapshot, open)",
   "_meta": {
     "source": "Auto-created sample (create_sample_from_snapshot.py)",
-    "event": "Historical sample for 2026-05-16",
-    "market_session": "closed",
-    "market_data_origin": "2026-05-15",
-    "usepu_raw": null,
-    "usepu_corrected_5dma": 257.92,
+    "event": "Historical sample for 2026-05-18",
+    "market_session": "open",
+    "market_data_origin": "2026-05-18",
+    "usepu_raw": 497.15,
+    "usepu_corrected_5dma": 328.83,
     "correction_method": "weekday_only_5d_ma (hybrid: weekend uses 5dMA)",
     "correction_window_dates": [
+      "2026-05-18",
+      "2026-05-15",
       "2026-05-14",
       "2026-05-13",
-      "2026-05-12",
-      "2026-05-11",
-      "2026-05-08"
+      "2026-05-12"
     ],
     "_auto_created": true,
-    "_auto_created_ts": "2026-05-17T13:53:08.272808",
+    "_auto_created_ts": "2026-05-19T23:55:46.481112",
     "data_caveat": "Auto-generated from snapshot history. regime_view/cascade default baseline — analyze_v3 재실행 또는 hand-tune 권장."
   },
   "liq_input": {
     "agent_id": "liquidity_v2",
-    "as_of_date": "2026-05-16",
+    "as_of_date": "2026-05-18",
     "leading_layer": {
-      "verdict": "Auto-extracted indicators for 2026-05-16. closed session. 데이터 자동 추출 — LLM verdict 추후 보강 권장.",
+      "verdict": "Auto-extracted indicators for 2026-05-18. open session. 데이터 자동 추출 — LLM verdict 추후 보강 권장.",
       "strength": 0.5,
       "key_signals": [
-        "USDJPY 156.64 (2026-05-08)",
-        "USDKRW 1461.06 — EM FX stress",
-        "USDCNY 6.8005",
-        "USEPU: 데이터 없음",
+        "USDJPY 158.69 (5d delta +2.05) (2026-05-15)",
+        "USDKRW 1499.61 (5d delta +38.55) — EM FX stress",
+        "USDCNY 6.8092",
+        "USEPU spot 497.15 (avg30d 389.70, 5dMA-ref 328.83 weekday raw-preserve n=5) — policy uncertainty",
         "SAHM 0.13 / SLOOS 8.1 — recession leading",
-        "SOFR-IORB -9bp — funding",
-        "BREAKEVEN 10Y 2.49 / FORWARD 5Y5Y 2.28 — inflation expectation",
-        "KRE/SPY 0.0906 — regional bank",
-        "HYG/IEF 0.8497 — HY credit",
-        "MOVE 79.87 (5d +18.8%) — ★ bond vol (SVB-type leading)",
-        "VVIX 92.94 (5d -4.0%) — VIX panic leading",
-        "GLD 417.29 5d -3.8% — safe haven flow",
-        "USO 148.23 5d +11.0% — oil/geopolitical",
-        "EMB 94.71 5d -1.5% — EM credit"
+        "SOFR-IORB -12bp — funding",
+        "MOVE 86.07 (5d +21.7%) — ★ bond vol (SVB-type leading)",
+        "VVIX 91.18 (5d -7.0%) — VIX panic leading",
+        "GLD 418.43 5d -3.7% — safe haven flow",
+        "USO 149.29 5d +7.7% — oil/geopolitical",
+        "EMB 94.62 5d -1.4% — EM credit",
+        "SKEW 138.40 — ★ tail risk pricing (Pre-event)",
+        "VIX9D/VIX 0.946 — ★ vol term structure (>1.0 = backwardation panic)"
       ],
       "_auto_extracted": true,
-      "_market_session": "closed",
-      "_market_data_origin": "2026-05-15"
+      "_market_session": "open",
+      "_market_data_origin": "2026-05-18",
+      "_old_signals": [
+        "USDJPY 158.69 (2026-05-15)",
+        "USDKRW 1499.61 — EM FX stress",
+        "USDCNY 6.8092",
+        "USEPU spot 497.15 (avg30d 389.7, 5dMA-ref 328.83 weekday raw-preserve n=5) — policy uncertainty",
+        "SAHM 0.13 / SLOOS 8.1 — recession leading",
+        "SOFR-IORB -12bp — funding",
+        "BREAKEVEN 10Y 2.48 / FORWARD 5Y5Y 2.27 — inflation expectation",
+        "KRE/SPY 0.0920 — regional bank",
+        "HYG/IEF 0.8510 — HY credit",
+        "MOVE 86.07 (5d +28.0%) — ★ bond vol (SVB-type leading)",
+        "VVIX 91.18 (5d -5.8%) — VIX panic leading",
+        "GLD 418.43 5d -3.5% — safe haven flow",
+        "USO 149.29 5d +11.8% — oil/geopolitical",
+        "EMB 94.62 5d -1.6% — EM credit"
+      ],
+      "_regenerated": true,
+      "_regenerated_ts": "2026-05-19T23:55:46.701365"
     },
     "coincident_layer": {
-      "verdict": "Auto-extracted coincident indicators for 2026-05-16.",
+      "verdict": "Auto-extracted coincident indicators for 2026-05-18.",
       "strength": 0.5,
       "key_signals": [
-        "VIX 17.26",
-        "Baa-Aaa 0.57pp",
+        "VIX 17.82 (5d -0.56)",
+        "Baa-Aaa 0.56pp",
         "Baa-10Y 1.62pp",
-        "YC 10Y-2Y +0.50pp",
-        "YC 10Y-3M +0.90pp",
+        "YC 10Y-2Y +0.54pp",
         "NFCI -0.524",
-        "DXY 118.04",
-        "Net liquidity 5890bn"
+        "DXY 119.28",
+        "Net liquidity 5883bn"
       ],
-      "_market_session": "closed",
-      "_market_data_origin": "2026-05-15"
+      "_market_session": "open",
+      "_market_data_origin": "2026-05-18",
+      "_old_signals": [
+        "VIX 17.82 (5d -0.56)",
+        "Baa-Aaa 0.56pp",
+        "Baa-10Y 1.62pp",
+        "YC 10Y-2Y +0.54pp",
+        "YC 10Y-3M +0.93pp",
+        "NFCI -0.524",
+        "DXY 119.28",
+        "Net liquidity 5890bn"
+      ]
     },
     "catalyst_layer": {
       "verdict": "Catalyst (importance 4): (none specified)",
       "key_catalysts": [
-        "2026-05-16 (no catalyst specified)"
+        "2026-05-18 (no catalyst specified)"
       ]
     },
     "regime_view": {
@@ -76,7 +102,7 @@
     },
     "horizon_hours": 24,
     "confidence": 0.5,
-    "rationale_synthesis": "Auto-created sample for 2026-05-16 — regime_view 는 baseline default. analyze_v3 또는 hand-tune 권장.",
+    "rationale_synthesis": "Auto-created sample for 2026-05-18 — regime_view 는 baseline default. analyze_v3 또는 hand-tune 권장.",
     "next_trigger": "TBD",
     "uncertainty_flags": [
       "Auto-created — regime_view/cascade 미정의",
@@ -84,7 +110,7 @@
     ]
   },
   "flow_result": {
-    "as_of_date": "2026-05-16",
+    "as_of_date": "2026-05-18",
     "detector_id": "flow_detector",
     "version": "v1.0 (auto-created placeholder)",
     "_auto_placeholder": true,
@@ -96,10 +122,10 @@
     "uncertainty_flags": [
       "Auto-placeholder — flow detector 미실행"
     ],
-    "ts": "2026-05-17T13:53:08.272817"
+    "ts": "2026-05-19T23:55:46.481145"
   },
   "sentiment_result": {
-    "as_of_date": "2026-05-16",
+    "as_of_date": "2026-05-18",
     "detector_id": "sentiment_detector",
     "version": "v1.0 (auto-created placeholder)",
     "_auto_placeholder": true,
@@ -111,10 +137,10 @@
     "uncertainty_flags": [
       "Auto-placeholder — sentiment detector 미실행"
     ],
-    "ts": "2026-05-17T13:53:08.272819"
+    "ts": "2026-05-19T23:55:46.481148"
   },
   "forecast_result": {
-    "as_of_date": "2026-05-16",
+    "as_of_date": "2026-05-18",
     "detector_id": "numerical_forecast",
     "version": "v1.0 (auto-created — market data 직접 사용, no LLM forecast)",
     "_auto_placeholder": false,
@@ -122,13 +148,13 @@
     "forecast_regime": "neutral",
     "forecasts": {
       "SPY": {
-        "current": 739.1699829101562,
-        "forecast_pct": 0.21,
+        "current": 738.6500244140625,
+        "forecast_pct": 0.14,
         "direction": "neutral",
         "_note": "auto-filled with actual 5d realized % (not forecast)"
       },
       "^VIX": {
-        "current": 17.26,
+        "current": 17.82,
         "forecast_pct": 0,
         "direction": "neutral",
         "mean_revert_applied": false,
@@ -136,12 +162,12 @@
         "_note": "auto-filled with current VIX from coincident"
       },
       "^TNX": {
-        "current": 4.47,
+        "current": 4.59,
         "forecast_pct": 0,
         "direction": "neutral"
       },
       "JPY=X": {
-        "current": 156.64,
+        "current": 158.69,
         "forecast_pct": 0,
         "direction": "neutral"
       }
@@ -151,7 +177,7 @@
       "Auto-created from snapshot — forecast_pct = 5d realized %, not predicted",
       "VIX/SPY current 는 정확. forecast direction 은 neutral default"
     ],
-    "ts": "2026-05-17T13:53:08.272827"
+    "ts": "2026-05-19T23:55:46.481154"
   },
   "phase11_fusion": {
     "_auto_placeholder": true,
@@ -181,7 +207,5 @@
       "_auto_created": true
     }
   },
-  "_weekend_inherited_from": "2026-05-16",
-  "_inheritance_reason": "No batch run (operating_policy.md §1.2 — phase11_fusion: 휴장일 = 인접 거래일 inherit)",
-  "market_session": "open_pending"
+  "_weekend_inherited_from": "2026-05-18"
 }

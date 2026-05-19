@@ -1,64 +1,64 @@
 {
   "as_of_date": "2026-05-19",
-  "fragility_index": 35.2,
-  "fragility_level": "mild",
-  "level_color": "#eab308",
+  "fragility_index": 11.8,
+  "fragility_level": "calm",
+  "level_color": "#22c55e",
   "crisis_phase": {
-    "phase": "pre_crisis",
-    "interpretation": "Surface 강세 + Latent 누적 (★ user framing)"
+    "phase": "calm",
+    "interpretation": "정상 평시"
   },
   "components": {
     "surface_strength": {
-      "score": 45.2,
+      "score": 43.6,
       "components": {
         "bull_regime": 0.5,
-        "spy_momentum": 0.368,
-        "vix_low": 0.516,
-        "vix_curr_used": 17.26,
+        "spy_momentum": 0.357,
+        "vix_low": 0.479,
+        "vix_curr_used": 17.82,
         "vix_source": "forecast",
         "spy_source": "forecast"
       }
     },
     "latent_stress": {
-      "score": 30.6,
+      "score": 23.7,
       "vectors": {
-        "policy_uncertainty": 0.3,
-        "carry_leverage": 0.666,
-        "em_fx_stress": 0.746,
-        "sector_dispersion": 0.5,
-        "credit_stress": 0.1,
+        "policy_uncertainty": 0.993,
+        "carry_leverage": 0.748,
+        "em_fx_stress": 0.856,
+        "sector_dispersion": 0.0,
+        "credit_stress": 0.086,
         "geopolitical_tail": 0.0,
         "catalyst_density": 0.12,
-        "bond_vol_stress": 0,
-        "vol_of_vol_spike": 0.216,
+        "bond_vol_stress": 0.061,
+        "vol_of_vol_spike": 0.186,
         "safe_haven_demand": 0,
-        "oil_shock": 0.533,
-        "em_credit_stress": 0.1,
-        "tail_risk_pricing": 0.0,
-        "vix_backwardation": 0.0,
-        "yield_curve_inversion": 0
+        "oil_shock": 0.313,
+        "em_credit_stress": 0.08,
+        "tail_risk_pricing": 0.669,
+        "vix_backwardation": 0.384,
+        "yield_curve_inversion": 0.0
       },
       "contributions_pct": {
         "policy_uncertainty": 0.0,
-        "carry_leverage": 49.0,
+        "carry_leverage": 70.9,
         "em_fx_stress": 0.0,
-        "sector_dispersion": 39.3,
-        "credit_stress": 1.5,
+        "sector_dispersion": 0.0,
+        "credit_stress": 1.7,
         "geopolitical_tail": 0.0,
-        "catalyst_density": 1.5,
-        "bond_vol_stress": 0.0,
+        "catalyst_density": 1.9,
+        "bond_vol_stress": 5.4,
         "vol_of_vol_spike": 0.0,
         "safe_haven_demand": 0.0,
         "oil_shock": 0.0,
-        "em_credit_stress": 4.6,
-        "tail_risk_pricing": 0.0,
-        "vix_backwardation": 0.0,
+        "em_credit_stress": 4.7,
+        "tail_risk_pricing": 14.1,
+        "vix_backwardation": 5.7,
         "yield_curve_inversion": 0.0
       },
       "warnings": []
     },
     "decoupling": {
-      "score": 13.8,
+      "score": 10.3,
       "interpretation": "정상 (surface ≈ latent)"
     },
     "sustainability": {
@@ -73,36 +73,43 @@
   "tipping_points": [
     {
       "trigger": "USDJPY 162 돌파 (carry trigger)",
-      "current": 156.64,
+      "current": 158.69,
       "target": 162,
-      "distance_pct": 3.4,
+      "distance_pct": 2.1,
       "weight": "high"
     },
     {
+      "trigger": "USEPU 600 돌파 (정책 위기)",
+      "current": 497,
+      "target": 600,
+      "distance_pct": 20.7,
+      "weight": "medium"
+    },
+    {
       "trigger": "YC 10Y-2Y inversion (recession leading)",
-      "current": 0.5,
+      "current": 0.54,
       "target": 0,
-      "distance_pct": 5.0,
+      "distance_pct": 5.4,
       "weight": "medium"
     }
   ],
   "decision_support": {
     "stay_invested": true,
-    "tactical_hedge_pct": 20,
+    "tactical_hedge_pct": 0,
     "review_at_fragility": 50,
-    "narrative": "★ D-3~D-4 위기 가능성 (catch rate 50-100%) — SVB D-4 39.6, Carry D-3 90",
-    "recommended_action": "★ Mild hedge (15-25%) — 이번주 후반 위기 가능성",
+    "narrative": "평시 — 정상 (★ COVID-type 외부 surprise + D-5+ 사전 = 본질 한계)",
+    "recommended_action": "정상 포지션",
     "risk_gauge_5d": {
-      "risk_score": 60,
-      "risk_level": "★ Tier B — Approaching",
-      "interpretation": "★ D-3~D-4 위기 가능성 (catch rate 50-100%) — SVB D-4 39.6, Carry D-3 90",
-      "recommended_action": "★ Mild hedge (15-25%) — 이번주 후반 위기 가능성",
-      "hedge_ratio": 20,
-      "horizon": "D-3 to D-4"
+      "risk_score": 30,
+      "risk_level": "Calm",
+      "interpretation": "평시 — 정상 (★ COVID-type 외부 surprise + D-5+ 사전 = 본질 한계)",
+      "recommended_action": "정상 포지션",
+      "hedge_ratio": 0,
+      "horizon": "normal"
     }
   },
-  "narrative": "Fragility 35.2/100 (mild, phase=pre_crisis). Surface 45 / Latent 31 / Decoupling 14 / Sustainability 65. Top vectors: carry_leverage: 49% | sector_dispersion: 39%",
+  "narrative": "Fragility 11.8/100 (calm, phase=calm). Surface 44 / Latent 24 / Decoupling 10 / Sustainability 65. Top vectors: carry_leverage: 71% | tail_risk_pricing: 14% | vix_backwardation: 6%",
   "warnings": [],
   "measurement_quality": "high",
-  "ts": "2026-05-19T23:55:56.163543"
+  "ts": "2026-05-20T00:01:18.754348"
 }
