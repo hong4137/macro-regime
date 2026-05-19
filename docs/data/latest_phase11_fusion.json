@@ -1,5 +1,5 @@
 {
-  "as_of_date": "2026-05-19",
+  "as_of_date": "2026-05-18",
   "system_version": "v3.2 (Phase 12.9.1 — auto-created from snapshot, open)",
   "_meta": {
     "source": "Auto-created sample (create_sample_from_snapshot.py)",
@@ -108,7 +108,8 @@
       "Auto-created — regime_view/cascade 미정의",
       "Sentiment/Flow placeholder (해당 시점 detector 출력 부재)"
     ],
-    "_regime_inherited_from": "2026-05-18"
+    "_regime_source": "manual_claude_session_20260520",
+    "_regime_reasoning": "fragility 11.8 calm, VIX 17.8 low, SPY momentum +0.36, USDJPY 158.7 (carry concern), USEPU 0.99 (policy uncertainty high but Walk-Forward weight 0)"
   },
   "flow_result": {
     "as_of_date": "2026-05-18",
@@ -198,9 +199,7 @@
       "action": "정상 risk-on 유지",
       "confidence": "medium",
       "_classification_source": "manual_claude_session_20260520",
-      "_classification_reasoning": "fragility 11.8 (calm zone), regime bear+crisis 0.25 (weak), sideways 0.5 dominant → 진짜 평온",
-      "_inherited_from": "2026-05-18",
-      "_inheritance_reason": "US market 5/19 open, not closed yet"
+      "_classification_reasoning": "fragility 11.8 (calm zone), regime bear+crisis 0.25 (weak), sideways 0.5 dominant → 진짜 평온"
     },
     "flow_regime": "neutral",
     "flow_net_bias": 0.0,
@@ -211,6 +210,5 @@
     "audit": {
       "_auto_created": true
     }
-  },
-  "_weekend_inherited_from": "2026-05-18"
+  }
 }

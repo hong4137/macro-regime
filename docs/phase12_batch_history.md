@@ -1,17 +1,17 @@
 # Phase 12 Fragility Index — Batch History 시계열
 
-**생성**: 2026-05-20 00:02  
-**Sessions**: 228  
-**Date range**: 2000-04-14 ~ 2026-05-19
+**생성**: 2026-05-20 00:22  
+**Sessions**: 227  
+**Date range**: 2000-04-14 ~ 2026-05-18
 
 ## 1. Phase 분포 통계
 
 | Phase | n | Avg fragility | Min | Max |
 |---|---|---|---|---|
 | **active_crisis** | 24 | 89.3 | 87.7 | 91.0 |
-| **pre_crisis** | 85 | 41.9 | 20.0 | 73.2 |
-| **recovery** | 10 | 21.6 | 12.9 | 40.3 |
-| **calm** | 109 | 8.7 | 2.2 | 18.7 |
+| **pre_crisis** | 83 | 42.1 | 20.0 | 73.2 |
+| **recovery** | 12 | 21.1 | 12.9 | 40.3 |
+| **calm** | 108 | 8.7 | 2.2 | 18.7 |
 
 ## 2. Phase 별 Top Latent Vectors (avg %)
 
@@ -29,30 +29,30 @@
 
 | Vector | Avg contribution |
 |---|---|
-| sector dispersion | 31.1% |
-| carry leverage | 17.5% |
-| credit stress | 11.6% |
-| bond vol stress | 11.6% |
-| yield curve inversion | 4.6% |
+| sector dispersion | 30.9% |
+| carry leverage | 16.7% |
+| credit stress | 11.9% |
+| bond vol stress | 11.9% |
+| yield curve inversion | 4.7% |
 
 ### recovery
 
 | Vector | Avg contribution |
 |---|---|
-| sector dispersion | 19.7% |
-| carry leverage | 19.4% |
-| bond vol stress | 14.9% |
-| credit stress | 10.1% |
-| catalyst density | 5.4% |
+| carry leverage | 28.3% |
+| sector dispersion | 16.4% |
+| bond vol stress | 12.4% |
+| credit stress | 8.7% |
+| tail risk pricing | 6.3% |
 
 ### calm
 
 | Vector | Avg contribution |
 |---|---|
-| sector dispersion | 39.5% |
-| credit stress | 18.8% |
-| carry leverage | 9.1% |
-| bond vol stress | 7.6% |
+| sector dispersion | 39.9% |
+| credit stress | 18.9% |
+| carry leverage | 8.5% |
+| bond vol stress | 7.7% |
 | vix backwardation | 4.6% |
 
 ## 3. Crisis 직전 14일 fragility trajectory
@@ -435,21 +435,20 @@
 | 2026-05-13 | **41.9** | elevated | `pre_crisis` | 44.6 | 36.5 | 16.3 | 100.0 |
 | 2026-05-14 | **41.6** | elevated | `pre_crisis` | 42.1 | 36.5 | 15.4 | 100.0 |
 | 2026-05-15 | **27.4** | mild | `recovery` | 46.5 | 34.2 | 15.9 | 82.5 |
-| 2026-05-16 | **35.2** | mild | `pre_crisis` | 45.2 | 30.6 | 13.8 | 65.0 |
-| 2026-05-17 | **35.2** | mild | `pre_crisis` | 45.2 | 30.6 | 13.8 | 65.0 |
+| 2026-05-16 | **18.4** | calm | `recovery` | 42.9 | 23.0 | 9.9 | 65.0 |
+| 2026-05-17 | **18.4** | calm | `recovery` | 42.9 | 23.0 | 9.9 | 65.0 |
 | 2026-05-18 | **11.8** | calm | `calm` | 43.6 | 23.7 | 10.3 | 65.0 |
-| 2026-05-19 | **11.8** | calm | `calm` | 43.6 | 23.7 | 10.3 | 65.0 |
 
 ## 5. 핵심 발견 (Findings)
 
 ### 5.1 Phase 별 평균 fragility 단계적 분리
 
-- **calm** 8.7 → **recovery** 21.6 → **pre_crisis** 41.9 → **active_crisis** 89.3
+- **calm** 8.7 → **recovery** 21.1 → **pre_crisis** 42.1 → **active_crisis** 89.3
 
 ✅ **모노톤 증가 검증** — phase 별 fragility 가 정상 단계적 분리
 
 ### 5.2 Latent vector dominance
 
 - Active crisis 의 top vector: **sector_dispersion** (16.7%)
-- Pre-crisis 의 top vector: **sector_dispersion** (31.1%)
+- Pre-crisis 의 top vector: **sector_dispersion** (30.9%)
 

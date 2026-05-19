@@ -68,6 +68,61 @@
 - ★ Trigger 없이 화면 갱신 요청 시 → ★ inherit 만 진행 (실제 batch 안 함)
 - ★ 정책 명시: "Trigger 가 있어야 진짜 batch 실행" — Claude 가 자체 판단으로 시간을 추정하지 않음
 
+### 0.7.1 ★ 장 개장 전 / 진행 중 처리 (★ 2026-05-20 신규, 정책 빈 곳 보완)
+
+**배경**: 5/19 사용자 trigger (KST 22:16) 시점에 미국 시장 ★ 개장 14분 전. 제가 ★ 5/19 까지 ★ 5/18 inherit 으로 채워 넣음 → ★ "5/19 데이터 있는 것처럼" 표시. ★ 정직성 위반.
+
+**원인**: 정책 §1.2 (휴장일 inherit) 의 빈 곳 — "장 개장 전" / "장 진행 중" 처리 정의 없음.
+
+**★ 새 정책 (즉시 적용)**:
+
+| 시장 상태 | 처리 | dashboard 표시 |
+|----------|------|----------------|
+| 휴장일 (토/일/공휴일) | 직전 거래일 inherit (§1.2) | inherit 표시 |
+| **★ 개장 전 (해당 날짜 시장 안 열림)** | ★ **데이터 없음** (sample 생성 X) | ★ "—" 또는 "장 개장 전" 명시 |
+| **★ 장 진행 중 (개장 ~ close 사이)** | ★ **데이터 없음** | ★ "장 진행 중" 명시 |
+| 장 마감 후 (close 데이터 가용) | fetch + 분석 | 정상 표시 |
+
+**★ Claude 의 trigger 시 의무**:
+1. 사용자 trigger 시각 (KST) → ET 변환
+2. ★ "오늘 날짜" 시장 상태 판단:
+   - ET 09:30 이전 = 개장 전 → sample 생성 X
+   - ET 09:30 ~ 16:00 = 장 진행 중 → sample 생성 X
+   - ET 16:00 이후 (실제로 16:30 ~ fetch lag) = close 데이터 fetch 가능
+3. ★ 개장 전 / 진행 중 날짜는 ★ "데이터 없음" 으로 표시 (★ inherit 으로 채우지 않음)
+
+**★ 정직성 commitment 보강**:
+- ★ "데이터 없음 = 정직" / "inherit = 정직" / "실제 fetch = 정직"
+- ★ "장 진행 중 inherit = 정직성 위반" — ★ 데이터가 ★ "있는 것처럼" 보임
+
+### 0.8 ★ Default 값 명시 의무 (★ 2026-05-20 신규)
+
+**배경**: 5/16~5/19 dashboard 에서 ★ regime_view 가 default 값 (0.25/0.5/0.2/0.05) 으로 ★ 4일 동안 그대로 표시됨. 사용자가 "스트레스 4일째 같다" 라고 ★ 지적할 때까지 ★ Claude 가 발견 못함.
+
+**원인**:
+- `create_sample_from_snapshot.py` 가 LLM 분석 없을 시 ★ default regime_view 자동 삽입
+- ★ 캐스케이드는 `auto_pending` 이라고 명시적 표시했지만 regime_view 는 ★ 정상 숫자처럼 보임
+- Claude 가 inherit 진행 시 ★ regime_view default 여부 확인 안 함
+
+**★ 새 정책 (즉시 적용)**:
+
+1. ★ **Trigger 시 Claude 는 ★ regime_view 와 cascade ★ 둘 다 확인 의무**
+   - default 값 발견 시 → ★ 즉시 사용자에게 보고 + 추정 또는 inherit 진행
+   - "auto_pending" 같이 ★ 명시적 표시 없는 한 default 가능성 가정
+
+2. ★ **시스템 코드 개선 (Phase 12.19)**:
+   - `create_sample_from_snapshot.py` 의 default regime_view 에 `_regime_source: "default_no_llm"` 메타 추가
+   - `daily_dashboard.py` 에서 `_regime_source == "default_no_llm"` 인 경우 ★ "(추정 미정)" 표시
+   - `_regime_inherited_from` 또는 `_regime_source: "manual_claude_..."` 표시도 동일하게
+
+3. ★ **사용자 trigger 시 chain 정정**:
+   - fetch → create_sample → regenerate → ★ **regime_view default 확인** → 필요시 LLM/manual 분류 → cascade 분류 → fragility batch → dashboard → publish
+
+**★ Default 값 silently 두지 않는 commitment**:
+- ★ 모든 default 값은 dashboard 에 ★ 명시적 표시
+- ★ Trigger 시 Claude 는 ★ 모든 default 값을 ★ 확인 + 갱신 의무
+- ★ 사용자가 지적할 때까지 default 가 그대로 남는 일 ★ 재발 방지
+
 ---
 
 ## 1. Sample 작성 정책 (★ v3.1 갱신 — 캘린더 전체)
