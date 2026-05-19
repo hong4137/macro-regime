@@ -1,6 +1,6 @@
 # Phase 12 Fragility Index — Batch History 시계열
 
-**생성**: 2026-05-19 23:15  
+**생성**: 2026-05-19 23:55  
 **Sessions**: 228  
 **Date range**: 2000-04-14 ~ 2026-05-19
 
@@ -9,9 +9,9 @@
 | Phase | n | Avg fragility | Min | Max |
 |---|---|---|---|---|
 | **active_crisis** | 24 | 89.3 | 87.7 | 91.0 |
-| **pre_crisis** | 87 | 41.8 | 20.0 | 73.2 |
+| **pre_crisis** | 86 | 41.8 | 20.0 | 73.2 |
 | **recovery** | 10 | 21.6 | 12.9 | 40.3 |
-| **calm** | 107 | 8.7 | 2.2 | 18.7 |
+| **calm** | 108 | 8.7 | 2.2 | 18.7 |
 
 ## 2. Phase 별 Top Latent Vectors (avg %)
 
@@ -29,11 +29,11 @@
 
 | Vector | Avg contribution |
 |---|---|
-| sector dispersion | 31.3% |
-| carry leverage | 18.2% |
-| credit stress | 11.4% |
-| bond vol stress | 11.4% |
-| yield curve inversion | 4.5% |
+| sector dispersion | 31.2% |
+| carry leverage | 17.9% |
+| credit stress | 11.5% |
+| bond vol stress | 11.5% |
+| yield curve inversion | 4.6% |
 
 ### recovery
 
@@ -49,9 +49,9 @@
 
 | Vector | Avg contribution |
 |---|---|
-| sector dispersion | 40.3% |
-| credit stress | 19.1% |
-| carry leverage | 8.0% |
+| sector dispersion | 39.9% |
+| credit stress | 18.9% |
+| carry leverage | 8.5% |
 | bond vol stress | 7.7% |
 | vix backwardation | 4.6% |
 
@@ -437,7 +437,7 @@
 | 2026-05-15 | **27.4** | mild | `recovery` | 46.5 | 34.2 | 15.9 | 82.5 |
 | 2026-05-16 | **35.2** | mild | `pre_crisis` | 45.2 | 30.6 | 13.8 | 65.0 |
 | 2026-05-17 | **35.2** | mild | `pre_crisis` | 45.2 | 30.6 | 13.8 | 65.0 |
-| 2026-05-18 | **35.2** | mild | `pre_crisis` | 45.2 | 30.6 | 13.8 | 65.0 |
+| 2026-05-18 | **11.8** | calm | `calm` | 43.6 | 23.7 | 10.3 | 65.0 |
 | 2026-05-19 | **35.2** | mild | `pre_crisis` | 45.2 | 30.6 | 13.8 | 65.0 |
 
 ## 5. 핵심 발견 (Findings)
@@ -451,5 +451,5 @@
 ### 5.2 Latent vector dominance
 
 - Active crisis 의 top vector: **sector_dispersion** (16.7%)
-- Pre-crisis 의 top vector: **sector_dispersion** (31.3%)
+- Pre-crisis 의 top vector: **sector_dispersion** (31.2%)
 
