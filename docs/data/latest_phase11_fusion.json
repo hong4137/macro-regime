@@ -95,9 +95,9 @@
       ]
     },
     "regime_view": {
-      "bull_continuation": 0.25,
+      "bull_continuation": 0.3,
       "sideways": 0.5,
-      "bear_transition": 0.2,
+      "bear_transition": 0.15,
       "crisis": 0.05
     },
     "horizon_hours": 24,
@@ -107,7 +107,8 @@
     "uncertainty_flags": [
       "Auto-created — regime_view/cascade 미정의",
       "Sentiment/Flow placeholder (해당 시점 detector 출력 부재)"
-    ]
+    ],
+    "_regime_inherited_from": "2026-05-18"
   },
   "flow_result": {
     "as_of_date": "2026-05-18",
@@ -190,7 +191,7 @@
     },
     "alert_level": "GREEN",
     "raw_alert": "GREEN",
-    "bear_plus_crisis": 0.25,
+    "bear_plus_crisis": 0.2,
     "cascade": {
       "scenario": "genuine_calm",
       "interpretation": "진짜 평시 — fragility 11.8, regime stress 0.25, sideways 우세",
