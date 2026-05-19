@@ -1,5 +1,5 @@
 {
-  "as_of_date": "2026-05-16",
+  "as_of_date": "2026-05-19",
   "system_version": "v3.2 (Phase 12.9.1 — auto-created from snapshot, closed)",
   "_meta": {
     "source": "Auto-created sample (create_sample_from_snapshot.py)",
@@ -180,5 +180,8 @@
     "audit": {
       "_auto_created": true
     }
-  }
+  },
+  "_weekend_inherited_from": "2026-05-16",
+  "_inheritance_reason": "No batch run (operating_policy.md §1.2 — phase11_fusion: 휴장일 = 인접 거래일 inherit)",
+  "market_session": "open_pending"
 }
