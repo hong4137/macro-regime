@@ -192,10 +192,14 @@
     "raw_alert": "GREEN",
     "bear_plus_crisis": 0.25,
     "cascade": {
-      "scenario": "auto_pending",
-      "interpretation": "Auto-created — cascade 분류 미정",
-      "action": "TBD",
-      "confidence": "low"
+      "scenario": "genuine_calm",
+      "interpretation": "진짜 평시 — fragility 11.8, regime stress 0.25, sideways 우세",
+      "action": "정상 risk-on 유지",
+      "confidence": "medium",
+      "_classification_source": "manual_claude_session_20260520",
+      "_classification_reasoning": "fragility 11.8 (calm zone), regime bear+crisis 0.25 (weak), sideways 0.5 dominant → 진짜 평온",
+      "_inherited_from": "2026-05-18",
+      "_inheritance_reason": "US market 5/19 open, not closed yet"
     },
     "flow_regime": "neutral",
     "flow_net_bias": 0.0,
