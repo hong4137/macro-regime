@@ -17,7 +17,7 @@
       "2026-05-12"
     ],
     "_auto_created": true,
-    "_auto_created_ts": "2026-05-19T23:55:46.481112",
+    "_auto_created_ts": "2026-05-20T00:40:34.532571",
     "data_caveat": "Auto-generated from snapshot history. regime_view/cascade default baseline — analyze_v3 재실행 또는 hand-tune 권장."
   },
   "liq_input": {
@@ -61,7 +61,7 @@
         "EMB 94.62 5d -1.6% — EM credit"
       ],
       "_regenerated": true,
-      "_regenerated_ts": "2026-05-19T23:55:46.701365"
+      "_regenerated_ts": "2026-05-20T00:40:34.647042"
     },
     "coincident_layer": {
       "verdict": "Auto-extracted coincident indicators for 2026-05-18.",
@@ -95,9 +95,9 @@
       ]
     },
     "regime_view": {
-      "bull_continuation": 0.3,
+      "bull_continuation": 0.25,
       "sideways": 0.5,
-      "bear_transition": 0.15,
+      "bear_transition": 0.2,
       "crisis": 0.05
     },
     "horizon_hours": 24,
@@ -107,9 +107,7 @@
     "uncertainty_flags": [
       "Auto-created — regime_view/cascade 미정의",
       "Sentiment/Flow placeholder (해당 시점 detector 출력 부재)"
-    ],
-    "_regime_source": "manual_claude_session_20260520",
-    "_regime_reasoning": "fragility 11.8 calm, VIX 17.8 low, SPY momentum +0.36, USDJPY 158.7 (carry concern), USEPU 0.99 (policy uncertainty high but Walk-Forward weight 0)"
+    ]
   },
   "flow_result": {
     "as_of_date": "2026-05-18",
@@ -124,7 +122,7 @@
     "uncertainty_flags": [
       "Auto-placeholder — flow detector 미실행"
     ],
-    "ts": "2026-05-19T23:55:46.481145"
+    "ts": "2026-05-20T00:40:34.532597"
   },
   "sentiment_result": {
     "as_of_date": "2026-05-18",
@@ -139,7 +137,7 @@
     "uncertainty_flags": [
       "Auto-placeholder — sentiment detector 미실행"
     ],
-    "ts": "2026-05-19T23:55:46.481148"
+    "ts": "2026-05-20T00:40:34.532600"
   },
   "forecast_result": {
     "as_of_date": "2026-05-18",
@@ -179,7 +177,7 @@
       "Auto-created from snapshot — forecast_pct = 5d realized %, not predicted",
       "VIX/SPY current 는 정확. forecast direction 은 neutral default"
     ],
-    "ts": "2026-05-19T23:55:46.481154"
+    "ts": "2026-05-20T00:40:34.532604"
   },
   "phase11_fusion": {
     "_auto_placeholder": true,
@@ -192,14 +190,12 @@
     },
     "alert_level": "GREEN",
     "raw_alert": "GREEN",
-    "bear_plus_crisis": 0.2,
+    "bear_plus_crisis": 0.25,
     "cascade": {
-      "scenario": "genuine_calm",
-      "interpretation": "진짜 평시 — fragility 11.8, regime stress 0.25, sideways 우세",
-      "action": "정상 risk-on 유지",
-      "confidence": "medium",
-      "_classification_source": "manual_claude_session_20260520",
-      "_classification_reasoning": "fragility 11.8 (calm zone), regime bear+crisis 0.25 (weak), sideways 0.5 dominant → 진짜 평온"
+      "scenario": "auto_pending",
+      "interpretation": "Auto-created — cascade 분류 미정",
+      "action": "TBD",
+      "confidence": "low"
     },
     "flow_regime": "neutral",
     "flow_net_bias": 0.0,
